@@ -1,0 +1,35 @@
+{
+  "name": "react-link-text",
+  "author": "Ananto Ghosh",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "source": "src/index.tsx",
+  "main": "./dist/react-link-text.cjs",
+  "module": "./dist/react-link-text.module.js",
+  "unpkg": "./dist/react-link-text.umd.js",
+  "exports": "./dist/react-link-text.modern.js",
+  "types": "dist/react-link-text.d.ts",
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "test": "jest"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/react": "^17.0.11",
+    "jest": "^27.0.5",
+    "microbundle": "^0.13.3",
+    "prettier": "^2.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-jest": "^27.0.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  }
+}
