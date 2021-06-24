@@ -1,7 +1,7 @@
-# react-link-text
+# react-link-text 🔗
 
-A small react package that turns urls in your text clickable.
-Unlike other linkify libraries,'react-link-text' utilizes a straightforward method for detecting links that begin with http, https, or www (customizable).
+A small react package that turns urls in your text clickable (aka linkify).  
+Unlike other linkify libraries,'react-link-text' utilizes a straightforward method for detecting links that begin with http, https, or www (customizable).  
 This works well for most cases.
 
 ### Features
