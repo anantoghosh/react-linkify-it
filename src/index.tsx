@@ -23,7 +23,7 @@ const defaultLinkComponent: NonNullable<Options['component']> = (
 );
 
 const defaultLinksRegex =
-  /https?:\/\/[\w!#$%&'()*+,./:;=?@[\]~-]+\.[\w!#$%&'()*+,./:;=?@[\]~-]+[^\s,.:]/;
+  /(https?:\/\/|www.)[\w!#$%&'()*+,./:;=?@[\]~-]+\.[\w!#$%&'()*+,./:;=?@[\]~-]+[^\s,.:]/;
 
 export function addLinks(text: string, options?: Options) {
   const linksRegex = options?.regex ?? defaultLinksRegex;
