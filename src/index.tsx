@@ -1,8 +1,24 @@
 import React, { Fragment } from 'react';
 
+/**
+ * Optional configuration object
+ */
 interface Options {
+  /**
+   * Override the default `a` component with any React component.
+   * @param url the matched url
+   * @param key a unique key, pass this key to your component
+   * @param className passed via the `className` option
+   * @returns a react component
+   */
   component?: (url: string, key: string, className?: string) => JSX.Element;
+  /**
+   * attaches className to the default `a` tag generated
+   */
   className?: string;
+  /**
+   * regex used to match links
+   */
   regex?: RegExp;
 }
 
@@ -27,6 +43,11 @@ const defaultLinksRegex =
 
 const ctrlCharactersRegex = /\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
 
+/**
+ * Make urls clickable.
+ * @param text Text to parse
+ * @param options {@link Options}
+ */
 export default function addLinks(text: string, options?: Options) {
   const linksRegex = options?.regex ?? defaultLinksRegex;
   const linkComponent = options?.component ?? defaultLinkComponent;
@@ -48,13 +69,13 @@ export default function addLinks(text: string, options?: Options) {
     rest = rest.slice(urlEndIndex);
 
     elements.push(
-      <Fragment key={`${url}-${key}-1`}>{textBeforeMatch}</Fragment>,
-      linkComponent(url, key.toString(), options?.className)
+      <Fragment key={`${key}`}>{textBeforeMatch}</Fragment>,
+      linkComponent(url, `${key}`, options?.className)
     );
     key = key + 1;
   }
 
-  elements.push(<Fragment key={`${key}-1`}>{rest}</Fragment>);
+  elements.push(<Fragment key={`${key}`}>{rest}</Fragment>);
 
   if (elements.length === 0) {
     return text;
