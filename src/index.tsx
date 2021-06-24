@@ -25,7 +25,9 @@ const defaultLinkComponent: NonNullable<Options['component']> = (
 const defaultLinksRegex =
   /(https?:\/\/|www.)[\w!#$%&'()*+,./:;=?@[\]~-]+\.[\w!#$%&'()*+,./:;=?@[\]~-]+[^\s,.:]/;
 
-export function addLinks(text: string, options?: Options) {
+const ctrlCharactersRegex = /\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
+
+export default function addLinks(text: string, options?: Options) {
   const linksRegex = options?.regex ?? defaultLinksRegex;
   const linkComponent = options?.component ?? defaultLinkComponent;
   const elements = [];
@@ -40,7 +42,9 @@ export function addLinks(text: string, options?: Options) {
     const urlEndIndex = match.index + match[0].length;
 
     const textBeforeMatch = rest.slice(0, urlStartIndex);
-    const url = rest.slice(urlStartIndex, urlEndIndex);
+    const url = rest
+      .slice(urlStartIndex, urlEndIndex)
+      .replace(ctrlCharactersRegex, '');
     rest = rest.slice(urlEndIndex);
 
     elements.push(
