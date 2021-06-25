@@ -39,9 +39,9 @@ const defaultLinkComponent: NonNullable<Options['component']> = (
 );
 
 const defaultLinksRegex =
-  /(https?:\/\/|www.)[\w!#$%&'()*+,./:;=?@[\]~-]+\.[\w!#$%&'()*+,./:;=?@[\]~-]+[^\s,.:]/;
+  /(https?:\/\/|www\.)([-\w.]+\/[\p{L}\p{Emoji}\p{Emoji_Component}!#$%&'"()*+,./\\:;=_?@[\]~-]*[^\s'",.;:\b)\]\}?]|(([\w-]+\.)+[\w-]+[\w\/-]))/u;
 
-const ctrlCharactersRegex = /\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
+const ctrlCharactersRegex = /[\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
 
 /**
  * Make urls clickable.
