@@ -48,6 +48,7 @@ const ctrlCharactersRegex = /[\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim
  * @param text Text to parse
  * @param options {@link Options}
  */
+/*#__PURE__*/
 export default function addLinks(text: string, options?: Options) {
   const linksRegex = options?.regex ?? defaultLinksRegex;
   const linkComponent = options?.component ?? defaultLinkComponent;
