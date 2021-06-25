@@ -2,7 +2,8 @@
   "name": "react-link-text",
   "author": "Ananto Ghosh",
   "version": "0.0.0",
-  "description": "",
+  "description": "A small react package that turns urls in your text clickable (aka linkify).",
+  "license": "MIT",
   "type": "module",
   "source": "src/index.tsx",
   "main": "./dist/react-link-text.cjs",
@@ -10,7 +11,12 @@
   "unpkg": "./dist/react-link-text.umd.js",
   "exports": "./dist/react-link-text.modern.js",
   "types": "dist/react-link-text.d.ts",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "release": "np",
     "build": "microbundle",
     "dev": "microbundle watch",
     "test": "jest"
@@ -25,7 +31,6 @@
     "text",
     "tag"
   ],
-  "license": "MIT",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -33,6 +38,7 @@
     "@types/react": "^17.0.11",
     "jest": "^27.0.5",
     "microbundle": "^0.13.3",
+    "np": "^7.5.0",
     "prettier": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
