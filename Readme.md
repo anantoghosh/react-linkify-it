@@ -6,12 +6,12 @@ This works well for most cases.
 
 ### Features
 
-- **Tiny** - Less than 500 bytes gzipped.
-- **Customizable** - Adjust to your specific case as required.
-- **Fast** - Single pass processing.
-- **Safe** - Sanitized urls to prevent any XSS attacks.
-- **Browser support** - Works with IE11 out of the box.
-- **React support** - Works with react v16.2+
+- 📦 **Tiny** - Less than 500 bytes gzipped.
+- 📝 **Customizable** - Adjust to your specific case as required.
+- 🏎 **Fast** - Single pass processing.
+- 🦺 **Safe** - Sanitized urls to prevent any XSS attacks.
+- 🌐 **i18n** - Works with urls that contain international characters.
+- 🕸 **React support** - Works with react v16.2+
 
 ### Notes
 
