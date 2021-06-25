@@ -1,4 +1,5 @@
-# react-link-text 🔗
+# react-link-text 🔗 
+[![Node.js CI](https://github.com/anantoghosh/react-link-text/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-link-text/actions/workflows/node.js.yml)
 
 A small react package that turns urls in your text clickable (aka linkify).  
 Unlike other linkify libraries,'react-link-text' utilizes a straightforward method for detecting links that begin with http, https, or www (customizable).  
