@@ -14,6 +14,11 @@
   "files": [
     "dist/"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anantoghosh/react-link-text.git"
+  },
+  "homepage": "https://github.com/anantoghosh/react-link-text",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "release": "np",
