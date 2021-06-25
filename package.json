@@ -1,7 +1,7 @@
 {
   "name": "react-link-text",
   "author": "Ananto Ghosh",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A small react package that turns urls in your text clickable (aka linkify).",
   "license": "MIT",
   "type": "module",
