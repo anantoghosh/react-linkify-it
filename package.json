@@ -10,7 +10,7 @@
   "module": "./dist/react-link-text.module.js",
   "unpkg": "./dist/react-link-text.umd.js",
   "exports": "./dist/react-link-text.modern.js",
-  "types": "dist/react-link-text.d.ts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/"
   ],
