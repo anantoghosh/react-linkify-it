@@ -15,7 +15,16 @@
     "dev": "microbundle watch",
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": [
+    "react-linkify",
+    "react",
+    "linkify",
+    "link",
+    "url",
+    "autolink",
+    "text",
+    "tag"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
