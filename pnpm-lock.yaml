@@ -5,6 +5,7 @@ specifiers:
   '@testing-library/react': ^12.0.0
   '@types/jest': ^26.0.23
   '@types/react': ^17.0.11
+  cross-env: ^7.0.3
   jest: ^27.0.5
   microbundle: ^0.13.3
   np: ^7.5.0
@@ -18,6 +19,7 @@ devDependencies:
   '@testing-library/react': 12.0.0_react-dom@17.0.2+react@17.0.2
   '@types/jest': 26.0.23
   '@types/react': 17.0.11
+  cross-env: 7.0.3
   jest: 27.0.5
   microbundle: 0.13.3
   np: 7.5.0
@@ -2643,6 +2645,14 @@ packages:
       parse-json: 5.2.0
       path-type: 4.0.0
       yaml: 1.10.2
+    dev: true
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
     dev: true
 
   /cross-spawn/7.0.3:

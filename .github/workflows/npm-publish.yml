@@ -54,10 +54,12 @@ jobs:
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
+          scope: "@anantoghosh"
       - uses: actions/download-artifact@v2
         with:
           name: dist
           path: dist/
+      - run: node gpr-hack.js
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
