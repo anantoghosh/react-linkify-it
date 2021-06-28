@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 
 /**
  * Optional configuration object
@@ -22,7 +22,7 @@ interface Options {
   regex?: RegExp;
 }
 
-const defaultLinkComponent: NonNullable<Options['component']> = (
+const defaultLinkComponent: NonNullable<Options["component"]> = (
   url,
   key,
   className
@@ -41,14 +41,15 @@ const defaultLinkComponent: NonNullable<Options['component']> = (
 const defaultLinksRegex =
   /(https?:\/\/|www\.)([-\w.]+\/[\p{L}\p{Emoji}\p{Emoji_Component}!#$%&'"()*+,./\\:;=_?@[\]~-]*[^\s'",.;:\b)\]\}?]|(([\w-]+\.)+[\w-]+[\w\/-]))/u;
 
-const ctrlCharactersRegex = /[\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
+const ctrlCharactersRegex =
+  /[\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
 
 /**
  * Make urls clickable.
  * @param text Text to parse
  * @param options {@link Options}
  */
-export default function addLinks(text: string, options?: Options) {
+export function addLinks(text: string, options?: Options) {
   const linksRegex = options?.regex ?? defaultLinksRegex;
   const linkComponent = options?.component ?? defaultLinkComponent;
   const elements = [];
@@ -65,7 +66,7 @@ export default function addLinks(text: string, options?: Options) {
     const textBeforeMatch = rest.slice(0, urlStartIndex);
     const url = rest
       .slice(urlStartIndex, urlEndIndex)
-      .replace(ctrlCharactersRegex, '');
+      .replace(ctrlCharactersRegex, "");
     rest = rest.slice(urlEndIndex);
 
     elements.push(
@@ -83,3 +84,45 @@ export default function addLinks(text: string, options?: Options) {
 
   return elements;
 }
+
+function findText(
+  children: React.ReactNode,
+  options: Options
+): React.ReactNode {
+  if (typeof children === "string") {
+    return addLinks(children, options);
+  }
+
+  if (Array.isArray(children)) {
+    return children.map((c) => findText(c, options));
+  }
+
+  if (
+    React.isValidElement(children) &&
+    children.props.children &&
+    children.type !== "a" &&
+    children.type !== "button"
+  ) {
+    return React.cloneElement(
+      children,
+      children.props,
+      findText(children.props.children, options)
+    );
+  }
+
+  return children;
+}
+
+/**
+ * AddLinks component can wrapped around any React component to linkify any
+ * urls
+ * @example
+ * ```
+ * <AddLinks>
+ *  <div>Hello http://world.com</div>
+ * </AddLinks>
+ * ```
+ */
+export const AddLinks: React.FC<{ options: Options }> = (props) => {
+  return <Fragment>{findText(props.children, props.options)}</Fragment>;
+};
