@@ -24,8 +24,8 @@
   "homepage": "https://github.com/anantoghosh/react-link-text",
   "scripts": {
     "release": "np",
-    "build": "microbundle && npm run build:legacy",
-    "build:legacy": "cross-env BROWSERSLIST_ENV=legacy microbundle -o dist/legacy -f umd",
+    "build": "microbundle",
+    "build:legacy": "cross-env BROWSERSLIST_ENV=legacy microbundle -o legacy/ && node type-copy.js",
     "dev": "microbundle watch",
     "test": "jest"
   },

@@ -19,3 +19,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+react-link-text-*.tgz
+react-link-text.cjs
+react-link-text.cjs.map
+react-link-text.modern.js
+react-link-text.modern.js.map
+react-link-text.module.js
+react-link-text.module.js.map
+react-link-text.umd.js
+react-link-text.umd.js.map
+legacy/
