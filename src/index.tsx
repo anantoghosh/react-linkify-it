@@ -6,12 +6,18 @@ import React, { Fragment } from "react";
 interface Options {
   /**
    * Override the default `a` component with any React component.
-   * @param url the matched url
+   * @param url the matched url with protocol
+   * @param text the matched url text
    * @param key a unique key, pass this key to your component
    * @param className passed via the `className` option
    * @returns a react component
    */
-  component?: (url: string, key: string, className?: string) => JSX.Element;
+  component?: (
+    url: string,
+    text: string,
+    key: string,
+    className?: string
+  ) => JSX.Element;
   /**
    * attaches className to the default `a` tag generated
    */
@@ -24,6 +30,7 @@ interface Options {
 
 const defaultLinkComponent: NonNullable<Options["component"]> = (
   url,
+  text,
   key,
   className
 ) => (
@@ -34,7 +41,7 @@ const defaultLinkComponent: NonNullable<Options["component"]> = (
     target="_blank"
     rel="noreferrer"
   >
-    {url}
+    {text}
   </a>
 );
 
@@ -71,7 +78,12 @@ export function addLinks(text: string, options?: Options) {
 
     elements.push(
       <Fragment key={`${key}`}>{textBeforeMatch}</Fragment>,
-      linkComponent(url, `${key}`, options?.className)
+      linkComponent(
+        /^www\./.exec(url) ? `http://${url}` : url,
+        url,
+        `${key}`,
+        options?.className
+      )
     );
     key = key + 1;
   }

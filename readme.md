@@ -64,7 +64,7 @@ const App = () => (
 ```js
 interface Options {
   // Component to wrap links with (forwarding the key to your component is required)
-  component?: (url: string, key: string, className?: string) => JSX.Element;
+  component?: (url: string, text: string, key: string, className?: string) => JSX.Element;
 
   // Attach className with the default `a` tag around links
   className?: string;
@@ -91,7 +91,7 @@ addLinks(text, options);
 
 ```jsx
 const options = {
-  component: (url, key) => <a key={key} href={url}>This is a link: {url}</a>,
+  component: (url, text, key) => <a key={key} href={url}>This is a link: {text}</a>,
 }
 
 <AddLinks options={options}></AddLinks>
