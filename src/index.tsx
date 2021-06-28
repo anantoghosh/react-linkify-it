@@ -99,7 +99,7 @@ export function addLinks(text: string, options?: Options) {
 
 function findText(
   children: React.ReactNode,
-  options: Options
+  options?: Options
 ): React.ReactNode {
   if (typeof children === "string") {
     return addLinks(children, options);
@@ -135,6 +135,6 @@ function findText(
  * </AddLinks>
  * ```
  */
-export const AddLinks: React.FC<{ options: Options }> = (props) => {
+export const AddLinks: React.FC<{ options?: Options }> = (props) => {
   return <Fragment>{findText(props.children, props.options)}</Fragment>;
 };
