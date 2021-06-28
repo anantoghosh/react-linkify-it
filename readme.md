@@ -1,4 +1,5 @@
-# react-link-text 🔗 
+# react-link-text 🔗 (Under development)
+
 [![Node.js CI](https://github.com/anantoghosh/react-link-text/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-link-text/actions/workflows/node.js.yml)
 
 A small react package that turns urls in your text clickable (aka linkify).  
@@ -27,8 +28,10 @@ npm i react-link-text
 
 ### Usage
 
+#### 1. Using `addLinks` function
+
 ```jsx
-import addLinks form 'react-link-text';
+import { addLinks } form 'react-link-text';
 
 const App = () => (
   <div className="App">
@@ -41,15 +44,57 @@ const App = () => (
 
 ```
 
+#### 2. Using `AddLinks` component
+
+```jsx
+import { AddLinks } form 'react-link-text';
+
+const App = () => (
+  <div className="App">
+    <AddLinks options={options}>
+      <p>"add some link https://www.google.com here"</p>
+    </AddLinks>
+  </div>
+);
+
+```
+
 ### Options
 
 ```js
 interface Options {
+  // Component to wrap links with (forwarding the key to your component is required)
   component?: (url: string, key: string, className?: string) => JSX.Element;
+
+  // Attach className with the default `a` tag around links
   className?: string;
+
+  // Link Matching regex
   regex?: RegExp;
 }
+```
 
+### Examples
+
+#### Attach a class to the generated links
+
+```jsx
+const options = {
+  className: 'this-class-should-be-in-the-link'
+}
+
+<AddLinks options={options}></AddLinks>
+addLinks(text, options);
+```
+
+#### Modify the link component
+
+```jsx
+const options = {
+  component: (url, key) => <a key={key} href={url}>This is a link: {url}</a>,
+}
+
+<AddLinks options={options}></AddLinks>
 addLinks(text, options);
 ```
 
@@ -58,6 +103,7 @@ addLinks(text, options);
 This project was made possible due to the incredible work done on the following projects:
 
 - [sanitize-url](https://github.com/braintree/sanitize-url)
+- [react-linkify](https://github.com/tasti/react-linkify)
 
 ## License
 
