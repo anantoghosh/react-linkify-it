@@ -35,10 +35,7 @@ import { addLinks } form 'react-link-text';
 
 const App = () => (
   <div className="App">
-    <p>addLinks("add some link https://www.google.com here")</p>
-
-    // Options describes in the next section
-    <p>addLinks("www.google.com", options)</p>
+    <p>addLinks("add some link https://www.google.com here", options)</p>
   </div>
 );
 

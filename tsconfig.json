@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "esnext"],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -16,6 +16,7 @@
     "noEmit": true,
     "jsx": "react",
     "jsxFactory": "React.createElement",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "declaration": true
   }
 }

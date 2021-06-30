@@ -6,11 +6,15 @@
   "license": "MIT",
   "type": "module",
   "source": "src/index.tsx",
-  "main": "./dist/react-link-text.cjs",
-  "module": "./dist/react-link-text.module.js",
-  "unpkg": "./dist/react-link-text.umd.js",
-  "exports": "./dist/react-link-text.modern.js",
-  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/react-link-text.esm.js",
+    "./legacy": "./dist/react-link-text.legacy.esm.min",
+    "./dist/react-link-text.legacy.esm.min": "./dist/react-link-text.legacy.esm.min"
+  },
+  "module": "./dist/react-link-text.esm.js",
+  "unpkg": "./dist/react-link-text.umd.min.js",
+  "types": "./dist/react-link-text.esm.d.ts",
+  "sideEffects": false,
   "files": [
     "dist/"
   ],
@@ -24,9 +28,9 @@
   "homepage": "https://github.com/anantoghosh/react-link-text",
   "scripts": {
     "release": "np",
-    "build": "microbundle",
-    "build:legacy": "cross-env BROWSERSLIST_ENV=legacy microbundle -o legacy/ && node type-copy.js",
-    "dev": "microbundle watch",
+    "build": "npm run build:latest && npm run build:legacy",
+    "build:latest": "rollup -c",
+    "build:legacy": "rollup -c rollup-legacy.config.js",
     "test": "jest"
   },
   "keywords": [
@@ -40,18 +44,22 @@
     "tag"
   ],
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.2.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.11",
-    "cross-env": "^7.0.3",
     "jest": "^27.0.5",
-    "microbundle": "^0.13.3",
     "np": "^7.5.0",
     "prettier": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "ts-jest": "^27.0.3"
+    "rollup": "^2.52.4",
+    "rollup-plugin-size": "^0.2.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-ts": "^1.4.0",
+    "ts-jest": "^27.0.3",
+    "tslib": "^2.3.0"
   },
   "peerDependencies": {
     "react": "^17.0.2"

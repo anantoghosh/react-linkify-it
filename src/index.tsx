@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { Fragment, isValidElement, cloneElement } from "react";
+import type { ReactNode, FunctionComponent } from "react";
 
 /**
  * Optional configuration object
@@ -98,9 +99,9 @@ export function addLinks(text: string, options?: Options) {
 }
 
 function findText(
-  children: React.ReactNode,
+  children: ReactNode,
   options?: Options
-): React.ReactNode {
+): ReactNode {
   if (typeof children === "string") {
     return addLinks(children, options);
   }
@@ -110,12 +111,12 @@ function findText(
   }
 
   if (
-    React.isValidElement(children) &&
+    isValidElement(children) &&
     children.props.children &&
     children.type !== "a" &&
     children.type !== "button"
   ) {
-    return React.cloneElement(
+    return cloneElement(
       children,
       children.props,
       findText(children.props.children, options)
@@ -135,6 +136,6 @@ function findText(
  * </AddLinks>
  * ```
  */
-export const AddLinks: React.FC<{ options?: Options }> = (props) => {
+export const AddLinks: FunctionComponent<{ options?: Options }> = (props) => {
   return <Fragment>{findText(props.children, props.options)}</Fragment>;
 };
