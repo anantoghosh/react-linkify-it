@@ -12,7 +12,7 @@
     "./dist/react-link-text.legacy.esm.min": "./dist/react-link-text.legacy.esm.min"
   },
   "module": "./dist/react-link-text.esm.js",
-  "unpkg": "./dist/react-link-text.umd.min.js",
+  "unpkg": "./dist/react-link-text.legacy.umd.min.js",
   "types": "./dist/react-link-text.esm.d.ts",
   "sideEffects": false,
   "files": [
