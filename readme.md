@@ -136,7 +136,7 @@ import { addLinks, AddLinks } from "react-link-text/dist/react-link-text.legacy.
 
 ## Using a browser bundle
 
-An umd build with legacy browser support can be used from [Unpkg](https://unpkg.com/react-link-text/).
+An umd build with legacy browser support can be used from [Unpkg](https://unpkg.com/react-link-text).
 
 ## Acknowledgment
 
