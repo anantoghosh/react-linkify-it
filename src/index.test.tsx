@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { addLinks } from "./index";
+import { AddLinks, addLinks } from "./index";
 
-const renderWithId = (child: string | JSX.Element[]) =>
+const renderWithId = (child: string | (string | JSX.Element)[]) =>
   render(<div data-testid={"addLinks"}>{child}</div>);
 
 const base_urls = [
@@ -100,5 +100,17 @@ test("Filter control characters", () => {
   expect(screen.getByRole("link", { name: filteredText })).toHaveAttribute(
     "href",
     filteredText
+  );
+});
+
+test("AddLinks", () => {
+  render(
+    <AddLinks>
+      www.google.com<div>hi</div>
+    </AddLinks>
+  );
+  expect(screen.getByRole("link", { name: "www.google.com" })).toHaveAttribute(
+    "href",
+    "http://www.google.com"
   );
 });

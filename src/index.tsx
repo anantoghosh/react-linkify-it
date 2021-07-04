@@ -16,7 +16,7 @@ interface Options {
   component?: (
     url: string,
     text: string,
-    key: string,
+    key: string | number,
     className?: string
   ) => JSX.Element;
   /**
@@ -37,7 +37,7 @@ const defaultLinkComponent: NonNullable<Options["component"]> = (
 ) => (
   <a
     className={className}
-    key={`${url}-${key}`}
+    key={key}
     href={url}
     target="_blank"
     rel="noreferrer"
@@ -52,6 +52,8 @@ const defaultLinksRegex =
 const ctrlCharactersRegex =
   /[\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
 
+let key = 0;
+let getKey = () => ++key;
 /**
  * Make urls clickable.
  * @param text Text to parse
@@ -62,7 +64,6 @@ export function addLinks(text: string, options?: Options) {
   const linkComponent = options?.component ?? defaultLinkComponent;
   const elements = [];
   let rest = text;
-  let key = 1;
 
   while (true) {
     const match = linksRegex.exec(rest);
@@ -76,20 +77,18 @@ export function addLinks(text: string, options?: Options) {
       .slice(urlStartIndex, urlEndIndex)
       .replace(ctrlCharactersRegex, "");
     rest = rest.slice(urlEndIndex);
-
+    textBeforeMatch && elements.push(textBeforeMatch);
     elements.push(
-      <Fragment key={`${key}`}>{textBeforeMatch}</Fragment>,
       linkComponent(
         /^www\./.exec(url) ? `http://${url}` : url,
         url,
-        `${key}`,
+        getKey(),
         options?.className
       )
     );
-    key = key + 1;
   }
 
-  elements.push(<Fragment key={`${key}`}>{rest}</Fragment>);
+  rest && elements.push(<Fragment key={getKey()}>{rest}</Fragment>);
 
   if (elements.length === 0) {
     return text;
@@ -98,10 +97,7 @@ export function addLinks(text: string, options?: Options) {
   return elements;
 }
 
-function findText(
-  children: ReactNode,
-  options?: Options
-): ReactNode {
+function findText(children: ReactNode, options?: Options): ReactNode {
   if (typeof children === "string") {
     return addLinks(children, options);
   }
@@ -118,7 +114,7 @@ function findText(
   ) {
     return cloneElement(
       children,
-      children.props,
+      { ...children.props, key: getKey() },
       findText(children.props.children, options)
     );
   }
