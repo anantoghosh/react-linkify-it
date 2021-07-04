@@ -6,10 +6,11 @@
   "license": "MIT",
   "type": "module",
   "source": "src/index.tsx",
+  "main": "./dist/react-link-text.legacy.umd.min",
   "exports": {
     ".": "./dist/react-link-text.esm.js",
-    "./legacy": "./dist/react-link-text.legacy.esm.min",
-    "./dist/react-link-text.legacy.esm.min": "./dist/react-link-text.legacy.esm.min"
+    "./legacy": "./dist/react-link-text.legacy.umd.min",
+    "./dist/react-link-text.legacy.umd.min": "./dist/react-link-text.legacy.umd.min"
   },
   "module": "./dist/react-link-text.esm.js",
   "unpkg": "./dist/react-link-text.legacy.umd.min.js",
