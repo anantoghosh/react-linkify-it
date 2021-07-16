@@ -59,7 +59,7 @@ let getKey = () => ++key;
  * @param text Text to parse
  * @param options {@link Options}
  */
-export function addLinks(text: string, options?: Options) {
+export function linkIt(text: string, options?: Options) {
   const linksRegex = options?.regex ?? defaultLinksRegex;
   const linkComponent = options?.component ?? defaultLinkComponent;
   const elements = [];
@@ -99,7 +99,7 @@ export function addLinks(text: string, options?: Options) {
 
 function findText(children: ReactNode, options?: Options): ReactNode {
   if (typeof children === "string") {
-    return addLinks(children, options);
+    return linkIt(children, options);
   }
 
   if (Array.isArray(children)) {
@@ -123,15 +123,15 @@ function findText(children: ReactNode, options?: Options): ReactNode {
 }
 
 /**
- * AddLinks component can wrapped around any React component to linkify any
+ * LinkIt component can wrapped around any React component to linkify any
  * urls
  * @example
  * ```
- * <AddLinks>
+ * <LinkIt>
  *  <div>Hello http://world.com</div>
- * </AddLinks>
+ * </LinkIt>
  * ```
  */
-export const AddLinks: FunctionComponent<{ options?: Options }> = (props) => {
+export const LinkIt: FunctionComponent<{ options?: Options }> = (props) => {
   return <Fragment>{findText(props.children, props.options)}</Fragment>;
 };

@@ -33,29 +33,29 @@ npm i react-linkit
 
 ### Usage
 
-#### 1. Using `addLinks` function
+#### 1. Using `linkIt` function
 
 ```jsx
-import { addLinks } form 'react-linkit';
+import { linkIt } form 'react-linkit';
 
 const App = () => (
   <div className="App">
-    <p>addLinks("add some link https://www.google.com here", options)</p>
+    <p>linkIt("add some link https://www.google.com here", options)</p>
   </div>
 );
 
 ```
 
-#### 2. Using `AddLinks` component
+#### 2. Using `LinkIt` component
 
 ```jsx
-import { AddLinks } form 'react-linkit';
+import { LinkIt } form 'react-linkit';
 
 const App = () => (
   <div className="App">
-    <AddLinks options={options}>
+    <LinkIt options={options}>
       <p>"add some link https://www.google.com here"</p>
-    </AddLinks>
+    </LinkIt>
   </div>
 );
 
@@ -90,8 +90,8 @@ const options = {
   className: "this-class-should-be-in-the-link",
 };
 
-<AddLinks options={options}></AddLinks>;
-addLinks(text, options);
+<LinkIt options={options}></LinkIt>;
+linkIt(text, options);
 ```
 
 #### Modify the link component
@@ -105,8 +105,8 @@ const options = {
   ),
 };
 
-<AddLinks options={options}></AddLinks>;
-addLinks(text, options);
+<LinkIt options={options}></LinkIt>;
+linkIt(text, options);
 ```
 
 ## Using modern and legacy bundle
@@ -125,12 +125,12 @@ older browsers, you can use the legacy bundle by importing:
 ### For javascript projects
 
 ```js
-import { addLinks, AddLinks } from "react-linkit/legacy";
+import { linkIt, LinkIt } from "react-linkit/legacy";
 ```
 
 ### For typescript projects ([why?](https://github.com/microsoft/TypeScript/issues/33079))
 ```js
-import { addLinks, AddLinks } from "react-linkit/dist/react-linkit.legacy.esm.min";
+import { linkIt, LinkIt } from "react-linkit/dist/react-linkit.legacy.esm.min";
 ```
 *Note*: Legacy bundle has a larger file size (~3.4Kb minziped).
 
