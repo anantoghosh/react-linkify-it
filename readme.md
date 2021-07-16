@@ -1,11 +1,11 @@
-# react-link-text 🔗 (Under development)
+# react-linkit 🔗 (Under development)
 
-[![Npm version](https://badgen.net/npm/v/react-link-text)](https://www.npmjs.com/package/react-link-text)
-[![Node.js CI](https://github.com/anantoghosh/react-link-text/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-link-text/actions/workflows/node.js.yml)
-[![Min zipped size](https://badgen.net/bundlephobia/minzip/react-link-text)](https://bundlephobia.com/package/react-link-text)
+[![Npm version](https://badgen.net/npm/v/react-linkit)](https://www.npmjs.com/package/react-linkit)
+[![Node.js CI](https://github.com/anantoghosh/react-linkit/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkit/actions/workflows/node.js.yml)
+[![Min zipped size](https://badgen.net/bundlephobia/minzip/react-linkit)](https://bundlephobia.com/package/react-linkit)
 
 A small react package that turns urls in your text clickable (aka linkify).  
-Unlike other linkify libraries,'react-link-text' utilizes a straightforward method for detecting links that begin with http, https, or www (customizable).  
+Unlike other linkify libraries,'react-linkit' utilizes a straightforward method for detecting links that begin with http, https, or www (customizable).  
 This works well for most cases.
 
 ### Features
@@ -20,15 +20,15 @@ This works well for most cases.
 
 ### Notes
 
-- `react-link-text` is only meant to make website urls in a text clickable. Though you can pass it any regex to match your requirements.
+- `react-linkit` is only meant to make website urls in a text clickable. Though you can pass it any regex to match your requirements.
 - By default, only links starting with `http`, `https`, and `www` are detected.
-- `react-link-text` provides a modern bundle for actively maintained browsers and a larger legacy bundle for older browsers.  
+- `react-linkit` provides a modern bundle for actively maintained browsers and a larger legacy bundle for older browsers.  
   [Read about how to utilize them](#using-modern-and-legacy-bundle).
 
 ## Installation
 
 ```sh
-npm i react-link-text
+npm i react-linkit
 ```
 
 ### Usage
@@ -36,7 +36,7 @@ npm i react-link-text
 #### 1. Using `addLinks` function
 
 ```jsx
-import { addLinks } form 'react-link-text';
+import { addLinks } form 'react-linkit';
 
 const App = () => (
   <div className="App">
@@ -49,7 +49,7 @@ const App = () => (
 #### 2. Using `AddLinks` component
 
 ```jsx
-import { AddLinks } form 'react-link-text';
+import { AddLinks } form 'react-linkit';
 
 const App = () => (
   <div className="App">
@@ -111,7 +111,7 @@ addLinks(text, options);
 
 ## Using modern and legacy bundle
 
-By default, when you import `react-link-text`, it will use a modern bundle
+By default, when you import `react-linkit`, it will use a modern bundle
 meant for browsers which
 support [RegExp Unicode property escapes](https://caniuse.com/mdn-javascript_builtins_regexp_property_escapes).
 
@@ -125,18 +125,18 @@ older browsers, you can use the legacy bundle by importing:
 ### For javascript projects
 
 ```js
-import { addLinks, AddLinks } from "react-link-text/legacy";
+import { addLinks, AddLinks } from "react-linkit/legacy";
 ```
 
 ### For typescript projects ([why?](https://github.com/microsoft/TypeScript/issues/33079))
 ```js
-import { addLinks, AddLinks } from "react-link-text/dist/react-link-text.legacy.esm.min";
+import { addLinks, AddLinks } from "react-linkit/dist/react-linkit.legacy.esm.min";
 ```
 *Note*: Legacy bundle has a larger file size (~3.4Kb minziped).
 
 ## Using a browser bundle
 
-An umd build with legacy browser support can be used from [Unpkg](https://unpkg.com/react-link-text).
+An umd build with legacy browser support can be used from [Unpkg](https://unpkg.com/react-linkit).
 
 ## Acknowledgment
 

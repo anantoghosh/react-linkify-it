@@ -1,32 +1,32 @@
 {
-  "name": "react-link-text",
+  "name": "react-linkit",
   "author": "Ananto Ghosh",
   "version": "0.4.0",
   "description": "A small react package that turns urls in your text clickable (aka linkify).",
   "license": "MIT",
   "type": "module",
   "source": "src/index.tsx",
-  "main": "./dist/react-link-text.legacy.umd.min",
+  "main": "./dist/react-linkit.legacy.umd.min",
   "exports": {
-    ".": "./dist/react-link-text.esm.js",
-    "./legacy": "./dist/react-link-text.legacy.umd.min",
-    "./dist/react-link-text.legacy.umd.min": "./dist/react-link-text.legacy.umd.min"
+    ".": "./dist/react-linkit.esm.js",
+    "./legacy": "./dist/react-linkit.legacy.umd.min",
+    "./dist/react-linkit.legacy.umd.min": "./dist/react-linkit.legacy.umd.min"
   },
-  "module": "./dist/react-link-text.esm.js",
-  "unpkg": "./dist/react-link-text.legacy.umd.min.js",
-  "types": "./dist/react-link-text.esm.d.ts",
+  "module": "./dist/react-linkit.esm.js",
+  "unpkg": "./dist/react-linkit.legacy.umd.min.js",
+  "types": "./dist/react-linkit.esm.d.ts",
   "sideEffects": false,
   "files": [
     "dist/"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anantoghosh/react-link-text.git"
+    "url": "git+https://github.com/anantoghosh/react-linkit.git"
   },
   "bugs": {
-    "url": "https://github.com/anantoghosh/react-link-text/issues"
+    "url": "https://github.com/anantoghosh/react-linkit/issues"
   },
-  "homepage": "https://github.com/anantoghosh/react-link-text",
+  "homepage": "https://github.com/anantoghosh/react-linkit",
   "scripts": {
     "release": "np",
     "build": "npm run build:latest && npm run build:legacy",
