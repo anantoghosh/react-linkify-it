@@ -1,12 +1,20 @@
-# react-linkit 🔗 (Under development)
+# react-linkit 🔗
 
 [![Npm version](https://badgen.net/npm/v/react-linkit)](https://www.npmjs.com/package/react-linkit)
 [![Node.js CI](https://github.com/anantoghosh/react-linkit/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkit/actions/workflows/node.js.yml)
 [![Min zipped size](https://badgen.net/bundlephobia/minzip/react-linkit)](https://bundlephobia.com/package/react-linkit)
 
-A small react package that turns urls in your text clickable (aka linkify).  
-Unlike other linkify libraries,'react-linkit' utilizes a straightforward method for detecting links that begin with http, https, or www (customizable).  
-This works well for most cases.
+A small react package that turns **urls** or **anything else** in your text clickable (aka linkify).  
+
+**Aside from linking urls, do you want to:**
+- Link Jira Tickets?
+- Link GitHub Issues?
+- Link Twitter usernames?
+- Link email addresses?
+- Link phone numbers?
+- Link any pattern you want!
+
+Unlike other linkify libraries, `react-linkit` utilizes a straightforward method for detecting links that begin with http, https, or www (customizable).  
 
 ### Features
 
@@ -81,7 +89,7 @@ interface Options {
 }
 ```
 
-### Examples
+### Customize
 
 #### Attach a class to the generated links
 
@@ -108,6 +116,9 @@ const options = {
 <LinkIt options={options}></LinkIt>;
 linkIt(text, options);
 ```
+### Examples
+
+
 
 ## Using modern and legacy bundle
 
