@@ -1,72 +1,28 @@
 import React, { Fragment, isValidElement, cloneElement } from "react";
-import type { ReactNode, FunctionComponent } from "react";
-
-/**
- * Optional configuration object
- */
-interface Options {
-  /**
-   * Override the default `a` component with any React component.
-   * @param url the matched url with protocol
-   * @param text the matched url text
-   * @param key a unique key, pass this key to your component
-   * @param className passed via the `className` option
-   * @returns a react component
-   */
-  component?: (
-    url: string,
-    text: string,
-    key: string | number,
-    className?: string
-  ) => JSX.Element;
-  /**
-   * attaches className to the default `a` tag generated
-   */
-  className?: string;
-  /**
-   * regex used to match links
-   */
-  regex?: RegExp;
-}
-
-const defaultLinkComponent: NonNullable<Options["component"]> = (
-  url,
-  text,
-  key,
-  className
-) => (
-  <a
-    className={className}
-    key={key}
-    href={url}
-    target="_blank"
-    rel="noreferrer"
-  >
-    {text}
-  </a>
-);
-
-const defaultLinksRegex =
-  /(https?:\/\/|www\.)([-\w.]+\/[\p{L}\p{Emoji}\p{Emoji_Component}!#$%&'"()*+,./\\:;=_?@[\]~-]*[^\s'",.;:\b)\]\}?]|(([\w-]+\.)+[\w-]+[\w\/-]))/u;
+import type { ReactNode } from "react";
+import { UrlComponent, urlRegex } from "./url";
+import type { LinkProps } from "./types";
 
 const ctrlCharactersRegex =
   /[\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
 
 let key = 0;
-let getKey = () => ++key;
+const getKey = () => ++key;
 /**
  * Make urls clickable.
  * @param text Text to parse
  * @param options {@link Options}
  */
-export function linkIt(text: string, options?: Options) {
-  const linksRegex = options?.regex ?? defaultLinksRegex;
-  const linkComponent = options?.component ?? defaultLinkComponent;
+export function linkIt(
+  text: string,
+  LinkComponent: React.FC<LinkProps>,
+  linkRegex: RegExp
+): string | (string | JSX.Element)[] {
   const elements = [];
   let rest = text;
 
   while (true) {
-    const match = linksRegex.exec(rest);
+    const match = linkRegex.exec(rest);
     if (!match || match[0] === undefined) break;
 
     const urlStartIndex = match.index;
@@ -78,14 +34,7 @@ export function linkIt(text: string, options?: Options) {
       .replace(ctrlCharactersRegex, "");
     rest = rest.slice(urlEndIndex);
     textBeforeMatch && elements.push(textBeforeMatch);
-    elements.push(
-      linkComponent(
-        /^www\./.exec(url) ? `http://${url}` : url,
-        url,
-        getKey(),
-        options?.className
-      )
-    );
+    elements.push(<LinkComponent url={url} key={getKey()} />);
   }
 
   rest && elements.push(<Fragment key={getKey()}>{rest}</Fragment>);
@@ -97,13 +46,17 @@ export function linkIt(text: string, options?: Options) {
   return elements;
 }
 
-function findText(children: ReactNode, options?: Options): ReactNode {
+function findText(
+  children: ReactNode,
+  component: React.FC<LinkProps>,
+  regex: RegExp
+): ReactNode {
   if (typeof children === "string") {
-    return linkIt(children, options);
+    return linkIt(children, component, regex);
   }
 
   if (Array.isArray(children)) {
-    return children.map((c) => findText(c, options));
+    return children.map((c) => findText(c, component, regex));
   }
 
   if (
@@ -115,7 +68,7 @@ function findText(children: ReactNode, options?: Options): ReactNode {
     return cloneElement(
       children,
       { ...children.props, key: getKey() },
-      findText(children.props.children, options)
+      findText(children.props.children, component, regex)
     );
   }
 
@@ -132,6 +85,21 @@ function findText(children: ReactNode, options?: Options): ReactNode {
  * </LinkIt>
  * ```
  */
-export const LinkIt: FunctionComponent<{ options?: Options }> = (props) => {
-  return <Fragment>{findText(props.children, props.options)}</Fragment>;
+export const LinkIt: React.FC<{
+  component: React.FC<LinkProps>;
+  regex: RegExp;
+}> = (props) => {
+  return (
+    <Fragment>
+      {findText(props.children, props.component, props.regex)}
+    </Fragment>
+  );
 };
+
+export const LinkItUrl: React.FC = (props) => {
+  return (
+    <Fragment>{findText(props.children, UrlComponent, urlRegex)}</Fragment>
+  );
+};
+
+export * from "./url";

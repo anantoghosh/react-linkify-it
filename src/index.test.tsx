@@ -1,7 +1,8 @@
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { LinkIt, linkIt } from "./index";
+import { LinkIt, linkIt, LinkItUrl } from "./index";
+import { UrlComponent, urlRegex } from "./url";
 
 const renderWithId = (child: string | (string | JSX.Element)[]) =>
   render(<div data-testid={"linkIt"}>{child}</div>);
@@ -60,7 +61,7 @@ for (const url of valid_urls) {
 }
 
 test.concurrent.each(input)("$text", async ({ urls, text }) => {
-  const output = linkIt(text);
+  const output = linkIt(text, UrlComponent, urlRegex);
 
   renderWithId(output);
   expect(screen.getByTestId("linkIt")).toHaveTextContent(text, {
@@ -77,7 +78,7 @@ test.concurrent.each(input)("$text", async ({ urls, text }) => {
 
 test("Empty", () => {
   const text = `    .    `;
-  const output = linkIt(text);
+  const output = linkIt(text, UrlComponent, urlRegex);
 
   renderWithId(output);
 
@@ -89,7 +90,7 @@ test("Empty", () => {
 test("Filter control characters", () => {
   const text = `https://www.example.com/arst\u200Darst`;
   const filteredText = `https://www.example.com/arstarst`;
-  const output = linkIt(text);
+  const output = linkIt(text, UrlComponent, urlRegex);
 
   renderWithId(output);
 
@@ -105,9 +106,21 @@ test("Filter control characters", () => {
 
 test("LinkIt", () => {
   render(
-    <LinkIt>
+    <LinkIt component={UrlComponent} regex={urlRegex}>
       www.google.com<div>hi</div>
     </LinkIt>
+  );
+  expect(screen.getByRole("link", { name: "www.google.com" })).toHaveAttribute(
+    "href",
+    "http://www.google.com"
+  );
+});
+
+test("LinkItUrl", () => {
+  render(
+    <LinkItUrl>
+      www.google.com<div>hi</div>
+    </LinkItUrl>
   );
   expect(screen.getByRole("link", { name: "www.google.com" })).toHaveAttribute(
     "href",
