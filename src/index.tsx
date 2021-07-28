@@ -1,13 +1,14 @@
 import React, { Fragment, isValidElement, cloneElement } from "react";
 import type { ReactNode } from "react";
+import type { Component } from "./types";
 import { UrlComponent, urlRegex } from "./url";
-import type { LinkProps } from "./types";
+import { TwitterComponent, twitterRegex } from "./twitter";
+import { JiraComponent, jiraRegex } from "./jira";
+import { getKey } from "./get-key";
 
 const ctrlCharactersRegex =
   /[\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
 
-let key = 0;
-const getKey = () => ++key;
 /**
  * Make urls clickable.
  * @param text Text to parse
@@ -15,10 +16,10 @@ const getKey = () => ++key;
  */
 export function linkIt(
   text: string,
-  LinkComponent: React.FC<LinkProps>,
+  linkComponent: Component,
   linkRegex: RegExp
-): string | (string | JSX.Element)[] {
-  const elements = [];
+): string | ReactNode[] {
+  const elements: ReactNode[] = [];
   let rest = text;
 
   while (true) {
@@ -34,7 +35,7 @@ export function linkIt(
       .replace(ctrlCharactersRegex, "");
     rest = rest.slice(urlEndIndex);
     textBeforeMatch && elements.push(textBeforeMatch);
-    elements.push(<LinkComponent url={url} key={getKey()} />);
+    elements.push(linkComponent(url, getKey()));
   }
 
   rest && elements.push(<Fragment key={getKey()}>{rest}</Fragment>);
@@ -48,7 +49,7 @@ export function linkIt(
 
 function findText(
   children: ReactNode,
-  component: React.FC<LinkProps>,
+  component: Component,
   regex: RegExp
 ): ReactNode {
   if (typeof children === "string") {
@@ -86,7 +87,7 @@ function findText(
  * ```
  */
 export const LinkIt: React.FC<{
-  component: React.FC<LinkProps>;
+  component: Component;
   regex: RegExp;
 }> = (props) => {
   return (
@@ -98,8 +99,46 @@ export const LinkIt: React.FC<{
 
 export const LinkItUrl: React.FC = (props) => {
   return (
-    <Fragment>{findText(props.children, UrlComponent, urlRegex)}</Fragment>
+    <Fragment>
+      {findText(
+        props.children,
+        (match, key) => (
+          <UrlComponent key={key} match={match} />
+        ),
+        urlRegex
+      )}
+    </Fragment>
+  );
+};
+
+export const LinkItTwitter: React.FC = (props) => {
+  return (
+    <Fragment>
+      {findText(
+        props.children,
+        (match, key) => (
+          <TwitterComponent key={key} match={match} />
+        ),
+        twitterRegex
+      )}
+    </Fragment>
+  );
+};
+
+export const LinkItJira: React.FC<{ domain: string }> = (props) => {
+  return (
+    <Fragment>
+      {findText(
+        props.children,
+        (match, key) => (
+          <JiraComponent key={key} match={match} domain={props.domain} />
+        ),
+        jiraRegex
+      )}
+    </Fragment>
   );
 };
 
 export * from "./url";
+export * from "./twitter";
+export * from "./jira";

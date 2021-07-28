@@ -1,10 +1,10 @@
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { LinkIt, linkIt, LinkItUrl } from "./index";
+import { LinkIt, linkIt, LinkItJira, LinkItTwitter, LinkItUrl } from "./index";
 import { UrlComponent, urlRegex } from "./url";
 
-const renderWithId = (child: string | (string | JSX.Element)[]) =>
+const renderWithId = (child: string | React.ReactNode[]) =>
   render(<div data-testid={"linkIt"}>{child}</div>);
 
 const base_urls = [
@@ -61,7 +61,11 @@ for (const url of valid_urls) {
 }
 
 test.concurrent.each(input)("$text", async ({ urls, text }) => {
-  const output = linkIt(text, UrlComponent, urlRegex);
+  const output = linkIt(
+    text,
+    (match, key) => <UrlComponent match={match} key={key} />,
+    urlRegex
+  );
 
   renderWithId(output);
   expect(screen.getByTestId("linkIt")).toHaveTextContent(text, {
@@ -78,7 +82,11 @@ test.concurrent.each(input)("$text", async ({ urls, text }) => {
 
 test("Empty", () => {
   const text = `    .    `;
-  const output = linkIt(text, UrlComponent, urlRegex);
+  const output = linkIt(
+    text,
+    (match, key) => <UrlComponent key={key} match={match} />,
+    urlRegex
+  );
 
   renderWithId(output);
 
@@ -90,7 +98,11 @@ test("Empty", () => {
 test("Filter control characters", () => {
   const text = `https://www.example.com/arst\u200Darst`;
   const filteredText = `https://www.example.com/arstarst`;
-  const output = linkIt(text, UrlComponent, urlRegex);
+  const output = linkIt(
+    text,
+    (match, key) => <UrlComponent match={match} key={key} />,
+    urlRegex
+  );
 
   renderWithId(output);
 
@@ -106,7 +118,10 @@ test("Filter control characters", () => {
 
 test("LinkIt", () => {
   render(
-    <LinkIt component={UrlComponent} regex={urlRegex}>
+    <LinkIt
+      component={(match, key) => <UrlComponent match={match} key={key} />}
+      regex={urlRegex}
+    >
       www.google.com<div>hi</div>
     </LinkIt>
   );
@@ -125,5 +140,25 @@ test("LinkItUrl", () => {
   expect(screen.getByRole("link", { name: "www.google.com" })).toHaveAttribute(
     "href",
     "http://www.google.com"
+  );
+});
+
+test("LinkItJira", () => {
+  render(
+    <LinkItJira domain="https://projectid.atlassian.net">
+      hello AMM-123 ticket
+    </LinkItJira>
+  );
+  expect(screen.getByRole("link", { name: "AMM-123" })).toHaveAttribute(
+    "href",
+    "https://projectid.atlassian.net/jira/software/projects/AMM/boards/123"
+  );
+});
+
+test("LinkItTwitter", () => {
+  render(<LinkItTwitter>hello @anantoghosh twitter</LinkItTwitter>);
+  expect(screen.getByRole("link", { name: "@anantoghosh" })).toHaveAttribute(
+    "href",
+    "https://twitter.com/anantoghosh"
   );
 });

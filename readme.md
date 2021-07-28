@@ -3,23 +3,32 @@
 [![Npm version](https://badgen.net/npm/v/react-linkit)](https://www.npmjs.com/package/react-linkit)
 [![Node.js CI](https://github.com/anantoghosh/react-linkit/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkit/actions/workflows/node.js.yml)
 [![Min zipped size](https://badgen.net/bundlephobia/minzip/react-linkit)](https://bundlephobia.com/package/react-linkit)
+![Min zipped size](https://badgen.net/bundlephobia/tree-shaking/react-linkit)
 
-A small react package that turns **urls** or **anything else** in your text clickable (aka linkify).  
+A tiny universal linking solution that turns **any pattern** in your text clickable (aka linkify).
 
-**Aside from linking urls, do you want to:**
-- Link Jira Tickets?
-- Link GitHub Issues?
-- Link Twitter usernames?
-- Link email addresses?
-- Link phone numbers?
-- Link any pattern you want!
+`react-linkit` comes with a set of prebuilt components for specific linking needs and a generic component to wrap any pattern with a component.
 
-Unlike other linkify libraries, `react-linkit` utilizes a straightforward method for detecting links that begin with http, https, or www (customizable).  
+Prebuilt components for linking:
+
+- URLs
+- Jira Tickets
+- Twitter usernames
+
+You can also use the generic component which lets you support your own use case as desired:
+
+- Link GitHub Issues
+- Link tags to any social media
+- Link email addresses
+- Link phone numbers
+- **Link any pattern you want!**
+- **Wrap any pattern with a component!**
 
 ### Features
 
-- 📦 **Tiny** - Less than 800 bytes gzipped.
+- 📦 **Tiny** - Less than 800 bytes gzipped after tree shaking.
 - 📝 **Customizable** - Adjust to your specific case as required.
+- 💧 **Generic** - Not just links, wrap any pattern with _any_ component.
 - 🏎 **Fast** - Single pass processing.
 - 🦺 **Safe** - Sanitized urls to prevent any XSS attacks.
 - 🌐 **i18n** - Works with urls that contain international characters.
@@ -28,8 +37,6 @@ Unlike other linkify libraries, `react-linkit` utilizes a straightforward method
 
 ### Notes
 
-- `react-linkit` is only meant to make website urls in a text clickable. Though you can pass it any regex to match your requirements.
-- By default, only links starting with `http`, `https`, and `www` are detected.
 - `react-linkit` provides a modern bundle for actively maintained browsers and a larger legacy bundle for older browsers.  
   [Read about how to utilize them](#using-modern-and-legacy-bundle).
 
@@ -39,86 +46,103 @@ Unlike other linkify libraries, `react-linkit` utilizes a straightforward method
 npm i react-linkit
 ```
 
-### Usage
+### Usage - Prebuilt Components
 
-#### 1. Using `linkIt` function
+_Every prebuilt component also optionally accepts a `className` to attach to the link wrapper_
+
+#### 1. Urls
 
 ```jsx
-import { linkIt } form 'react-linkit';
+import { LinkItUrl } form 'react-linkit';
 
 const App = () => (
   <div className="App">
-    <p>linkIt("add some link https://www.google.com here", options)</p>
+    <LinkItUrl>
+      <p>"add some link https://www.google.com here"</p>
+    </LinkItUrl>
   </div>
 );
 
 ```
 
-#### 2. Using `LinkIt` component
+#### 2. Jira Tickets
+
+```jsx
+import { LinkItJira } form 'react-linkit';
+
+const App = () => (
+  <div className="App">
+    <LinkItJira domain="https://projectid.atlassian.net">
+      hello AMM-123 ticket
+    </LinkItJira>
+  </div>
+);
+```
+
+#### 3. Twitter handles
+
+```jsx
+import { LinkItTwitter } form 'react-linkit';
+
+const App = () => (
+  <div className="App">
+    <LinkItTwitter>
+      hello @anantoghosh twitter
+    </LinkItTwitter>
+  </div>
+);
+```
+
+### Usage - Generic Component
 
 ```jsx
 import { LinkIt } form 'react-linkit';
 
+const regexToMatch = /@([\w_]+)/;
+
 const App = () => (
   <div className="App">
-    <LinkIt options={options}>
-      <p>"add some link https://www.google.com here"</p>
+    <LinkIt
+      {/* Component to wrap each match with */}
+      component={(match, key) => <a href={match} key={key}>{match}</a>}
+      regex={regexToMatch}
+    >
+      www.google.com<div>hi @anantoghosh</div>
     </LinkIt>
   </div>
 );
 
 ```
 
-### Options
+- **match** - regex match text
+- **key** - unique key for the match
 
-```js
-interface Options {
-  // Component to wrap links with (forwarding the key to your component is required)
-  component?: (
-    url: string,
-    text: string,
-    key: string,
-    className?: string
-  ) => JSX.Element;
-
-  // Attach className with the default `a` tag around links
-  className?: string;
-
-  // Link Matching regex
-  regex?: RegExp;
-}
-```
-
-### Customize
-
-#### Attach a class to the generated links
+### Usage - Generic Function
 
 ```jsx
-const options = {
-  className: "this-class-should-be-in-the-link",
+import { linkIt, UrlComponent } form 'react-linkit';
+
+const regexToMatch = /@([\w_]+)/;
+
+const App = () => {
+
+  const output = linkIt(
+    // Text to be linkified
+    text,
+    // Component to wrap each match with, can be any React component
+    (match, key) => <UrlComponent match={match} key={key} />,
+    regexToMatch
+  );
+
+  return <div className="App">{output}</div>
 };
 
-<LinkIt options={options}></LinkIt>;
-linkIt(text, options);
 ```
 
-#### Modify the link component
+- **match** - regex match text
+- **key** - unique key for the match
 
-```jsx
-const options = {
-  component: (url, text, key) => (
-    <a key={key} href={url}>
-      This is a link: {text}
-    </a>
-  ),
-};
-
-<LinkIt options={options}></LinkIt>;
-linkIt(text, options);
-```
 ### Examples
-
-
 
 ## Using modern and legacy bundle
 
@@ -140,10 +164,12 @@ import { linkIt, LinkIt } from "react-linkit/legacy";
 ```
 
 ### For typescript projects ([why?](https://github.com/microsoft/TypeScript/issues/33079))
+
 ```js
 import { linkIt, LinkIt } from "react-linkit/dist/react-linkit.legacy.esm.min";
 ```
-*Note*: Legacy bundle has a larger file size (~3.4Kb minziped).
+
+_Note_: Legacy bundle has a larger file size (~3.4Kb minziped).
 
 ## Using a browser bundle
 
