@@ -1,7 +1,14 @@
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { LinkIt, linkIt, LinkItJira, LinkItTwitter, LinkItUrl } from "./index";
+import {
+  LinkIt,
+  linkIt,
+  LinkItEmail,
+  LinkItJira,
+  LinkItTwitter,
+  LinkItUrl,
+} from "./index";
 import { UrlComponent, urlRegex } from "./url";
 
 const renderWithId = (child: string | React.ReactNode[]) =>
@@ -160,5 +167,13 @@ test("LinkItTwitter", () => {
   expect(screen.getByRole("link", { name: "@anantoghosh" })).toHaveAttribute(
     "href",
     "https://twitter.com/anantoghosh"
+  );
+});
+
+test("LinkItEmail", () => {
+  render(<LinkItEmail>hello hello.man@gmail.com twitter</LinkItEmail>);
+  expect(screen.getByRole("link", { name: "hello.man@gmail.com" })).toHaveAttribute(
+    "href",
+    "mailto:hello.man@gmail.com"
   );
 });

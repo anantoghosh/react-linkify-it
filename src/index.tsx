@@ -4,6 +4,7 @@ import type { Component } from "./types";
 import { UrlComponent, urlRegex } from "./url";
 import { TwitterComponent, twitterRegex } from "./twitter";
 import { JiraComponent, jiraRegex } from "./jira";
+import { EmailComponent, emailRegex } from "./email";
 import { getKey } from "./get-key";
 
 const ctrlCharactersRegex =
@@ -139,6 +140,21 @@ export const LinkItJira: React.FC<{ domain: string }> = (props) => {
   );
 };
 
+export const LinkItEmail: React.FC = (props) => {
+  return (
+    <Fragment>
+      {findText(
+        props.children,
+        (match, key) => (
+          <EmailComponent key={key} match={match} />
+        ),
+        emailRegex
+      )}
+    </Fragment>
+  );
+};
+
 export * from "./url";
 export * from "./twitter";
 export * from "./jira";
+export * from "./email";
