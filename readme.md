@@ -14,6 +14,7 @@ Prebuilt components for linking:
 - URLs
 - Jira Tickets
 - Twitter usernames
+- Emails
 
 You can also use the generic component which lets you support your own use case as desired:
 
@@ -89,6 +90,19 @@ const App = () => (
     <LinkItTwitter>
       hello @anantoghosh twitter
     </LinkItTwitter>
+  </div>
+);
+```
+
+#### 4. Emails
+```jsx
+import { LinkItEmail } form 'react-linkify-it';
+
+const App = () => (
+  <div className="App">
+    <LinkItEmail>
+      hello example@gmail.com email
+    </LinkItEmail>
   </div>
 );
 ```
