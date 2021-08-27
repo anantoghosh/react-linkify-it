@@ -4,7 +4,7 @@ import size from "rollup-plugin-size";
 export default {
   input: "src/index.tsx",
   output: [
-    { file: "dist/react-linkit.esm.js", format: "esm", plugins: [size()] },
+    { file: "dist/react-linkify-it.esm.js", format: "esm", plugins: [size()] },
   ],
   plugins: [
     ts({

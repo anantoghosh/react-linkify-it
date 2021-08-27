@@ -20,13 +20,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-react-linkit-*.tgz
-react-linkit.cjs
-react-linkit.cjs.map
-react-linkit.modern.js
-react-linkit.modern.js.map
-react-linkit.module.js
-react-linkit.module.js.map
-react-linkit.umd.js
-react-linkit.umd.js.map
+react-linkify-it-*.tgz
+react-linkify-it.cjs
+react-linkify-it.cjs.map
+react-linkify-it.modern.js
+react-linkify-it.modern.js.map
+react-linkify-it.module.js
+react-linkify-it.module.js.map
+react-linkify-it.umd.js
+react-linkify-it.umd.js.map
 legacy/

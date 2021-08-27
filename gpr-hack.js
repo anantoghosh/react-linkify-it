@@ -6,6 +6,6 @@ const file = readFileSync("./package.json", {
 
 const json = JSON.parse(file);
 
-json.name = "@anantoghosh/react-linkit";
+json.name = "@anantoghosh/react-linkify-it";
 
 writeFileSync("./package.json", JSON.stringify(json, undefined, 2));

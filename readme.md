@@ -1,13 +1,13 @@
-# react-linkit 🔗
+# react-linkify-it 🔗
 
-[![Npm version](https://badgen.net/npm/v/react-linkit)](https://www.npmjs.com/package/react-linkit)
-[![Node.js CI](https://github.com/anantoghosh/react-linkit/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkit/actions/workflows/node.js.yml)
-[![Min zipped size](https://badgen.net/bundlephobia/minzip/react-linkit)](https://bundlephobia.com/package/react-linkit)
-![Min zipped size](https://badgen.net/bundlephobia/tree-shaking/react-linkit)
+[![Npm version](https://badgen.net/npm/v/react-linkify-it)](https://www.npmjs.com/package/react-linkify-it)
+[![Node.js CI](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml)
+[![Min zipped size](https://badgen.net/bundlephobia/minzip/react-linkify-it)](https://bundlephobia.com/package/react-linkify-it)
+![Min zipped size](https://badgen.net/bundlephobia/tree-shaking/react-linkify-it)
 
 A tiny universal linking solution that turns **any pattern** in your text clickable (aka linkify).
 
-`react-linkit` comes with a set of prebuilt components for specific linking needs and a generic component to wrap any pattern with a component.
+`react-linkify-it` comes with a set of prebuilt components for specific linking needs and a generic component to wrap any pattern with a component.
 
 Prebuilt components for linking:
 
@@ -37,13 +37,13 @@ You can also use the generic component which lets you support your own use case 
 
 ### Notes
 
-- `react-linkit` provides a modern bundle for actively maintained browsers and a larger legacy bundle for older browsers.  
+- `react-linkify-it` provides a modern bundle for actively maintained browsers and a larger legacy bundle for older browsers.  
   [Read about how to utilize them](#using-modern-and-legacy-bundle).
 
 ## Installation
 
 ```sh
-npm i react-linkit
+npm i react-linkify-it
 ```
 
 ### Usage - Prebuilt Components
@@ -53,7 +53,7 @@ _Every prebuilt component also optionally accepts a `className` to attach to the
 #### 1. Urls
 
 ```jsx
-import { LinkItUrl } form 'react-linkit';
+import { LinkItUrl } form 'react-linkify-it';
 
 const App = () => (
   <div className="App">
@@ -68,7 +68,7 @@ const App = () => (
 #### 2. Jira Tickets
 
 ```jsx
-import { LinkItJira } form 'react-linkit';
+import { LinkItJira } form 'react-linkify-it';
 
 const App = () => (
   <div className="App">
@@ -82,7 +82,7 @@ const App = () => (
 #### 3. Twitter handles
 
 ```jsx
-import { LinkItTwitter } form 'react-linkit';
+import { LinkItTwitter } form 'react-linkify-it';
 
 const App = () => (
   <div className="App">
@@ -96,7 +96,7 @@ const App = () => (
 ### Usage - Generic Component
 
 ```jsx
-import { LinkIt } form 'react-linkit';
+import { LinkIt } form 'react-linkify-it';
 
 const regexToMatch = /@([\w_]+)/;
 
@@ -120,7 +120,7 @@ const App = () => (
 ### Usage - Generic Function
 
 ```jsx
-import { linkIt, UrlComponent } form 'react-linkit';
+import { linkIt, UrlComponent } form 'react-linkify-it';
 
 const regexToMatch = /@([\w_]+)/;
 
@@ -146,7 +146,7 @@ const App = () => {
 
 ## Using modern and legacy bundle
 
-By default, when you import `react-linkit`, it will use a modern bundle
+By default, when you import `react-linkify-it`, it will use a modern bundle
 meant for browsers which
 support [RegExp Unicode property escapes](https://caniuse.com/mdn-javascript_builtins_regexp_property_escapes).
 
@@ -160,20 +160,20 @@ older browsers, you can use the legacy bundle by importing:
 ### For javascript projects
 
 ```js
-import { linkIt, LinkIt } from "react-linkit/legacy";
+import { linkIt, LinkIt } from "react-linkify-it/legacy";
 ```
 
 ### For typescript projects ([why?](https://github.com/microsoft/TypeScript/issues/33079))
 
 ```js
-import { linkIt, LinkIt } from "react-linkit/dist/react-linkit.legacy.esm.min";
+import { linkIt, LinkIt } from "react-linkify-it/dist/react-linkify-it.legacy.esm.min";
 ```
 
 _Note_: Legacy bundle has a larger file size (~3.4Kb minziped).
 
 ## Using a browser bundle
 
-An umd build with legacy browser support can be used from [Unpkg](https://unpkg.com/react-linkit).
+An umd build with legacy browser support can be used from [Unpkg](https://unpkg.com/react-linkify-it).
 
 ## Acknowledgment
 

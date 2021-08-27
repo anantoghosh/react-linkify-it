@@ -5,11 +5,11 @@ import size from "rollup-plugin-size";
 export default {
   input: "src/index.tsx",
   output: [
-    { file: "dist/react-linkit.legacy.esm.min.js", format: "esm" },
+    { file: "dist/react-linkify-it.legacy.esm.min.js", format: "esm" },
     {
-      file: "dist/react-linkit.legacy.umd.min.js",
+      file: "dist/react-linkify-it.legacy.umd.min.js",
       format: "umd",
-      name: "react-linkit",
+      name: "react-linkify-it",
       globals: {
         react: "React",
       },
