@@ -54,7 +54,7 @@ _Every prebuilt component also optionally accepts a `className` to attach to the
 #### 1. Urls
 
 ```jsx
-import { LinkItUrl } form 'react-linkify-it';
+import { LinkItUrl } from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
@@ -69,7 +69,7 @@ const App = () => (
 #### 2. Jira Tickets
 
 ```jsx
-import { LinkItJira } form 'react-linkify-it';
+import { LinkItJira } from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
@@ -83,7 +83,7 @@ const App = () => (
 #### 3. Twitter handles
 
 ```jsx
-import { LinkItTwitter } form 'react-linkify-it';
+import { LinkItTwitter } from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
@@ -96,7 +96,7 @@ const App = () => (
 
 #### 4. Emails
 ```jsx
-import { LinkItEmail } form 'react-linkify-it';
+import { LinkItEmail } from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
@@ -110,7 +110,7 @@ const App = () => (
 ### Usage - Generic Component
 
 ```jsx
-import { LinkIt } form 'react-linkify-it';
+import { LinkIt } from 'react-linkify-it';
 
 const regexToMatch = /@([\w_]+)/;
 
@@ -134,7 +134,7 @@ const App = () => (
 ### Usage - Generic Function
 
 ```jsx
-import { linkIt, UrlComponent } form 'react-linkify-it';
+import { linkIt, UrlComponent } from 'react-linkify-it';
 
 const regexToMatch = /@([\w_]+)/;
 
@@ -155,6 +155,24 @@ const App = () => {
 
 - **match** - regex match text
 - **key** - unique key for the match
+
+### Using multiple matches
+
+Just use more than one component to match multiple patterns.
+```jsx
+import { LinkItEmail, LinkItUrl } from 'react-linkify-it';
+
+const App = () => (
+  <div className="App">
+    <LinkItUrl>
+      <LinkItEmail>
+        hello example@gmail.com https://google.com
+      </LinkItEmail>
+    </LinkItUrl>
+  </div>
+);
+
+```
 
 ### Examples
 
