@@ -1,9 +1,5 @@
 import React from "react";
-import type { LinkProps } from "types";
-
-interface JiraLinkProps extends LinkProps {
-  domain: string;
-}
+import type { JiraLinkProps } from "types";
 
 export const jiraRegex = /[A-Z]+-\d+/i;
 

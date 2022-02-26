@@ -150,6 +150,18 @@ test("LinkItUrl", () => {
   );
 });
 
+test("LinkItUrl to have className", () => {
+  render(
+    <LinkItUrl className="hello">
+      www.google.com<div>hi</div>
+    </LinkItUrl>
+  );
+  expect(screen.getByRole("link", { name: "www.google.com" })).toHaveAttribute(
+    "class",
+    "hello"
+  );
+});
+
 test("LinkItJira", () => {
   render(
     <LinkItJira domain="https://projectid.atlassian.net">
