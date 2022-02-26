@@ -41,6 +41,9 @@ You can also use the generic component which lets you support your own use case 
 - `react-linkify-it` provides a modern bundle for actively maintained browsers and a larger legacy bundle for older browsers.  
   [Read about how to utilize them](#using-modern-and-legacy-bundle).
 
+## Demo
+https://codesandbox.io/s/objective-shannon-c5n82g?file=/src/App.js
+
 ## Installation
 
 ```sh
@@ -173,8 +176,6 @@ const App = () => (
 );
 
 ```
-
-### Examples
 
 ## Using modern and legacy bundle
 
