@@ -1,7 +1,7 @@
 {
   "name": "react-linkify-it",
   "author": "Ananto Ghosh",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "A small react package that turns urls in your text clickable (aka linkify).",
   "license": "MIT",
   "type": "module",
