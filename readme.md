@@ -3,7 +3,7 @@
 [![Npm version](https://badgen.net/npm/v/react-linkify-it)](https://www.npmjs.com/package/react-linkify-it)
 [![Node.js CI](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml)
 [![Min zipped size](https://badgen.net/bundlephobia/minzip/react-linkify-it)](https://bundlephobia.com/package/react-linkify-it)
-![Min zipped size](https://badgen.net/bundlephobia/tree-shaking/react-linkify-it)
+![Tree shakable true](https://badgen.net/bundlephobia/tree-shaking/react-linkify-it)
 
 A tiny universal linking solution that turns **any pattern** in your text clickable (aka linkify).
 
@@ -28,6 +28,7 @@ You can also use the generic component which lets you support your own use case 
 ### Features
 
 - 📦 **Tiny** - Less than 800 bytes gzipped after tree shaking.
+- 🔹 **Dependency free** - No extra dependencies. Just a single file.
 - 📝 **Customizable** - Adjust to your specific case as required.
 - 💧 **Generic** - Not just links, wrap any pattern with _any_ component.
 - 🏎 **Fast** - Single pass processing.
@@ -42,7 +43,7 @@ You can also use the generic component which lets you support your own use case 
   [Read about how to utilize them](#using-modern-and-legacy-bundle).
 
 ## Demo
-https://codesandbox.io/s/objective-shannon-c5n82g?file=/src/App.js
+[Code Sandbox](https://codesandbox.io/s/react-linkify-it-c5n82g)
 
 ## Installation
 
