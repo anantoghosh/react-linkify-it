@@ -1,9 +1,11 @@
 # react-linkify-it 🔗
 
 [![Npm version](https://badgen.net/npm/v/react-linkify-it)](https://www.npmjs.com/package/react-linkify-it)
-[![Node.js CI](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml)
+[![Build](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml)
 [![Min zipped size](https://badgen.net/bundlephobia/minzip/react-linkify-it)](https://bundlephobia.com/package/react-linkify-it)
-![Tree shakable true](https://badgen.net/bundlephobia/tree-shaking/react-linkify-it)
+![Tree shaking supported](https://badgen.net/bundlephobia/tree-shaking/react-linkify-it)
+[![Maintainability](https://api.codeclimate.com/v1/badges/fcb46fb37e7c25990c53/maintainability)](https://codeclimate.com/github/anantoghosh/react-linkify-it/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/fcb46fb37e7c25990c53/test_coverage)](https://codeclimate.com/github/anantoghosh/react-linkify-it/test_coverage)
 
 A tiny universal linking solution that turns **any pattern** in your text clickable (aka linkify).
 
