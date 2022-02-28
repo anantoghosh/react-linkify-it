@@ -33,7 +33,7 @@
     "build": "npm run build:latest && npm run build:legacy",
     "build:latest": "rollup -c",
     "build:legacy": "rollup -c rollup-legacy.config.js",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "keywords": [
     "react-linkify",
