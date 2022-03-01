@@ -232,6 +232,6 @@ Hey 👋 If my packages has helped you in any way, consider making a small donat
 Your contribution is greatly appreciated and will motivate me to continue to support developing my packages which you may have used.  
 
 <a href="https://www.buymeacoffee.com/ananto">Buy me a coffee link</a>.
-<div align="center" style="background:#fb8c00">
-  <a href="https://www.buymeacoffee.com/ananto"><img src="https://media2.giphy.com/media/o7RZbs4KAA6tvM4H6j/giphy.gif?cid=790b7611923f0fdc769d9e7747241e6174f96da8132ee488&rid=giphy.gif&ct=s" style="background:#fb8c00" /></a>
+<div align="center">
+  <a href="https://www.buymeacoffee.com/ananto"><img src="https://media4.giphy.com/media/H2AOo40S1qbuNslXes/giphy.gif?cid=790b761126d17cb3eef4e1fe985cbe2249bbd02ea498d465&rid=giphy.gif&ct=g" /></a>
 <div>
