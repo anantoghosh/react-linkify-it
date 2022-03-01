@@ -7,6 +7,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/fcb46fb37e7c25990c53/maintainability)](https://codeclimate.com/github/anantoghosh/react-linkify-it/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/fcb46fb37e7c25990c53/test_coverage)](https://codeclimate.com/github/anantoghosh/react-linkify-it/test_coverage)
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/ananto)
+
 A tiny universal linking solution that turns **any pattern** in your text clickable (aka linkify).
 
 `react-linkify-it` comes with a set of prebuilt components for specific linking needs and a generic component to wrap any pattern with a component.
@@ -221,3 +223,15 @@ This project was made possible due to the incredible work done on the following 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Support
+
+Hey 👋 If my packages has helped you in any way, consider making a small donation to encourage me to keep contributing. Maintaining good software takes time and effort and for open source developers there is very less incentives to do so.
+Your contribution is greatly appreciated and will motivate me to continue to support developing my packages which you may have used.  
+
+<a href="https://www.buymeacoffee.com/ananto">Buy me a coffee link</a>.
+<div align="center">
+  <a href="https://www.buymeacoffee.com/ananto"><img src="https://media2.giphy.com/media/o7RZbs4KAA6tvM4H6j/giphy.gif" /></a>
+<div>
