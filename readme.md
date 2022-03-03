@@ -6,6 +6,8 @@
 ![Tree shaking supported](https://badgen.net/bundlephobia/tree-shaking/react-linkify-it)
 [![Maintainability](https://api.codeclimate.com/v1/badges/fcb46fb37e7c25990c53/maintainability)](https://codeclimate.com/github/anantoghosh/react-linkify-it/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/fcb46fb37e7c25990c53/test_coverage)](https://codeclimate.com/github/anantoghosh/react-linkify-it/test_coverage)
+[![Known Vulnerabilities](https://snyk.io/test/github/anantoghosh/react-linkify-it/badge.svg)](https://snyk.io/test/github/anantoghosh/react-linkify-it)
+[![Security Score](https://snyk-widget.herokuapp.com/badge/npm/react-linkify-it/badge.svg)](https://snyk.io/advisor/npm-package/react-linkify-it)
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/ananto)
 
