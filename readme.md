@@ -224,8 +224,6 @@ This project was made possible due to the incredible work done on the following 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
 ## Support
 
 Hey 👋 If my packages has helped you in any way, consider making a small donation to encourage me to keep contributing. Maintaining good software takes time and effort and for open source developers there is very less incentives to do so.
