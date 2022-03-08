@@ -24,6 +24,10 @@
     "type": "git",
     "url": "git+https://github.com/anantoghosh/react-linkify-it.git"
   },
+  "funding": {
+    "type" : "individual",
+    "url" : "https://www.buymeacoffee.com/ananto"
+  },
   "bugs": {
     "url": "https://github.com/anantoghosh/react-linkify-it/issues"
   },
