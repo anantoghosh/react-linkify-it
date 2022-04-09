@@ -1,7 +1,7 @@
 {
   "name": "react-linkify-it",
   "author": "Ananto Ghosh",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A tiny react package that turns urls (with i18n and emoji support), emails, jira tickets, twitter handles, anything you want! in your text clickable (aka linkify).",
   "license": "MIT",
   "type": "module",
