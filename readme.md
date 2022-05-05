@@ -10,9 +10,8 @@
 [![Security Score](https://snyk-widget.herokuapp.com/badge/npm/react-linkify-it/badge.svg)](https://snyk.io/advisor/npm-package/react-linkify-it)
 
 <a href="https://ko-fi.com/anantoghosh" rel="nofollow"><img alt="Support me (worldwide)" src="https://anantoghosh.github.io/assets/kofi.svg" height="36" /></a>
-<a href="https://pages.razorpay.com/ananto" rel="nofollow"><img alt="Support me (india)" src="https://anantoghosh.github.io/assets/razorpay.svg" height="36" /></a>
 
-A tiny universal linking solution that turns **any pattern** in your text clickable (aka linkify).
+A tiny and dependency free universal linking solution that turns **any pattern** in your text clickable (aka linkify).
 
 `react-linkify-it` comes with a set of prebuilt components for specific linking needs and a generic component to wrap any pattern with a component.
 
