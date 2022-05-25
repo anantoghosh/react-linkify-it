@@ -94,10 +94,10 @@ function findText(
  * </LinkIt>
  * ```
  */
-export const LinkIt: React.FC<{
+export const LinkIt: React.FC<React.PropsWithChildren<{
   component: Component;
   regex: RegExp;
-}> = (props) => {
+}>> = (props) => {
   return (
     <Fragment>
       {findText(props.children, props.component, props.regex)}
@@ -108,7 +108,7 @@ export const LinkIt: React.FC<{
 /**
  * Link URLs
  */
-export const LinkItUrl: React.FC<HOCLinkProps> = (props) => {
+export const LinkItUrl: React.FC<React.PropsWithChildren<HOCLinkProps>> = (props) => {
   return (
     <Fragment>
       {findText(
@@ -125,7 +125,7 @@ export const LinkItUrl: React.FC<HOCLinkProps> = (props) => {
 /**
  * Link Twitter handles
  */
-export const LinkItTwitter: React.FC<HOCLinkProps> = (props) => {
+export const LinkItTwitter: React.FC<React.PropsWithChildren<HOCLinkProps>> = (props) => {
   return (
     <Fragment>
       {findText(
@@ -142,7 +142,7 @@ export const LinkItTwitter: React.FC<HOCLinkProps> = (props) => {
 /**
  * Link Jira tickets
  */
-export const LinkItJira: React.FC<JiraHOCLinkProps> = (props) => {
+export const LinkItJira: React.FC<React.PropsWithChildren<JiraHOCLinkProps>> = (props) => {
   return (
     <Fragment>
       {findText(
@@ -159,7 +159,7 @@ export const LinkItJira: React.FC<JiraHOCLinkProps> = (props) => {
 /**
  * Link Emails
  */
-export const LinkItEmail: React.FC<HOCLinkProps> = (props) => {
+export const LinkItEmail: React.FC<React.PropsWithChildren<HOCLinkProps>> = (props) => {
   return (
     <Fragment>
       {findText(

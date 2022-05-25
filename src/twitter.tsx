@@ -3,7 +3,7 @@ import type { LinkProps } from "types";
 
 export const twitterRegex = /\B@([\w_]+)/;
 
-export const TwitterComponent: React.FC<LinkProps> = ({ match, className }) => {
+export const TwitterComponent: React.FC<React.PropsWithChildren<LinkProps>> = ({ match, className }) => {
   return (
     <a
       className={className}
