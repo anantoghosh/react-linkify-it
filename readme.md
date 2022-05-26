@@ -232,4 +232,3 @@ Hey 👋 If my packages has helped you in any way, consider making a small donat
 Your contribution is greatly appreciated and will motivate me to continue to support developing my packages which you may have used.  
 
 <a href="https://ko-fi.com/anantoghosh" rel="nofollow"><img alt="Support me (worldwide)" src="https://anantoghosh.github.io/assets/kofi.svg" height="36" /></a>
-<a href="https://pages.razorpay.com/ananto" rel="nofollow"><img alt="Support me (india)" src="https://anantoghosh.github.io/assets/razorpay.svg" height="36" /></a>
