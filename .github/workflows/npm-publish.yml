@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: dist
           path: dist/
@@ -55,7 +55,7 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
           scope: "@anantoghosh"
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: dist
           path: dist/
