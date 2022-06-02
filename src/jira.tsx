@@ -1,9 +1,9 @@
 import React from "react";
-import type { JiraLinkProps } from "types";
+import type { ReactJiraLinkProps } from "types";
 
 export const jiraRegex = /[A-Z]+-\d+/i;
 
-export const JiraComponent: React.FC<React.PropsWithChildren<JiraLinkProps>> = ({
+export const JiraComponent: ReactJiraLinkProps = ({
   match,
   domain,
   className,

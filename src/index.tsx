@@ -2,8 +2,9 @@ import React, { Fragment, isValidElement, cloneElement } from "react";
 import type { ReactNode } from "react";
 import type {
   Component,
-  HOCLinkProps,
-  JiraHOCLinkProps
+  ReactHOCLinkProps,
+  ReactJiraHOCLinkProps,
+  ReactLinkItProps
 } from "./types";
 import { UrlComponent, urlRegex } from "./url";
 import { TwitterComponent, twitterRegex } from "./twitter";
@@ -94,10 +95,7 @@ function findText(
  * </LinkIt>
  * ```
  */
-export const LinkIt: React.FC<React.PropsWithChildren<{
-  component: Component;
-  regex: RegExp;
-}>> = (props) => {
+export const LinkIt: ReactLinkItProps = (props) => {
   return (
     <Fragment>
       {findText(props.children, props.component, props.regex)}
@@ -108,7 +106,7 @@ export const LinkIt: React.FC<React.PropsWithChildren<{
 /**
  * Link URLs
  */
-export const LinkItUrl: React.FC<React.PropsWithChildren<HOCLinkProps>> = (props) => {
+export const LinkItUrl: ReactHOCLinkProps = (props) => {
   return (
     <Fragment>
       {findText(
@@ -125,7 +123,7 @@ export const LinkItUrl: React.FC<React.PropsWithChildren<HOCLinkProps>> = (props
 /**
  * Link Twitter handles
  */
-export const LinkItTwitter: React.FC<React.PropsWithChildren<HOCLinkProps>> = (props) => {
+export const LinkItTwitter: ReactHOCLinkProps = (props) => {
   return (
     <Fragment>
       {findText(
@@ -142,7 +140,7 @@ export const LinkItTwitter: React.FC<React.PropsWithChildren<HOCLinkProps>> = (p
 /**
  * Link Jira tickets
  */
-export const LinkItJira: React.FC<React.PropsWithChildren<JiraHOCLinkProps>> = (props) => {
+export const LinkItJira: ReactJiraHOCLinkProps = (props) => {
   return (
     <Fragment>
       {findText(
@@ -156,10 +154,11 @@ export const LinkItJira: React.FC<React.PropsWithChildren<JiraHOCLinkProps>> = (
   );
 };
 
+
 /**
  * Link Emails
  */
-export const LinkItEmail: React.FC<React.PropsWithChildren<HOCLinkProps>> = (props) => {
+export const LinkItEmail: ReactHOCLinkProps = (props) => {
   return (
     <Fragment>
       {findText(
