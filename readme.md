@@ -12,7 +12,7 @@
 <a href="https://github.com/sponsors/anantoghosh" rel="nofollow"><img alt="Support me on Github" src="https://anantoghosh.github.io/assets/support_github.svg" height="36" /></a>
 <a href="https://ko-fi.com/anantoghosh" rel="nofollow"><img alt="Support me on KoFi" src="https://anantoghosh.github.io/assets/support_kofi.svg" height="36" /></a>
 
-A tiny and dependency free universal linking solution that turns **any pattern** in your text clickable (aka linkify).
+A tiny and dependency free universal linking solution that turns **any pattern** in your text into clickable links (aka linkify). Supports i18n and emojis.
 
 `react-linkify-it` comes with a set of prebuilt components for specific linking needs and a generic component to wrap any pattern with a component.
 
@@ -189,7 +189,7 @@ const App = () => (
 
 By default, when you import `react-linkify-it`, it will use a modern bundle
 meant for browsers which
-support [RegExp Unicode property escapes](https://caniuse.com/mdn-javascript_builtins_regexp_property_escapes).
+support [RegExp Unicode property escapes](https://caniuse.com/mdn-javascript_regular_expressions_property_escapes).
 
 If you are using `babel-preset-env`, or any bundler configuration which uses it (e.g. `create-react-app`, `vite`) with a
 browser which does not support RegExp Unicode property escapes, babel will
@@ -204,7 +204,7 @@ older browsers, you can use the legacy bundle by importing:
 import { linkIt, LinkIt } from "react-linkify-it/legacy";
 ```
 
-### For typescript projects ([why?](https://github.com/microsoft/TypeScript/issues/33079))
+### For typescript < v5.0.0 projects ([why?](https://github.com/microsoft/TypeScript/issues/33079))
 
 ```js
 import { linkIt, LinkIt } from "react-linkify-it/dist/react-linkify-it.legacy.esm.min";
