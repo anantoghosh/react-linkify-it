@@ -73,7 +73,7 @@
     "eslint": "^8.9.0",
     "eslint-plugin-tree-shaking": "^1.10.0",
     "jest": "^27.5.1",
-    "np": "^7.6.0",
+    "np": "^8.0.0",
     "prettier": "^2.5.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
