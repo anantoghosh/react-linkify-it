@@ -67,7 +67,7 @@
     "@babel/runtime": "^7.22.10",
     "@rollup/plugin-typescript": "^8.5.0",
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^12.1.5",
+    "@testing-library/react": "^14.0.0",
     "@types/jest": "^27.5.2",
     "@types/react": "^18.2.20",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
