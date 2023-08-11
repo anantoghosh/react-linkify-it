@@ -8,11 +8,11 @@ export default {
   ],
   plugins: [
     ts({
-      transpiler: "babel",
-      browserslist: { path: ".browserslistrc" },
-      babelConfig: {
-        plugins: ["@babel/plugin-proposal-nullish-coalescing-operator"],
+      transpiler: {
+        typescriptSyntax: "typescript",
+        otherSyntax: "babel",
       },
+      browserslist: { path: ".browserslistrc" },
       exclude: ["*.test.*"],
     }),
   ],

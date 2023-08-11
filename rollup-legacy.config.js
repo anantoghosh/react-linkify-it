@@ -19,7 +19,10 @@ export default {
     size(),
     terser(),
     ts({
-      transpiler: "babel",
+      transpiler: {
+        typescriptSyntax: "typescript",
+        otherSyntax: "babel",
+      },
       browserslist: { path: ".browserslistrc-legacy" },
       exclude: ["*.test.*"],
     }),
