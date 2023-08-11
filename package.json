@@ -1,7 +1,7 @@
 {
   "name": "react-linkify-it",
   "author": "Ananto Ghosh",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A tiny and dependency free universal linking solution that turns any pattern in your text into clickable links (aka linkify). Supports i18n and emojis.",
   "license": "MIT",
   "type": "module",
