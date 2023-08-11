@@ -30,6 +30,9 @@ devDependencies:
   '@babel/runtime':
     specifier: ^7.22.10
     version: 7.22.10
+  '@rollup/plugin-terser':
+    specifier: ^0.4.3
+    version: 0.4.3(rollup@2.79.1)
   '@rollup/plugin-typescript':
     specifier: ^8.5.0
     version: 8.5.0(rollup@2.79.1)(tslib@2.6.1)(typescript@4.9.5)
@@ -78,9 +81,6 @@ devDependencies:
   rollup-plugin-size:
     specifier: ^0.2.2
     version: 0.2.2
-  rollup-plugin-terser:
-    specifier: ^7.0.2
-    version: 7.0.2(rollup@2.79.1)
   rollup-plugin-ts:
     specifier: ^3.4.4
     version: 3.4.4(@babel/core@7.22.10)(@babel/plugin-transform-runtime@7.22.10)(@babel/preset-env@7.22.10)(@babel/preset-typescript@7.22.5)(@babel/runtime@7.22.10)(rollup@2.79.1)(typescript@4.9.5)
@@ -111,13 +111,6 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.19
-    dev: true
-
-  /@babel/code-frame@7.16.7:
-    resolution: {integrity: sha512-iAXqUn8IIeBTNd72xsFlgaXHkMBMt6y4HJp1tIaK465CWLT/fG1aqB7ykr95gHHmlBdGbFeWWfyB4NJJ0nmeIg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/highlight': 7.22.10
     dev: true
 
   /@babel/code-frame@7.22.10:
@@ -1655,6 +1648,13 @@ packages:
     engines: {node: '>=6.0.0'}
     dev: true
 
+  /@jridgewell/source-map@0.3.5:
+    resolution: {integrity: sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==}
+    dependencies:
+      '@jridgewell/gen-mapping': 0.3.3
+      '@jridgewell/trace-mapping': 0.3.19
+    dev: true
+
   /@jridgewell/sourcemap-codec@1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
     dev: true
@@ -1689,6 +1689,21 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@rollup/plugin-terser@0.4.3(rollup@2.79.1):
+    resolution: {integrity: sha512-EF0oejTMtkyhrkwCdg0HJ0IpkcaVg1MMSf2olHb2Jp+1mnLM04OhjpJWGma4HobiDTF0WCyViWuvadyE9ch2XA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.x || ^3.x
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      rollup: 2.79.1
+      serialize-javascript: 6.0.1
+      smob: 1.4.0
+      terser: 5.19.2
     dev: true
 
   /@rollup/plugin-typescript@8.5.0(rollup@2.79.1)(tslib@2.6.1)(typescript@4.9.5):
@@ -4807,15 +4822,6 @@ packages:
       string-length: 4.0.2
     dev: true
 
-  /jest-worker@26.6.2:
-    resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
-    engines: {node: '>= 10.13.0'}
-    dependencies:
-      '@types/node': 17.0.21
-      merge-stream: 2.0.0
-      supports-color: 7.2.0
-    dev: true
-
   /jest-worker@27.5.1:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
@@ -5867,7 +5873,7 @@ packages:
   /randombytes@2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
-      safe-buffer: 5.2.1
+      safe-buffer: 5.1.2
     dev: true
 
   /rc@1.2.8:
@@ -6085,19 +6091,6 @@ packages:
       - debug
     dev: true
 
-  /rollup-plugin-terser@7.0.2(rollup@2.79.1):
-    resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
-    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
-    peerDependencies:
-      rollup: ^2.0.0
-    dependencies:
-      '@babel/code-frame': 7.16.7
-      jest-worker: 26.6.2
-      rollup: 2.79.1
-      serialize-javascript: 4.0.0
-      terser: 5.11.0
-    dev: true
-
   /rollup-plugin-ts@3.4.4(@babel/core@7.22.10)(@babel/plugin-transform-runtime@7.22.10)(@babel/preset-env@7.22.10)(@babel/preset-typescript@7.22.5)(@babel/runtime@7.22.10)(rollup@2.79.1)(typescript@4.9.5):
     resolution: {integrity: sha512-xgHn5o/1GD222EWxmMQYiWR00oEClv86O5fiEiIVtcaGXV2yWMn6x6jr082A/xmxu3CcdXiTUHomi/9FXTepWg==}
     engines: {node: '>=16.15.1', npm: '>=7.0.0', pnpm: '>=3.2.0', yarn: '>=1.13'}
@@ -6176,10 +6169,6 @@ packages:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
     dev: true
 
-  /safe-buffer@5.2.1:
-    resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
-    dev: true
-
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
@@ -6235,8 +6224,8 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
-  /serialize-javascript@4.0.0:
-    resolution: {integrity: sha512-GaNA54380uFefWghODBWEGisLZFj00nS5ACs6yHa9nLqlLpVLO8ChDGeKRjZnV4Nh4n0Qi7nhYZD/9fCPzEqkw==}
+  /serialize-javascript@6.0.1:
+    resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
     dependencies:
       randombytes: 2.1.0
     dev: true
@@ -6302,6 +6291,10 @@ packages:
   /slice-ansi@0.0.4:
     resolution: {integrity: sha1-7b+JA/ZvfOL46v1s7tZeJkyDGzU=}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /smob@1.4.0:
+    resolution: {integrity: sha512-MqR3fVulhjWuRNSMydnTlweu38UhQ0HXM4buStD/S3mc/BzX3CuM9OmhyQpmtYCvoYdl5ris6TI0ZqH355Ymqg==}
     dev: true
 
   /source-map-support@0.5.21:
@@ -6531,14 +6524,14 @@ packages:
       supports-hyperlinks: 2.2.0
     dev: true
 
-  /terser@5.11.0:
-    resolution: {integrity: sha512-uCA9DLanzzWSsN1UirKwylhhRz3aKPInlfmpGfw8VN6jHsAtu8HJtIpeeHHK23rxnE/cDc+yvmq5wqkIC6Kn0A==}
+  /terser@5.19.2:
+    resolution: {integrity: sha512-qC5+dmecKJA4cpYxRa5aVkKehYsQKc+AHeKl0Oe62aYjBL8ZA33tTljktDHJSaxxMnbI5ZYw+o/S2DxxLu8OfA==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
+      '@jridgewell/source-map': 0.3.5
       acorn: 8.10.0
       commander: 2.20.3
-      source-map: 0.7.3
       source-map-support: 0.5.21
     dev: true
 

@@ -1,5 +1,5 @@
 import ts from "rollup-plugin-ts";
-import { terser } from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 import size from "rollup-plugin-size";
 
 export default {
