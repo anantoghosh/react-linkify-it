@@ -89,14 +89,5 @@
   },
   "peerDependencies": {
     "react": "*"
-  },
-  "pnpm": {
-    "overrides": {
-      "ansi-regex@>2.1.1 <5.0.1": ">=5.0.1",
-      "axios@<=0.21.1": ">=0.21.2",
-      "axios@<0.21.1": ">=0.21.1",
-      "follow-redirects@<1.14.7": ">=1.14.7",
-      "follow-redirects@<1.14.8": ">=1.14.8"
-    }
   }
 }
