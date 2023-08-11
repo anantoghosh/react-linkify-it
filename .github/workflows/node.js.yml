@@ -33,6 +33,7 @@ jobs:
     - name: Install pnpm
       run: corepack enable
     - run: pnpm install
+    - run: pnpm eslint
     - run: pnpm test
     - run: pnpm build
     - name: Publish code coverage
