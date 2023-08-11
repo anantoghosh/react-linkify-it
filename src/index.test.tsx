@@ -71,7 +71,7 @@ test.concurrent.each(input)("$text", async ({ urls, text }) => {
   const output = linkIt(
     text,
     (match, key) => <UrlComponent match={match} key={key} />,
-    urlRegex
+    urlRegex,
   );
 
   renderWithId(output);
@@ -82,7 +82,7 @@ test.concurrent.each(input)("$text", async ({ urls, text }) => {
   for (const url of urls) {
     expect(screen.getByRole("link", { name: url })).toHaveAttribute(
       "href",
-      /^www\./.exec(url) ? `http://${url}` : url
+      /^www\./.exec(url) ? `http://${url}` : url,
     );
   }
 });
@@ -92,7 +92,7 @@ test("Empty", () => {
   const output = linkIt(
     text,
     (match, key) => <UrlComponent key={key} match={match} />,
-    urlRegex
+    urlRegex,
   );
 
   renderWithId(output);
@@ -108,7 +108,7 @@ test("Filter control characters", () => {
   const output = linkIt(
     text,
     (match, key) => <UrlComponent match={match} key={key} />,
-    urlRegex
+    urlRegex,
   );
 
   renderWithId(output);
@@ -119,7 +119,7 @@ test("Filter control characters", () => {
 
   expect(screen.getByRole("link", { name: filteredText })).toHaveAttribute(
     "href",
-    filteredText
+    filteredText,
   );
 });
 
@@ -130,11 +130,11 @@ test("LinkIt", () => {
       regex={urlRegex}
     >
       www.google.com<div>hi</div>
-    </LinkIt>
+    </LinkIt>,
   );
   expect(screen.getByRole("link", { name: "www.google.com" })).toHaveAttribute(
     "href",
-    "http://www.google.com"
+    "http://www.google.com",
   );
 });
 
@@ -142,11 +142,11 @@ test("LinkItUrl", () => {
   render(
     <LinkItUrl>
       www.google.com<div>hi</div>
-    </LinkItUrl>
+    </LinkItUrl>,
   );
   expect(screen.getByRole("link", { name: "www.google.com" })).toHaveAttribute(
     "href",
-    "http://www.google.com"
+    "http://www.google.com",
   );
 });
 
@@ -154,11 +154,11 @@ test("LinkItUrl to have className", () => {
   render(
     <LinkItUrl className="hello">
       www.google.com<div>hi</div>
-    </LinkItUrl>
+    </LinkItUrl>,
   );
   expect(screen.getByRole("link", { name: "www.google.com" })).toHaveAttribute(
     "class",
-    "hello"
+    "hello",
   );
 });
 
@@ -166,11 +166,11 @@ test("LinkItJira", () => {
   render(
     <LinkItJira domain="https://projectid.atlassian.net">
       hello AMM-123 ticket
-    </LinkItJira>
+    </LinkItJira>,
   );
   expect(screen.getByRole("link", { name: "AMM-123" })).toHaveAttribute(
     "href",
-    "https://projectid.atlassian.net/jira/software/projects/AMM/boards/123"
+    "https://projectid.atlassian.net/jira/software/projects/AMM/boards/123",
   );
 });
 
@@ -178,14 +178,13 @@ test("LinkItTwitter", () => {
   render(<LinkItTwitter>hello @anantoghosh twitter</LinkItTwitter>);
   expect(screen.getByRole("link", { name: "@anantoghosh" })).toHaveAttribute(
     "href",
-    "https://twitter.com/anantoghosh"
+    "https://twitter.com/anantoghosh",
   );
 });
 
 test("LinkItEmail", () => {
   render(<LinkItEmail>hello hello.man@gmail.com twitter</LinkItEmail>);
-  expect(screen.getByRole("link", { name: "hello.man@gmail.com" })).toHaveAttribute(
-    "href",
-    "mailto:hello.man@gmail.com"
-  );
+  expect(
+    screen.getByRole("link", { name: "hello.man@gmail.com" }),
+  ).toHaveAttribute("href", "mailto:hello.man@gmail.com");
 });

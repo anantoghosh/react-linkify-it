@@ -4,7 +4,7 @@ import type {
   Component,
   ReactHOCLinkProps,
   ReactJiraHOCLinkProps,
-  ReactLinkItProps
+  ReactLinkItProps,
 } from "./types";
 import { UrlComponent, urlRegex } from "./url";
 import { TwitterComponent, twitterRegex } from "./twitter";
@@ -23,7 +23,7 @@ const ctrlCharactersRegex =
 export function linkIt(
   text: string,
   linkComponent: Component,
-  linkRegex: RegExp
+  linkRegex: RegExp,
 ): string | ReactNode[] {
   const elements: ReactNode[] = [];
   let rest = text;
@@ -56,7 +56,7 @@ export function linkIt(
 function findText(
   children: ReactNode,
   component: Component,
-  regex: RegExp
+  regex: RegExp,
 ): ReactNode {
   if (typeof children === "string") {
     return linkIt(children, component, regex);
@@ -75,7 +75,7 @@ function findText(
     return cloneElement(
       children,
       { ...children.props, key: getKey() },
-      findText(children.props.children, component, regex)
+      findText(children.props.children, component, regex),
     );
   }
 
@@ -114,7 +114,7 @@ export const LinkItUrl: ReactHOCLinkProps = (props) => {
         (match, key) => (
           <UrlComponent key={key} match={match} className={props.className} />
         ),
-        urlRegex
+        urlRegex,
       )}
     </Fragment>
   );
@@ -129,9 +129,13 @@ export const LinkItTwitter: ReactHOCLinkProps = (props) => {
       {findText(
         props.children,
         (match, key) => (
-          <TwitterComponent key={key} match={match} className={props.className} />
+          <TwitterComponent
+            key={key}
+            match={match}
+            className={props.className}
+          />
         ),
-        twitterRegex
+        twitterRegex,
       )}
     </Fragment>
   );
@@ -146,14 +150,18 @@ export const LinkItJira: ReactJiraHOCLinkProps = (props) => {
       {findText(
         props.children,
         (match, key) => (
-          <JiraComponent key={key} match={match} domain={props.domain} className={props.className} />
+          <JiraComponent
+            key={key}
+            match={match}
+            domain={props.domain}
+            className={props.className}
+          />
         ),
-        jiraRegex
+        jiraRegex,
       )}
     </Fragment>
   );
 };
-
 
 /**
  * Link Emails
@@ -166,7 +174,7 @@ export const LinkItEmail: ReactHOCLinkProps = (props) => {
         (match, key) => (
           <EmailComponent key={key} match={match} className={props.className} />
         ),
-        emailRegex
+        emailRegex,
       )}
     </Fragment>
   );
