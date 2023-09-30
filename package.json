@@ -67,7 +67,7 @@
     "@babel/preset-typescript": "^7.22.5",
     "@babel/runtime": "^7.22.10",
     "@rollup/plugin-terser": "^0.4.3",
-    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^27.5.2",
     "@types/react": "^18.2.20",
