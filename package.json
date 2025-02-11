@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "source": "src/index.tsx",
-  "packageManager": "pnpm@8.7.6",
+  "packageManager": "pnpm@8.15.9",
   "main": "./dist/react-linkify-it.legacy.umd.min",
   "exports": {
     ".": "./dist/react-linkify-it.esm.js",
