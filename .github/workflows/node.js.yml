@@ -30,7 +30,9 @@ jobs:
       with:
         path: ~/.pnpm-store
         key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-    - name: Install pnpm
+    - name: Install latest corepack
+      run: npm install -g corepack@latest
+    - name: Enable corepack
       run: corepack enable
     - run: pnpm install
     - run: pnpm eslint
