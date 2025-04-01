@@ -39,6 +39,6 @@ jobs:
     - run: pnpm test
     - run: pnpm build
     - name: Publish code coverage
-      uses: paambaati/codeclimate-action@v3.2.0
+      uses: paambaati/codeclimate-action@v9.0.0
       env:
         CC_TEST_REPORTER_ID: 7faf3080bb50c92d2efae792088aca807b6a54bafa2482384b30d163a7a28838
