@@ -9,8 +9,8 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/anantoghosh/react-linkify-it/badge.svg)](https://snyk.io/test/github/anantoghosh/react-linkify-it)
 [![Security Score](https://snyk-widget.herokuapp.com/badge/npm/react-linkify-it/badge.svg)](https://snyk.io/advisor/npm-package/react-linkify-it)
 
-<a href="https://github.com/sponsors/anantoghosh" rel="nofollow"><img alt="Support me on Github" src="https://anantoghosh.github.io/assets/support_github.svg" height="36" /></a>
-<a href="https://ko-fi.com/anantoghosh" rel="nofollow"><img alt="Support me on KoFi" src="https://anantoghosh.github.io/assets/support_kofi.svg" height="36" /></a>
+<a href="https://github.com/sponsors/anantoghosh" target="_blank"><img alt="Support me on Github" src="https://anantoghosh.github.io/assets/support_github.svg" style="height: 50px !important;width: auto !important;" /></a>
+<a href="https://www.buymeacoffee.com/ananto" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: auto !important;" ></a>
 
 A tiny and dependency free universal linking solution that turns **any pattern** in your text into clickable links (aka linkify). Supports i18n and emojis.
 
