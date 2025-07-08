@@ -232,5 +232,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Hey 👋 If my packages has helped you in any way, consider making a small donation to encourage me to keep contributing. Maintaining good software takes time and effort and for open source developers there is very less incentives to do so.
 Your contribution is greatly appreciated and will motivate me to continue to support developing my packages which you may have used. 
 
-<a href="https://github.com/sponsors/anantoghosh" rel="nofollow"><img alt="Support me on Github" src="https://anantoghosh.github.io/assets/support_github.svg" height="36" /></a>
-<a href="https://ko-fi.com/anantoghosh" rel="nofollow"><img alt="Support me on KoFi" src="https://anantoghosh.github.io/assets/support_kofi.svg" height="36" /></a>
+<a href="https://github.com/sponsors/anantoghosh" target="_blank"><img alt="Support me on Github" src="https://anantoghosh.github.io/assets/support_github.svg" style="height: 50px !important;width: auto !important;" /></a>
+<a href="https://www.buymeacoffee.com/ananto" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: auto !important;" ></a>
