@@ -74,7 +74,7 @@
     "@types/testing-library__jest-dom": "^5.14.9",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
-    "eslint": "^8.47.0",
+    "eslint": "^9.0.0",
     "eslint-plugin-tree-shaking": "^1.10.0",
     "jest": "^27.5.1",
     "np": "^8.0.4",
