@@ -20,7 +20,7 @@ jobs:
       - run: pnpm install
       - run: pnpm test
       - run: pnpm build
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: ./dist
@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v5
         with:
           name: dist
           path: dist/
@@ -55,7 +55,7 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
           scope: "@anantoghosh"
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v5
         with:
           name: dist
           path: dist/
