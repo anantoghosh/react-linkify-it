@@ -25,7 +25,7 @@ devDependencies:
     version: 7.22.10
   '@rollup/plugin-terser':
     specifier: ^0.4.3
-    version: 0.4.3(rollup@3.28.0)
+    version: 0.4.3(rollup@3.29.5)
   '@testing-library/jest-dom':
     specifier: ^5.17.0
     version: 5.17.0
@@ -70,13 +70,13 @@ devDependencies:
     version: 18.2.0(react@18.2.0)
   rollup:
     specifier: ^3.28.0
-    version: 3.28.0
+    version: 3.29.5
   rollup-plugin-size:
     specifier: ^0.3.1
     version: 0.3.1
   rollup-plugin-ts:
     specifier: ^3.4.4
-    version: 3.4.4(@babel/core@7.22.10)(@babel/plugin-transform-runtime@7.22.10)(@babel/preset-env@7.22.10)(@babel/preset-typescript@7.22.5)(@babel/runtime@7.22.10)(rollup@3.28.0)(typescript@4.9.5)
+    version: 3.4.4(@babel/core@7.22.10)(@babel/plugin-transform-runtime@7.22.10)(@babel/preset-env@7.22.10)(@babel/preset-typescript@7.22.5)(@babel/runtime@7.22.10)(rollup@3.29.5)(typescript@4.9.5)
   ts-jest:
     specifier: ^27.1.5
     version: 27.1.5(@babel/core@7.22.10)(@types/jest@27.5.2)(jest@27.5.1)(typescript@4.9.5)
@@ -1708,7 +1708,7 @@ packages:
       config-chain: 1.1.13
     dev: true
 
-  /@rollup/plugin-terser@0.4.3(rollup@3.28.0):
+  /@rollup/plugin-terser@0.4.3(rollup@3.29.5):
     resolution: {integrity: sha512-EF0oejTMtkyhrkwCdg0HJ0IpkcaVg1MMSf2olHb2Jp+1mnLM04OhjpJWGma4HobiDTF0WCyViWuvadyE9ch2XA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1717,13 +1717,13 @@ packages:
       rollup:
         optional: true
     dependencies:
-      rollup: 3.28.0
+      rollup: 3.29.5
       serialize-javascript: 6.0.1
       smob: 1.4.0
       terser: 5.19.2
     dev: true
 
-  /@rollup/pluginutils@5.0.2(rollup@3.28.0):
+  /@rollup/pluginutils@5.0.2(rollup@3.29.5):
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1735,7 +1735,7 @@ packages:
       '@types/estree': 1.0.1
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.28.0
+      rollup: 3.29.5
     dev: true
 
   /@samverschueren/stream-to-observable@0.3.1(rxjs@6.6.7):
@@ -3628,8 +3628,8 @@ packages:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
 
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -4670,7 +4670,7 @@ packages:
       micromatch: 4.0.5
       walker: 1.0.8
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /jest-jasmine2@27.5.1:
@@ -6239,7 +6239,7 @@ packages:
       - debug
     dev: true
 
-  /rollup-plugin-ts@3.4.4(@babel/core@7.22.10)(@babel/plugin-transform-runtime@7.22.10)(@babel/preset-env@7.22.10)(@babel/preset-typescript@7.22.5)(@babel/runtime@7.22.10)(rollup@3.28.0)(typescript@4.9.5):
+  /rollup-plugin-ts@3.4.4(@babel/core@7.22.10)(@babel/plugin-transform-runtime@7.22.10)(@babel/preset-env@7.22.10)(@babel/preset-typescript@7.22.5)(@babel/runtime@7.22.10)(rollup@3.29.5)(typescript@4.9.5):
     resolution: {integrity: sha512-xgHn5o/1GD222EWxmMQYiWR00oEClv86O5fiEiIVtcaGXV2yWMn6x6jr082A/xmxu3CcdXiTUHomi/9FXTepWg==}
     engines: {node: '>=16.15.1', npm: '>=7.0.0', pnpm: '>=3.2.0', yarn: '>=1.13'}
     peerDependencies:
@@ -6273,7 +6273,7 @@ packages:
       '@babel/preset-env': 7.22.10(@babel/core@7.22.10)
       '@babel/preset-typescript': 7.22.5(@babel/core@7.22.10)
       '@babel/runtime': 7.22.10
-      '@rollup/pluginutils': 5.0.2(rollup@3.28.0)
+      '@rollup/pluginutils': 5.0.2(rollup@3.29.5)
       '@wessberg/stringutil': 1.0.19
       ansi-colors: 4.1.3
       browserslist: 4.21.10
@@ -6281,18 +6281,18 @@ packages:
       compatfactory: 3.0.0(typescript@4.9.5)
       crosspath: 2.0.0
       magic-string: 0.30.2
-      rollup: 3.28.0
+      rollup: 3.29.5
       ts-clone-node: 3.0.0(typescript@4.9.5)
       tslib: 2.6.1
       typescript: 4.9.5
     dev: true
 
-  /rollup@3.28.0:
-    resolution: {integrity: sha512-d7zhvo1OUY2SXSM6pfNjgD5+d0Nz87CUp4mt8l/GgVP3oBsPwzNvSzyu1me6BSG9JIgWNTVcafIXBIyM8yQ3yw==}
+  /rollup@3.29.5:
+    resolution: {integrity: sha512-GVsDdsbJzzy4S/v3dqWPJ7EfvZJfCHiDqe80IyrF59LYuP+e6U1LJoUqeuqRbwAWoMNoXivMNeNAOf5E22VA1w==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /run-applescript@5.0.0:
