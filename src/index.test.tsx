@@ -76,8 +76,8 @@ test.each(input)("$text", async ({ urls, text }) => {
 
   renderWithId(output);
   expect(screen.getByTestId("linkIt")).toHaveTextContent(text, {
-      normalizeWhitespace: false,
-    });
+    normalizeWhitespace: false,
+  });
 
   for (const url of urls) {
     expect(screen.getByRole("link", { name: url })).toHaveAttribute(

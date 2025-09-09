@@ -82,7 +82,11 @@ function findText(
     return cloneElement(
       children,
       { ...children.props, key: getKey() },
-      findText((children.props as { children: ReactNode }).children, component, regex),
+      findText(
+        (children.props as { children: ReactNode }).children,
+        component,
+        regex,
+      ),
     );
   }
 
