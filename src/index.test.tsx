@@ -1,4 +1,4 @@
-import "@testing-library/jest-dom";
+import { test, expect } from "vitest";
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import {
@@ -67,7 +67,7 @@ for (const url of valid_urls) {
   }
 }
 
-test.concurrent.each(input)("$text", async ({ urls, text }) => {
+test.each(input)("$text", async ({ urls, text }) => {
   const output = linkIt(
     text,
     (match, key) => <UrlComponent match={match} key={key} />,
@@ -76,8 +76,8 @@ test.concurrent.each(input)("$text", async ({ urls, text }) => {
 
   renderWithId(output);
   expect(screen.getByTestId("linkIt")).toHaveTextContent(text, {
-    normalizeWhitespace: false,
-  });
+      normalizeWhitespace: false,
+    });
 
   for (const url of urls) {
     expect(screen.getByRole("link", { name: url })).toHaveAttribute(

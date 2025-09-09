@@ -18,7 +18,8 @@ const ctrlCharactersRegex =
 /**
  * Make urls clickable.
  * @param text Text to parse
- * @param options {@link Options}
+ * @param linkComponent
+ * @param linkRegex
  */
 export function linkIt(
   text: string,

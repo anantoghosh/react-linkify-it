@@ -17,6 +17,7 @@
     "jsx": "react",
     "jsxFactory": "React.createElement",
     "baseUrl": "src",
-    "declaration": true
+  "declaration": true,
+  "outDir": "dist"
   }
 }
