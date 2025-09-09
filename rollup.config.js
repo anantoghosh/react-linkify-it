@@ -1,4 +1,3 @@
-
 import typescript from "@rollup/plugin-typescript";
 import babel from "@rollup/plugin-babel";
 import size from "rollup-plugin-size";
@@ -17,17 +16,7 @@ export default {
       babelHelpers: "bundled",
       extensions: [".js", ".jsx", ".ts", ".tsx"],
       exclude: "node_modules/**",
-      presets: [
-        [
-          "@babel/preset-env",
-          {
-            useBuiltIns: "usage",
-            corejs: 3,
-            // Uses default .browserslistrc
-          },
-        ],
-        "@babel/preset-typescript",
-      ],
+      presets: ["@babel/preset-env", "@babel/preset-typescript"],
     }),
   ],
   external: ["react"],

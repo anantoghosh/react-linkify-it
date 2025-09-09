@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export interface LinkProps {
   /** String that matched the regex */
   match: string;
@@ -39,4 +41,4 @@ export type ReactJiraHOCLinkProps = React.FC<
 /**
  * Function receives matched string and key to be used for loop, must return a React component
  */
-export type Component = (match: string, key: number) => JSX.Element;
+export type Component = (match: string, key: number) => ReactNode;

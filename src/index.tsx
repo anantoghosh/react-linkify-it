@@ -41,11 +41,15 @@ export function linkIt(
       .slice(urlStartIndex, urlEndIndex)
       .replace(ctrlCharactersRegex, "");
     rest = rest.slice(urlEndIndex);
-    textBeforeMatch && elements.push(textBeforeMatch);
+    if (textBeforeMatch) {
+      elements.push(textBeforeMatch);
+    }
     elements.push(linkComponent(url, getKey()));
   }
 
-  rest && elements.push(<Fragment key={getKey()}>{rest}</Fragment>);
+  if (rest) {
+    elements.push(<Fragment key={getKey()}>{rest}</Fragment>);
+  }
 
   if (elements.length === 0) {
     return text;
@@ -69,14 +73,16 @@ function findText(
 
   if (
     isValidElement(children) &&
-    children.props.children &&
+    typeof children.props === "object" &&
+    children.props !== null &&
+    "children" in children.props &&
     children.type !== "a" &&
     children.type !== "button"
   ) {
     return cloneElement(
       children,
       { ...children.props, key: getKey() },
-      findText(children.props.children, component, regex),
+      findText((children.props as { children: ReactNode }).children, component, regex),
     );
   }
 
