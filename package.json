@@ -66,6 +66,7 @@
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-typescript": "^7.27.1",
     "@babel/runtime": "^7.28.4",
+    "@codecov/rollup-plugin": "^1.9.1",
     "@eslint/js": "^9.35.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-terser": "^0.4.4",
