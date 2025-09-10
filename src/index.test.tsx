@@ -152,6 +152,14 @@ test("LinkItUrl", () => {
   );
 });
 
+test("LinkItUrl Empty", () => {
+  render(
+    <LinkItUrl>
+    </LinkItUrl>,
+  );
+  expect(screen.queryByRole("link")).toBeNull();
+});
+
 test("LinkItParam", () => {
   render(
     <LinkItUrl>
