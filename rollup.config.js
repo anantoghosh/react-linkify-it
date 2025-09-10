@@ -25,7 +25,6 @@ export default {
       bundleName: "react-linkify-it",
       uploadToken: process.env.CODECOV_TOKEN,
       telemetry: false,
-      debug: true
     }),
   ],
   external: ["react"],
