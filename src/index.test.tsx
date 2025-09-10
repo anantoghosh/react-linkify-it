@@ -42,6 +42,7 @@ for (const url of base_urls) {
   valid_urls.push(`https://www.${url}/`);
   valid_urls.push(`http://${url}/`);
   valid_urls.push(`https://${url}/`);
+  valid_urls.push(`https://${url}?hl=zh-CN`);
 }
 
 const texts = [
@@ -138,6 +139,7 @@ test("LinkIt", () => {
   );
 });
 
+
 test("LinkItUrl", () => {
   render(
     <LinkItUrl>
@@ -147,6 +149,18 @@ test("LinkItUrl", () => {
   expect(screen.getByRole("link", { name: "www.google.com" })).toHaveAttribute(
     "href",
     "http://www.google.com",
+  );
+});
+
+test("LinkItParam", () => {
+  render(
+    <LinkItUrl>
+      https://www.google.com?this=hello<div>hi</div>
+    </LinkItUrl>,
+  );
+  expect(screen.getByRole("link", { name: "https://www.google.com?this=hello" })).toHaveAttribute(
+    "href",
+    "https://www.google.com?this=hello",
   );
 });
 
