@@ -24,6 +24,8 @@ export default {
       enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
       bundleName: "react-linkify-it",
       uploadToken: process.env.CODECOV_TOKEN,
+      telemetry: false,
+      debug: true
     }),
   ],
   external: ["react"],
