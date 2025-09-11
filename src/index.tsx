@@ -15,11 +15,25 @@ import { getKey } from "./get-key";
 const ctrlCharactersRegex =
   /[\u0000-\u001F\u007F-\u009F\u2000-\u200D\uFEFF]/gim;
 
+
 /**
- * Make urls clickable.
- * @param text Text to parse
- * @param linkComponent
- * @param linkRegex
+ * Generic function to linkify any pattern in a string using a custom component.
+ *
+ * @param {string} text - The text to process.
+ * @param {(match: string, key: string|number) => React.ReactNode} linkComponent - The component to wrap each match.
+ * @param {RegExp} linkRegex - The regex pattern to match.
+ * @returns {string | ReactNode[]} Array of React nodes with matches wrapped, or the original string if no matches.
+ *
+ * @example
+ * ```jsx
+ * import { linkIt } from 'react-linkify-it';
+ *
+ * const output = linkIt(
+ *   "Contact me at example@gmail.com",
+ *   (match, key) => <a href={`mailto:${match}`} key={key}>{match}</a>,
+ *   /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i
+ * );
+ * ```
  */
 export function linkIt(
   text: string,
@@ -93,16 +107,27 @@ function findText(
   return children;
 }
 
+
 /**
- * LinkIt component can wrapped around any React component to linkify any
- * urls
+ * LinkIt
+ *
+ * React component that can wrap around any React component to linkify any pattern using a custom regex and component.
+ *
+ * @param {object} props
+ * @param {React.ReactNode} props.children - The content to linkify.
+ * @param {(match: string, key: string|number) => React.ReactNode} props.component - The component to wrap each match.
+ * @param {RegExp} props.regex - The regex pattern to match.
+ * @returns {React.ReactElement}
+ *
  * @example
- * ```
+ * ```jsx
+ * import { LinkIt } from 'react-linkify-it';
+ *
  * <LinkIt
  *   component={(match, key) => <a href={match} key={key}>{match}</a>}
- *   regex={regexToMatch}
+ *   regex={/www\.[a-z]+\.com/g}
  * >
- *  www.google.com<div>hi match_me</div>
+ *   www.google.com<div>hi match_me</div>
  * </LinkIt>
  * ```
  */
@@ -114,8 +139,25 @@ export const LinkIt: ReactLinkItProps = (props) => {
   );
 };
 
+
 /**
- * Link URLs
+ * LinkItUrl
+ *
+ * React component that linkifies URLs in its children.
+ *
+ * @param {object} props
+ * @param {React.ReactNode} props.children - The content to linkify.
+ * @param {string} [props.className] - Optional className for the anchor tag.
+ * @returns {React.ReactElement}
+ *
+ * @example
+ * ```jsx
+ * import { LinkItUrl } from 'react-linkify-it';
+ *
+ * <LinkItUrl>
+ *   Visit https://www.google.com for more info.
+ * </LinkItUrl>
+ * ```
  */
 export const LinkItUrl: ReactHOCLinkProps = (props) => {
   return (
@@ -132,7 +174,23 @@ export const LinkItUrl: ReactHOCLinkProps = (props) => {
 };
 
 /**
- * Link Twitter handles
+ * LinkItTwitter
+ *
+ * React component that linkifies Twitter handles (e.g., @username) in its children.
+ *
+ * @param {object} props
+ * @param {React.ReactNode} props.children - The content to linkify.
+ * @param {string} [props.className] - Optional className for the anchor tag.
+ * @returns {React.ReactElement}
+ *
+ * @example
+ * ```jsx
+ * import { LinkItTwitter } from 'react-linkify-it';
+ *
+ * <LinkItTwitter>
+ *   Hello @anantoghosh!
+ * </LinkItTwitter>
+ * ```
  */
 export const LinkItTwitter: ReactHOCLinkProps = (props) => {
   return (
@@ -152,8 +210,26 @@ export const LinkItTwitter: ReactHOCLinkProps = (props) => {
   );
 };
 
+
 /**
- * Link Jira tickets
+ * LinkItJira
+ *
+ * React component that linkifies Jira ticket keys (e.g., PROJ-123) in its children.
+ *
+ * @param {object} props
+ * @param {React.ReactNode} props.children - The content to linkify.
+ * @param {string} props.domain - The Jira base URL.
+ * @param {string} [props.className] - Optional className for the anchor tag.
+ * @returns {React.ReactElement}
+ *
+ * @example
+ * ```jsx
+ * import { LinkItJira } from 'react-linkify-it';
+ *
+ * <LinkItJira domain="https://project.atlassian.net">
+ *   Ticket: PROJ-123
+ * </LinkItJira>
+ * ```
  */
 export const LinkItJira: ReactJiraHOCLinkProps = (props) => {
   return (
@@ -174,8 +250,25 @@ export const LinkItJira: ReactJiraHOCLinkProps = (props) => {
   );
 };
 
+
 /**
- * Link Emails
+ * LinkItEmail
+ *
+ * React component that linkifies email addresses in its children.
+ *
+ * @param {object} props
+ * @param {React.ReactNode} props.children - The content to linkify.
+ * @param {string} [props.className] - Optional className for the anchor tag.
+ * @returns {React.ReactElement}
+ *
+ * @example
+ * ```jsx
+ * import { LinkItEmail } from 'react-linkify-it';
+ *
+ * <LinkItEmail>
+ *   Contact: user@example.com
+ * </LinkItEmail>
+ * ```
  */
 export const LinkItEmail: ReactHOCLinkProps = (props) => {
   return (
