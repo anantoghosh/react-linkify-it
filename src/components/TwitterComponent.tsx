@@ -21,7 +21,7 @@ export const TwitterComponent: ReactLinkProps = ({ match, className }) => {
   return (
     <a
       className={className}
-      href={"https://twitter.com/" + match.slice(1)}
+      href={"https://x.com/" + match.slice(1)}
       target="_blank"
       rel="noreferrer"
     >

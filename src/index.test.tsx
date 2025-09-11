@@ -200,7 +200,7 @@ test("LinkItTwitter", () => {
   render(<LinkItTwitter>hello @anantoghosh twitter</LinkItTwitter>);
   expect(screen.getByRole("link", { name: "@anantoghosh" })).toHaveAttribute(
     "href",
-    "https://twitter.com/anantoghosh",
+    "https://x.com/anantoghosh",
   );
 });
 
