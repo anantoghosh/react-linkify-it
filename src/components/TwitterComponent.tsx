@@ -1,19 +1,10 @@
 import React from "react";
-import type { ReactLinkProps } from "types";
-
-
-/**
- * Regex to match Twitter handles (e.g., @username).
- * @type {RegExp}
- * @example
- *   twitterRegex.test('@anantoghosh') // true
- */
-export const twitterRegex = /\B@([\w_]+)/;
+import type { ReactLinkProps } from "../types";
 
 /**
  * TwitterComponent
  *
- * React component that linkifies Twitter handles.
+ * React component that renders a clickable Twitter handle link.
  *
  * @param {object} props
  * @param {string} props.match - The matched Twitter handle.

@@ -85,3 +85,6 @@ export type ReactJiraHOCLinkProps = React.FC<
  * Function receives matched string and key to be used for loop, must return a React component
  */
 export type Component = (match: string, key: number) => ReactNode;
+
+// Export the internal interfaces for external use if needed
+export type { HOCLinkProps, JiraLinkProps, JiraHOCLinkProps };

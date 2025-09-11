@@ -1,20 +1,10 @@
 import React from "react";
-import type { LinkProps } from "types";
-
-
-/**
- * Regex to match URLs (http, https, www).
- * @type {RegExp}
- * @example
- *   urlRegex.test('https://google.com') // true
- */
-export const urlRegex =
-  /(https?:\/\/|www\.)[^\s<>'"()[\]{}]+[^\s<>'"()[\]{}.,;:!?\])}]/u;
+import type { LinkProps } from "../types";
 
 /**
  * UrlComponent
  *
- * React component that automatically linkifies URLs in its children.
+ * React component that renders a clickable URL link.
  *
  * @param {object} props
  * @param {string} props.match - The matched URL string.

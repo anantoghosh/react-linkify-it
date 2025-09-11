@@ -9,7 +9,7 @@ import {
   LinkItTwitter,
   LinkItUrl,
 } from "./index";
-import { UrlComponent, urlRegex } from "./url";
+import { UrlComponent, urlRegex } from "./index";
 
 const renderWithId = (child: string | React.ReactNode[]) =>
   render(<div data-testid={"linkIt"}>{child}</div>);

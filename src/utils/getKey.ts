@@ -1,4 +1,3 @@
-
 /**
  * Generates a unique key for React elements.
  *

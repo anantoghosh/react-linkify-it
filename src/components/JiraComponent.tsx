@@ -1,19 +1,10 @@
 import React from "react";
-import type { ReactJiraLinkProps } from "types";
-
-
-/**
- * Regex to match Jira ticket keys (e.g., ABC-123).
- * @type {RegExp}
- * @example
- *   jiraRegex.test('PROJ-42') // true
- */
-export const jiraRegex = /[A-Z]+-\d+/i;
+import type { ReactJiraLinkProps } from "../types";
 
 /**
  * JiraComponent
  *
- * React component that linkifies Jira ticket keys.
+ * React component that renders a clickable Jira ticket link.
  *
  * @param {object} props
  * @param {string} props.match - The matched Jira ticket key.
