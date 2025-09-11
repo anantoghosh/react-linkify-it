@@ -237,9 +237,7 @@ const App = () => {
 
   return <div className="App">{output}</div>;
 };
-// - 'text': string to process
-// - 'component': (match, key) => ReactNode
-// - 'regex': RegExp
+
 ```
 
 
@@ -292,7 +290,6 @@ import { urlRegex, emailRegex, twitterRegex, jiraRegex } from 'react-linkify-it'
 
 ---
 
----
 
 ## Using Modern and Legacy Bundle
 
