@@ -40,7 +40,7 @@
   "homepage": "https://github.com/anantoghosh/react-linkify-it",
   "scripts": {
     "release": "np",
-    "build": "npm run build:latest && npm run build:legacy",
+    "build": "pnpm build:latest && pnpm build:legacy",
     "build:latest": "rollup -c",
     "build:legacy": "rollup -c rollup-legacy.config.js",
     "test": "vitest run --coverage",
