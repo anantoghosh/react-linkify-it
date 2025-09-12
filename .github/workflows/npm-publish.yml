@@ -41,7 +41,15 @@ jobs:
         with:
           name: dist
           path: dist/
-      - run: npm publish --provenance --access public
+      - name: Set NPM tag
+        id: npm_tag
+        run: |
+          if [[ "${{ github.event.release.prerelease }}" == "true" ]]; then
+            echo "tag=next" >> $GITHUB_OUTPUT
+          else
+            echo "tag=latest" >> $GITHUB_OUTPUT
+          fi
+      - run: npm publish --provenance --access public --tag ${{ steps.npm_tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
@@ -64,6 +72,14 @@ jobs:
           name: dist
           path: dist/
       - run: node gpr-hack.js
-      - run: npm publish
+      - name: Set GPR tag
+        id: gpr_tag
+        run: |
+          if [[ "${{ github.event.release.prerelease }}" == "true" ]]; then
+            echo "tag=next" >> $GITHUB_OUTPUT
+          else
+            echo "tag=latest" >> $GITHUB_OUTPUT
+          fi
+      - run: npm publish --tag ${{ steps.gpr_tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
