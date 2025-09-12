@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/anantoghosh/react-linkify-it",
   "scripts": {
-    "release": "np",
+    "release": "np --no-publish",
     "build": "tsdown",
     "test": "vitest run --coverage",
     "lint": "eslint src/",
