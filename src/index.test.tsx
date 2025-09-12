@@ -8,6 +8,8 @@ import {
   LinkItJira,
   LinkItTwitter,
   LinkItUrl,
+  LinkItHashtag,
+  LinkItMention,
 } from './index';
 import { UrlComponent, urlRegex } from './index';
 
@@ -204,4 +206,227 @@ test('LinkItEmail', () => {
   expect(
     screen.getByRole('link', { name: 'hello.man@gmail.com' }),
   ).toHaveAttribute('href', 'mailto:hello.man@gmail.com');
+});
+
+// LinkItHashtag Tests
+test('LinkItHashtag basic functionality', () => {
+  render(
+    <LinkItHashtag urlTemplate="https://twitter.com/hashtag/{hashtag}">
+      Check out #javascript and #react!
+    </LinkItHashtag>
+  );
+
+  expect(screen.getByRole('link', { name: '#javascript' })).toHaveAttribute(
+    'href',
+    'https://twitter.com/hashtag/javascript'
+  );
+  expect(screen.getByRole('link', { name: '#react' })).toHaveAttribute(
+    'href',
+    'https://twitter.com/hashtag/react'
+  );
+});
+
+test('LinkItHashtag with Unicode hashtags', () => {
+  render(
+    <LinkItHashtag urlTemplate="https://example.com/tags/{hashtag}">
+      Love #café and #日本語 hashtags!
+    </LinkItHashtag>
+  );
+
+  expect(screen.getByRole('link', { name: '#café' })).toHaveAttribute(
+    'href',
+    'https://example.com/tags/caf%C3%A9'
+  );
+  expect(screen.getByRole('link', { name: '#日本語' })).toHaveAttribute(
+    'href',
+    'https://example.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E'
+  );
+});
+
+test('LinkItHashtag with custom className', () => {
+  render(
+    <LinkItHashtag
+      urlTemplate="https://instagram.com/explore/tags/{hashtag}"
+      className="hashtag-link"
+    >
+      #photography is amazing!
+    </LinkItHashtag>
+  );
+
+  expect(screen.getByRole('link', { name: '#photography' })).toHaveAttribute(
+    'class',
+    'hashtag-link'
+  );
+  expect(screen.getByRole('link', { name: '#photography' })).toHaveAttribute(
+    'href',
+    'https://instagram.com/explore/tags/photography'
+  );
+});
+
+test('LinkItHashtag with special characters in URL template', () => {
+  render(
+    <LinkItHashtag urlTemplate="https://example.com/search?tag={hashtag}&type=post">
+      Discussing #AI trends
+    </LinkItHashtag>
+  );
+
+  expect(screen.getByRole('link', { name: '#AI' })).toHaveAttribute(
+    'href',
+    'https://example.com/search?tag=AI&type=post'
+  );
+});
+
+test('LinkItHashtag empty content', () => {
+  render(<LinkItHashtag urlTemplate="https://twitter.com/hashtag/{hashtag}"></LinkItHashtag>);
+  expect(screen.queryByRole('link')).toBeNull();
+});
+
+test('LinkItHashtag no hashtags in content', () => {
+  render(
+    <LinkItHashtag urlTemplate="https://twitter.com/hashtag/{hashtag}">
+      This text has no hashtags at all.
+    </LinkItHashtag>
+  );
+  expect(screen.queryByRole('link')).toBeNull();
+});
+
+// LinkItMention Tests
+test('LinkItMention basic functionality', () => {
+  render(
+    <LinkItMention urlTemplate="https://twitter.com/{mention}">
+      Thanks to @reactjs and @typescript team!
+    </LinkItMention>
+  );
+
+  expect(screen.getByRole('link', { name: '@reactjs' })).toHaveAttribute(
+    'href',
+    'https://twitter.com/reactjs'
+  );
+  expect(screen.getByRole('link', { name: '@typescript' })).toHaveAttribute(
+    'href',
+    'https://twitter.com/typescript'
+  );
+});
+
+test('LinkItMention with GitHub profile linking', () => {
+  render(
+    <LinkItMention urlTemplate="https://github.com/{mention}">
+      Shoutout to @octocat and @defunkt for GitHub!
+    </LinkItMention>
+  );
+
+  expect(screen.getByRole('link', { name: '@octocat' })).toHaveAttribute(
+    'href',
+    'https://github.com/octocat'
+  );
+  expect(screen.getByRole('link', { name: '@defunkt' })).toHaveAttribute(
+    'href',
+    'https://github.com/defunkt'
+  );
+});
+
+test('LinkItMention with Unicode usernames', () => {
+  render(
+    <LinkItMention urlTemplate="https://example.com/users/{mention}">
+      Welcome @utilisateur and @ユーザー to our platform!
+    </LinkItMention>
+  );
+
+  expect(screen.getByRole('link', { name: '@utilisateur' })).toHaveAttribute(
+    'href',
+    'https://example.com/users/utilisateur'
+  );
+  expect(screen.getByRole('link', { name: '@ユーザー' })).toHaveAttribute(
+    'href',
+    'https://example.com/users/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC'
+  );
+});
+
+test('LinkItMention with custom className', () => {
+  render(
+    <LinkItMention
+      urlTemplate="https://discord.com/users/{mention}"
+      className="mention-link"
+    >
+      Great work @developer1!
+    </LinkItMention>
+  );
+
+  expect(screen.getByRole('link', { name: '@developer1' })).toHaveAttribute(
+    'class',
+    'mention-link'
+  );
+  expect(screen.getByRole('link', { name: '@developer1' })).toHaveAttribute(
+    'href',
+    'https://discord.com/users/developer1'
+  );
+});
+
+test('LinkItMention with underscores in username', () => {
+  render(
+    <LinkItMention urlTemplate="https://example.com/user/{mention}">
+      Hello @user_name and @test_user_123!
+    </LinkItMention>
+  );
+
+  expect(screen.getByRole('link', { name: '@user_name' })).toHaveAttribute(
+    'href',
+    'https://example.com/user/user_name'
+  );
+  expect(screen.getByRole('link', { name: '@test_user_123' })).toHaveAttribute(
+    'href',
+    'https://example.com/user/test_user_123'
+  );
+});
+
+test('LinkItMention with special characters in URL template', () => {
+  render(
+    <LinkItMention urlTemplate="https://example.com/profile?user={mention}&tab=posts">
+      Check out @johndoe profile
+    </LinkItMention>
+  );
+
+  expect(screen.getByRole('link', { name: '@johndoe' })).toHaveAttribute(
+    'href',
+    'https://example.com/profile?user=johndoe&tab=posts'
+  );
+});
+
+test('LinkItMention empty content', () => {
+  render(<LinkItMention urlTemplate="https://twitter.com/{mention}"></LinkItMention>);
+  expect(screen.queryByRole('link')).toBeNull();
+});
+
+test('LinkItMention no mentions in content', () => {
+  render(
+    <LinkItMention urlTemplate="https://twitter.com/{mention}">
+      This text has no mentions at all.
+    </LinkItMention>
+  );
+  expect(screen.queryByRole('link')).toBeNull();
+});
+
+test('LinkItMention and LinkItHashtag combined', () => {
+  render(
+    <div>
+      <LinkItHashtag urlTemplate="https://twitter.com/hashtag/{hashtag}">
+        <LinkItMention urlTemplate="https://twitter.com/{mention}">
+          Thanks @reactjs for #react! Check out #javascript too.
+        </LinkItMention>
+      </LinkItHashtag>
+    </div>
+  );
+
+  expect(screen.getByRole('link', { name: '@reactjs' })).toHaveAttribute(
+    'href',
+    'https://twitter.com/reactjs'
+  );
+  expect(screen.getByRole('link', { name: '#react' })).toHaveAttribute(
+    'href',
+    'https://twitter.com/hashtag/react'
+  );
+  expect(screen.getByRole('link', { name: '#javascript' })).toHaveAttribute(
+    'href',
+    'https://twitter.com/hashtag/javascript'
+  );
 });

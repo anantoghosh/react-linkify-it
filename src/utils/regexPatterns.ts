@@ -31,3 +31,25 @@ export const twitterRegex = /\B@([\w_]+)/;
  *   jiraRegex.test('PROJ-42') // true
  */
 export const jiraRegex = /[A-Z]+-\d+/i;
+
+/**
+ * Regex to match hashtags (e.g., #hashtag, #javascript).
+ * Supports Unicode characters for international hashtags.
+ * @type {RegExp}
+ * @example
+ *   hashtagRegex.test('#javascript') // true
+ *   hashtagRegex.test('#café') // true
+ *   hashtagRegex.test('#日本語') // true
+ */
+export const hashtagRegex = /\B#([\w\u00C0-\u017F\u0400-\u04FF\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]+)/u;
+
+/**
+ * Regex to match mentions (e.g., @username, @user_name).
+ * Supports Unicode characters for international usernames.
+ * @type {RegExp}
+ * @example
+ *   mentionRegex.test('@username') // true
+ *   mentionRegex.test('@user_name') // true
+ *   mentionRegex.test('@utilisateur') // true
+ */
+export const mentionRegex = /\B@([\w\u00C0-\u017F\u0400-\u04FF\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]+)/u;

@@ -8,10 +8,14 @@ export {
   LinkItEmail,
   LinkItTwitter,
   LinkItJira,
+  LinkItHashtag,
+  LinkItMention,
   UrlComponent,
   EmailComponent,
   TwitterComponent,
   JiraComponent,
+  HashTagComponent,
+  MentionComponent,
 } from './components';
 
 // Regex patterns for direct use
@@ -20,6 +24,8 @@ export {
   emailRegex,
   twitterRegex,
   jiraRegex,
+  hashtagRegex,
+  mentionRegex,
 } from './utils/regexPatterns';
 
 // Types
@@ -30,5 +36,9 @@ export type {
   ReactHOCLinkProps,
   ReactJiraLinkProps,
   ReactJiraHOCLinkProps,
+  ReactHashTagLinkProps,
+  ReactHashTagHOCLinkProps,
+  ReactMentionLinkProps,
+  ReactMentionHOCLinkProps,
   Component,
 } from './types';

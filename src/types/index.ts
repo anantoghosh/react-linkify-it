@@ -32,6 +32,28 @@ interface JiraLinkProps extends LinkProps {
 }
 
 /**
+ * Props for a hashtag link component.
+ * @typedef {object} HashTagLinkProps
+ * @property {string} match - Hashtag string that matched the regex
+ * @property {string} urlTemplate - URL template with {hashtag} placeholder
+ * @property {string} [className] - Optional class which is passed to the linked component
+ */
+interface HashTagLinkProps extends LinkProps {
+  urlTemplate: string;
+}
+
+/**
+ * Props for a mention link component.
+ * @typedef {object} MentionLinkProps
+ * @property {string} match - Mention string that matched the regex
+ * @property {string} urlTemplate - URL template with {mention} placeholder
+ * @property {string} [className] - Optional class which is passed to the linked component
+ */
+interface MentionLinkProps extends LinkProps {
+  urlTemplate: string;
+}
+
+/**
  * Props for a higher-order Jira link component.
  * @typedef {object} JiraHOCLinkProps
  * @property {string} domain - Jira base url
@@ -39,6 +61,26 @@ interface JiraLinkProps extends LinkProps {
  */
 interface JiraHOCLinkProps extends HOCLinkProps {
   domain: string;
+}
+
+/**
+ * Props for a higher-order hashtag link component.
+ * @typedef {object} HashTagHOCLinkProps
+ * @property {string} urlTemplate - URL template with {hashtag} placeholder
+ * @property {string} [className] - Optional class which is passed to the linked component
+ */
+interface HashTagHOCLinkProps extends HOCLinkProps {
+  urlTemplate: string;
+}
+
+/**
+ * Props for a higher-order mention link component.
+ * @typedef {object} MentionHOCLinkProps
+ * @property {string} urlTemplate - URL template with {mention} placeholder
+ * @property {string} [className] - Optional class which is passed to the linked component
+ */
+interface MentionHOCLinkProps extends HOCLinkProps {
+  urlTemplate: string;
 }
 
 /**
@@ -73,6 +115,22 @@ export type ReactJiraLinkProps = React.FC<
 >;
 
 /**
+ * React component type for a hashtag link.
+ * @typedef {React.FC<React.PropsWithChildren<HashTagLinkProps>>} ReactHashTagLinkProps
+ */
+export type ReactHashTagLinkProps = React.FC<
+  React.PropsWithChildren<HashTagLinkProps>
+>;
+
+/**
+ * React component type for a mention link.
+ * @typedef {React.FC<React.PropsWithChildren<MentionLinkProps>>} ReactMentionLinkProps
+ */
+export type ReactMentionLinkProps = React.FC<
+  React.PropsWithChildren<MentionLinkProps>
+>;
+
+/**
  * React component type for a higher-order Jira link wrapper.
  * @typedef {React.FC<React.PropsWithChildren<JiraHOCLinkProps>>} ReactJiraHOCLinkProps
  */
@@ -81,9 +139,33 @@ export type ReactJiraHOCLinkProps = React.FC<
 >;
 
 /**
+ * React component type for a higher-order hashtag link wrapper.
+ * @typedef {React.FC<React.PropsWithChildren<HashTagHOCLinkProps>>} ReactHashTagHOCLinkProps
+ */
+export type ReactHashTagHOCLinkProps = React.FC<
+  React.PropsWithChildren<HashTagHOCLinkProps>
+>;
+
+/**
+ * React component type for a higher-order mention link wrapper.
+ * @typedef {React.FC<React.PropsWithChildren<MentionHOCLinkProps>>} ReactMentionHOCLinkProps
+ */
+export type ReactMentionHOCLinkProps = React.FC<
+  React.PropsWithChildren<MentionHOCLinkProps>
+>;
+
+/**
  * Function receives matched string and key to be used for loop, must return a React component
  */
 export type Component = (match: string, key: number) => ReactNode;
 
 // Export the internal interfaces for external use if needed
-export type { HOCLinkProps, JiraLinkProps, JiraHOCLinkProps };
+export type {
+  HOCLinkProps,
+  JiraLinkProps,
+  JiraHOCLinkProps,
+  HashTagLinkProps,
+  HashTagHOCLinkProps,
+  MentionLinkProps,
+  MentionHOCLinkProps
+};
