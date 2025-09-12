@@ -11,8 +11,8 @@ export default defineConfig({
     },
     coverage: {
       exclude: [
-        "gpr-hack.js",
-        "rollup-legacy.config.js",
+        "*.js",
+        "*.ts",
         ...coverageConfigDefaults.exclude,
       ],
     },
