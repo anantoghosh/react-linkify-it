@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
-import type { ReactJiraHOCLinkProps } from "../types";
-import { findText, jiraRegex } from "../utils";
-import { JiraComponent } from "./JiraComponent";
+import React, { Fragment } from 'react';
+import type { ReactJiraHOCLinkProps } from '../types';
+import { findText, jiraRegex } from '../utils';
+import { JiraComponent } from './JiraComponent';
 
 /**
  * LinkItJira

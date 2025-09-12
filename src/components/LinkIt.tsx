@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
-import type { ReactLinkItProps } from "../types";
-import { findText } from "../utils";
+import React, { Fragment } from 'react';
+import type { ReactLinkItProps } from '../types';
+import { findText } from '../utils';
 
 /**
  * LinkIt

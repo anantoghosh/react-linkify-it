@@ -1,8 +1,8 @@
-import { isValidElement, cloneElement } from "react";
-import type { ReactNode } from "react";
-import type { Component } from "../types";
-import { getKey } from "./getKey";
-import { linkIt } from "./linkIt";
+import { isValidElement, cloneElement } from 'react';
+import type { ReactNode } from 'react';
+import type { Component } from '../types';
+import { getKey } from './getKey';
+import { linkIt } from './linkIt';
 
 /**
  * Recursively finds and processes text nodes in React children, applying linkification.
@@ -17,7 +17,7 @@ export function findText(
   component: Component,
   regex: RegExp,
 ): ReactNode {
-  if (typeof children === "string") {
+  if (typeof children === 'string') {
     return linkIt(children, component, regex);
   }
 
@@ -27,11 +27,11 @@ export function findText(
 
   if (
     isValidElement(children) &&
-    typeof children.props === "object" &&
+    typeof children.props === 'object' &&
     children.props !== null &&
-    "children" in children.props &&
-    children.type !== "a" &&
-    children.type !== "button"
+    'children' in children.props &&
+    children.type !== 'a' &&
+    children.type !== 'button'
   ) {
     return cloneElement(
       children,

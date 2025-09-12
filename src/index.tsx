@@ -1,5 +1,5 @@
 // Core linkification function
-export { linkIt } from "./utils/linkIt";
+export { linkIt } from './utils/linkIt';
 
 // Components
 export {
@@ -12,7 +12,7 @@ export {
   EmailComponent,
   TwitterComponent,
   JiraComponent,
-} from "./components";
+} from './components';
 
 // Regex patterns for direct use
 export {
@@ -20,7 +20,7 @@ export {
   emailRegex,
   twitterRegex,
   jiraRegex,
-} from "./utils/regexPatterns";
+} from './utils/regexPatterns';
 
 // Types
 export type {
@@ -31,4 +31,4 @@ export type {
   ReactJiraLinkProps,
   ReactJiraHOCLinkProps,
   Component,
-} from "./types";
+} from './types';

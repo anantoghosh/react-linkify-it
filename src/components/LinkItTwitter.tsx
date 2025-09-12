@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
-import type { ReactHOCLinkProps } from "../types";
-import { findText, twitterRegex } from "../utils";
-import { TwitterComponent } from "./TwitterComponent";
+import React, { Fragment } from 'react';
+import type { ReactHOCLinkProps } from '../types';
+import { findText, twitterRegex } from '../utils';
+import { TwitterComponent } from './TwitterComponent';
 
 /**
  * LinkItTwitter

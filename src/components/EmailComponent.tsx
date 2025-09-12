@@ -1,5 +1,5 @@
-import React from "react";
-import type { LinkProps } from "../types";
+import React from 'react';
+import type { LinkProps } from '../types';
 
 /**
  * EmailComponent
@@ -24,7 +24,7 @@ export const EmailComponent: React.FC<React.PropsWithChildren<LinkProps>> = ({
   return (
     <a
       className={className}
-      href={"mailto:" + match}
+      href={'mailto:' + match}
       target="_blank"
       rel="noreferrer"
     >

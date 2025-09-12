@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
-import type { ReactHOCLinkProps } from "../types";
-import { findText, emailRegex } from "../utils";
-import { EmailComponent } from "./EmailComponent";
+import React, { Fragment } from 'react';
+import type { ReactHOCLinkProps } from '../types';
+import { findText, emailRegex } from '../utils';
+import { EmailComponent } from './EmailComponent';
 
 /**
  * LinkItEmail

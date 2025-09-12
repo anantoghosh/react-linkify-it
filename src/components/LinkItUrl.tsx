@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
-import type { ReactHOCLinkProps } from "../types";
-import { findText, urlRegex } from "../utils";
-import { UrlComponent } from "./UrlComponent";
+import React, { Fragment } from 'react';
+import type { ReactHOCLinkProps } from '../types';
+import { findText, urlRegex } from '../utils';
+import { UrlComponent } from './UrlComponent';
 
 /**
  * LinkItUrl

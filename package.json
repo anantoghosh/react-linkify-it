@@ -45,6 +45,9 @@
     "lint": "eslint src/",
     "prettier": "prettier src/ --write"
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "keywords": [
     "react-linkify",
     "react",

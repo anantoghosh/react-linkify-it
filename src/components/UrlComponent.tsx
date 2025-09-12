@@ -1,5 +1,5 @@
-import React from "react";
-import type { LinkProps } from "../types";
+import React from 'react';
+import type { LinkProps } from '../types';
 
 /**
  * UrlComponent

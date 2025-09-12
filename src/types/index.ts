@@ -1,5 +1,4 @@
-import type { ReactNode } from "react";
-
+import type { ReactNode } from 'react';
 
 /**
  * Props for a generic link component.

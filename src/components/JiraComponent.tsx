@@ -1,5 +1,5 @@
-import React from "react";
-import type { ReactJiraLinkProps } from "../types";
+import React from 'react';
+import type { ReactJiraLinkProps } from '../types';
 
 /**
  * JiraComponent
@@ -23,7 +23,7 @@ export const JiraComponent: ReactJiraLinkProps = ({
   domain,
   className,
 }) => {
-  const [project, id] = match.split("-");
+  const [project, id] = match.split('-');
   return (
     <a
       className={className}

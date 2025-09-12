@@ -1,5 +1,5 @@
-import React from "react";
-import type { ReactLinkProps } from "../types";
+import React from 'react';
+import type { ReactLinkProps } from '../types';
 
 /**
  * TwitterComponent
@@ -21,7 +21,7 @@ export const TwitterComponent: ReactLinkProps = ({ match, className }) => {
   return (
     <a
       className={className}
-      href={"https://x.com/" + match.slice(1)}
+      href={'https://x.com/' + match.slice(1)}
       target="_blank"
       rel="noreferrer"
     >

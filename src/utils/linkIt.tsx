@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
-import type { ReactNode } from "react";
-import type { Component } from "../types";
-import { ctrlCharactersRegex } from "./ctrlCharactersRegex";
-import { getKey } from "./getKey";
+import React, { Fragment } from 'react';
+import type { ReactNode } from 'react';
+import type { Component } from '../types';
+import { ctrlCharactersRegex } from './ctrlCharactersRegex';
+import { getKey } from './getKey';
 
 /**
  * Generic function to linkify any pattern in a string using a custom component.
@@ -41,7 +41,7 @@ export function linkIt(
     const textBeforeMatch = rest.slice(0, urlStartIndex);
     const url = rest
       .slice(urlStartIndex, urlEndIndex)
-      .replace(ctrlCharactersRegex, "");
+      .replace(ctrlCharactersRegex, '');
     rest = rest.slice(urlEndIndex);
     if (textBeforeMatch) {
       elements.push(textBeforeMatch);
