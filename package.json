@@ -7,13 +7,16 @@
   "type": "module",
   "source": "src/index.tsx",
   "packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "exports": {
-    ".": "./dist/index.js",
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
     "./package.json": "./package.json"
   },
   "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.cts",
   "sideEffects": false,
   "files": [
     "dist/"
@@ -38,9 +41,7 @@
   "homepage": "https://github.com/anantoghosh/react-linkify-it",
   "scripts": {
     "release": "np",
-    "build": "pnpm build:latest && pnpm build:legacy",
-    "build:latest": "rollup -c",
-    "build:legacy": "rollup -c rollup-legacy.config.js",
+    "build": "tsdown",
     "test": "vitest run --coverage",
     "lint": "eslint src/",
     "prettier": "prettier src/ --write"
