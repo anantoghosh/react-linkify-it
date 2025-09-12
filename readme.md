@@ -36,7 +36,7 @@ Make your text interactive, your way. Fun, fast, and flexible! 🎉
 
 ## Demo
 
-[Code Sandbox](https://codesandbox.io/s/react-linkify-it-c5n82g)
+[Code Sandbox](https://codesandbox.io/p/sandbox/react-linkify-it-drynzv)
 
 ---
 
@@ -295,37 +295,6 @@ import {
   twitterRegex,
 } from 'react-linkify-it';
 ```
-
----
-
-## Using Modern and Legacy Bundle
-
-By default, when you import `react-linkify-it`, it will use a modern bundle which can be transpiled or minified as required.
-
-If your setup does not use `babel-preset-env` and you would still like to support older browsers, you can use the legacy bundle by importing:
-
-### For JavaScript and modern Typescript Projects
-
-```js
-import { linkIt, LinkIt } from 'react-linkify-it/legacy';
-```
-
-### For TypeScript < v5.0.0 Projects ([why?](https://github.com/microsoft/TypeScript/issues/33079))
-
-```js
-import {
-  linkIt,
-  LinkIt,
-} from 'react-linkify-it/dist/react-linkify-it.legacy.esm.min';
-```
-
-_Note_: Legacy bundle has a slightly larger file size.
-
----
-
-## Using a Browser Bundle
-
-An UMD build with legacy browser support can be used from [Unpkg](https://unpkg.com/react-linkify-it).
 
 ---
 
