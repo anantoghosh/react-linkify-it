@@ -2,7 +2,7 @@
 
 # react-linkify-it 🔗
 
-**A super tiny, dependency-free, highly customizable React utility to turn any pattern in your text into clickable links or custom components. Instantly linkify URLs, emails, Jira tickets, Twitter handles, hashtags, or anything else—out of the box or with your own rules.**
+**A super tiny <1KB, dependency-free, highly customizable React utility to turn any pattern in your text into clickable links or custom components. Instantly linkify URLs, emails, Jira tickets, Twitter handles, hashtags, or anything else—out of the box or with your own rules.**
 
 [![Npm version](https://badgen.net/npm/v/react-linkify-it)](https://www.npmjs.com/package/react-linkify-it)
 [![Build](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml)
@@ -21,7 +21,7 @@
 
 ## Why You'll Love react-linkify-it ✨
 
-- ⚡ **Super tiny**: Less than 800 bytes gzipped after tree shaking!
+- ⚡ **Super tiny**: Less than 1KB gzipped after tree shaking!
 - 🪶 **Zero dependencies**: No bloat, No extra dependencies. Just a single file.
 - 🛠️ **Ultra customizable**: Linkify any pattern, use your own regex, wrap with any component. Adjust to your specific case as required.
 - 🔗 **Prebuilt for you**: URLs, emails, Jira tickets, Twitter handles—ready out of the box.
