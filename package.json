@@ -1,7 +1,7 @@
 {
   "name": "react-linkify-it",
   "author": "Ananto Ghosh",
-  "version": "1.0.8",
+  "version": "2.0.0-0",
   "description": "A super tiny <1KB, dependency-free, highly customizable React utility to turn any pattern in your text into clickable links or custom components. Instantly linkify URLs, emails, twitter handles, hashtags, mentions or anything else out of the box or with your own rules.",
   "license": "MIT",
   "type": "module",
