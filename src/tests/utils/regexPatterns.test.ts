@@ -3,10 +3,9 @@ import {
   urlRegex,
   emailRegex,
   twitterRegex,
-  jiraRegex,
   hashtagRegex,
   mentionRegex,
-} from '../../utils/regexPatterns';
+} from '../../utils';
 
 // URL Regex Tests
 test('urlRegex matches basic URLs', () => {
@@ -64,20 +63,6 @@ test('twitterRegex does not match invalid handles', () => {
   expect(twitterRegex.test('@@username')).toBe(false); // Double @
 });
 
-// Jira Regex Tests
-test('jiraRegex matches Jira ticket formats', () => {
-  expect(jiraRegex.test('PROJ-123')).toBe(true);
-  expect(jiraRegex.test('DEV-456')).toBe(true);
-  expect(jiraRegex.test('LONGPROJECT-999')).toBe(true);
-});
-
-test('jiraRegex does not match invalid formats', () => {
-  expect(jiraRegex.test('proj-123')).toBe(false); // Lowercase
-  expect(jiraRegex.test('PROJ123')).toBe(false); // No dash
-  expect(jiraRegex.test('PROJ-')).toBe(false); // No number
-  expect(jiraRegex.test('-123')).toBe(false); // No project
-});
-
 // Hashtag Regex Tests
 test('hashtagRegex matches hashtags', () => {
   expect(hashtagRegex.test('#hashtag')).toBe(true);
@@ -111,7 +96,6 @@ test('all regexes have global flag for proper linkification', () => {
   expect(urlRegex.global).toBe(true);
   expect(emailRegex.global).toBe(true);
   expect(twitterRegex.global).toBe(true);
-  expect(jiraRegex.global).toBe(true);
   expect(hashtagRegex.global).toBe(true);
   expect(mentionRegex.global).toBe(true);
 });

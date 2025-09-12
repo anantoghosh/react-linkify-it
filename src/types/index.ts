@@ -21,17 +21,6 @@ interface HOCLinkProps {
 }
 
 /**
- * Props for a Jira link component.
- * @typedef {object} JiraLinkProps
- * @property {string} match - Jira ticket key
- * @property {string} domain - Jira base url
- * @property {string} [className] - Optional class which is passed to the linked component
- */
-interface JiraLinkProps extends LinkProps {
-  domain: string;
-}
-
-/**
  * Props for a hashtag link component.
  * @typedef {object} HashTagLinkProps
  * @property {string} match - Hashtag string that matched the regex
@@ -51,16 +40,6 @@ interface HashTagLinkProps extends LinkProps {
  */
 interface MentionLinkProps extends LinkProps {
   urlTemplate: string;
-}
-
-/**
- * Props for a higher-order Jira link component.
- * @typedef {object} JiraHOCLinkProps
- * @property {string} domain - Jira base url
- * @property {string} [className] - Optional class which is passed to the linked component
- */
-interface JiraHOCLinkProps extends HOCLinkProps {
-  domain: string;
 }
 
 /**
@@ -107,14 +86,6 @@ export type ReactLinkItProps = React.FC<
 export type ReactHOCLinkProps = React.FC<React.PropsWithChildren<HOCLinkProps>>;
 
 /**
- * React component type for a Jira link.
- * @typedef {React.FC<React.PropsWithChildren<JiraLinkProps>>} ReactJiraLinkProps
- */
-export type ReactJiraLinkProps = React.FC<
-  React.PropsWithChildren<JiraLinkProps>
->;
-
-/**
  * React component type for a hashtag link.
  * @typedef {React.FC<React.PropsWithChildren<HashTagLinkProps>>} ReactHashTagLinkProps
  */
@@ -128,14 +99,6 @@ export type ReactHashTagLinkProps = React.FC<
  */
 export type ReactMentionLinkProps = React.FC<
   React.PropsWithChildren<MentionLinkProps>
->;
-
-/**
- * React component type for a higher-order Jira link wrapper.
- * @typedef {React.FC<React.PropsWithChildren<JiraHOCLinkProps>>} ReactJiraHOCLinkProps
- */
-export type ReactJiraHOCLinkProps = React.FC<
-  React.PropsWithChildren<JiraHOCLinkProps>
 >;
 
 /**
@@ -162,8 +125,6 @@ export type Component = (match: string, key: number) => ReactNode;
 // Export the internal interfaces for external use if needed
 export type {
   HOCLinkProps,
-  JiraLinkProps,
-  JiraHOCLinkProps,
   HashTagLinkProps,
   HashTagHOCLinkProps,
   MentionLinkProps,

@@ -4,7 +4,6 @@ export {
   urlRegex,
   emailRegex,
   twitterRegex,
-  jiraRegex,
   hashtagRegex,
   mentionRegex,
 } from './regexPatterns';

@@ -1,6 +1,6 @@
 # react-linkify-it 🔗
 
-**A super tiny <1KB, dependency-free, highly customizable React utility to turn any pattern in your text into clickable links or custom components. Instantly linkify URLs, emails, Jira tickets, Twitter handles, hashtags, or anything else—out of the box or with your own rules.**
+**A super tiny <1KB, dependency-free, highly customizable React utility to turn any pattern in your text into clickable links or custom components. Instantly linkify URLs, emails, twitter handles, hashtags, mentions or anything else—out of the box or with your own rules.**
 
 [![Npm version](https://badgen.net/npm/v/react-linkify-it)](https://www.npmjs.com/package/react-linkify-it)
 [![Build](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml)
@@ -20,7 +20,7 @@
 - ⚡ **Super tiny**: Less than 1KB gzipped after tree shaking!
 - 🪶 **Zero dependencies**: No bloat, No extra dependencies. Just a single file.
 - 🛠️ **Ultra customizable**: Linkify any pattern, use your own regex, wrap with any component. Adjust to your specific case as required.
-- 🔗 **Prebuilt for you**: URLs, emails, Jira tickets, Twitter handles—ready out of the box.
+- 🔗 **Prebuilt for you**: URLs, emails, twitter handles, hashtags, mentions - ready out of the box.
 - 💧 **Generic**: Not just links, wrap any pattern with _any_ component.
 - 🧩 **Composable**: Nest, combine, and mix patterns as you like.
 - 🚀 **Blazing fast**: Single-pass processing.
@@ -79,30 +79,7 @@ const App = () => (
 );
 ```
 
-#### 2. `<LinkItJira>`
-
-**What it does:**
-Finds Jira ticket keys (e.g. `PROJ-123`) and links them to your Jira instance.
-
-**Props:**
-
-- `children` (required): Content to linkify.
-- `domain` (required): Base URL of your Jira instance (e.g. `https://projectid.atlassian.net`).
-- `className` (optional): CSS class for the anchor tag.
-
-```jsx
-import { LinkItJira } from 'react-linkify-it';
-
-const App = () => (
-  <div className="App">
-    <LinkItJira domain="https://projectid.atlassian.net" className="jira-link">
-      hello AMM-123 ticket
-    </LinkItJira>
-  </div>
-);
-```
-
-#### 3. `<LinkItTwitter>`
+#### 2. `<LinkItTwitter>`
 
 **What it does:**
 Finds Twitter handles (e.g. `@username`) and links them to Twitter profiles.
@@ -124,7 +101,7 @@ const App = () => (
 );
 ```
 
-#### 4. `<LinkItEmail>`
+#### 3. `<LinkItEmail>`
 
 **What it does:**
 Finds email addresses and wraps them in `mailto:` links.
@@ -146,7 +123,7 @@ const App = () => (
 );
 ```
 
-#### 5. `<LinkIt>` (Generic Component)
+#### 4. `<LinkIt>` (Generic Component)
 
 **What it does:**
 Lets you linkify any pattern using your own regex and custom component. Perfect for advanced use cases or custom patterns.
@@ -180,7 +157,7 @@ const App = () => (
 );
 ```
 
-#### 6. `<LinkItHashtag>`
+#### 5. `<LinkItHashtag>`
 
 **What it does:**
 Finds hashtags (e.g. `#OpenSource`, `#日本語`) and links them to your chosen platform using a URL template.
@@ -209,7 +186,7 @@ const App = () => (
 );
 ```
 
-#### 7. `<LinkItMention>`
+#### 6. `<LinkItMention>`
 
 **What it does:**
 Finds mentions (e.g. `@username`, `@ユーザー`) and links them to your chosen platform using a URL template.
@@ -297,10 +274,6 @@ All prebuilt components accept the following props:
 - `className` (string, optional): CSS class for the anchor tag.
 - `children` (string | ReactNode): Content to linkify.
 
-`LinkItJira` additionally requires:
-
-- `domain` (string, required): Base URL of your Jira instance (e.g. `https://projectid.atlassian.net`).
-
 The generic `LinkIt` component accepts:
 
 - `component`: Function `(match, key) => ReactNode` to render each match.
@@ -320,7 +293,6 @@ import {
   urlRegex,
   emailRegex,
   twitterRegex,
-  jiraRegex,
 } from 'react-linkify-it';
 ```
 

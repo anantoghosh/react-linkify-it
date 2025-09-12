@@ -4,7 +4,6 @@ import {
   LinkItUrl,
   LinkItEmail,
   LinkItTwitter,
-  LinkItJira,
   LinkItHashtag,
   LinkItMention,
 } from '../../components';
@@ -80,28 +79,6 @@ test('LinkIt components work with React elements as children', () => {
   );
 });
 
-test('LinkItJira with various ticket formats', () => {
-  const domain = 'https://company.atlassian.net';
-  render(
-    <LinkItJira domain={domain}>
-      See tickets PROJ-123, DEV-456, and FEATURE-789 for details. Also check
-      BUGFIX-12345 and EPIC-1.
-    </LinkItJira>,
-  );
-
-  const links = screen.getAllByRole('link');
-  expect(links).toHaveLength(5);
-
-  expect(screen.getByRole('link', { name: 'PROJ-123' })).toHaveAttribute(
-    'href',
-    `${domain}/jira/software/projects/PROJ/boards/123`,
-  );
-  expect(screen.getByRole('link', { name: 'EPIC-1' })).toHaveAttribute(
-    'href',
-    `${domain}/jira/software/projects/EPIC/boards/1`,
-  );
-});
-
 test('LinkItHashtag and LinkItMention with Unicode content', () => {
   render(
     <div>
@@ -128,15 +105,11 @@ test('LinkItHashtag and LinkItMention with Unicode content', () => {
 });
 
 test('All components with className propagation', () => {
-  const domain = 'https://company.atlassian.net';
   render(
     <div>
       <LinkItUrl className="url-class">https://example.com</LinkItUrl>
       <LinkItEmail className="email-class">user@example.com</LinkItEmail>
       <LinkItTwitter className="twitter-class">@username</LinkItTwitter>
-      <LinkItJira domain={domain} className="jira-class">
-        PROJ-123
-      </LinkItJira>
       <LinkItHashtag
         urlTemplate="https://example.com/tags/{hashtag}"
         className="hashtag-class"
@@ -162,10 +135,6 @@ test('All components with className propagation', () => {
     'class',
     'twitter-class',
   );
-  expect(screen.getByRole('link', { name: 'PROJ-123' })).toHaveAttribute(
-    'class',
-    'jira-class',
-  );
   expect(screen.getByRole('link', { name: '#programming' })).toHaveAttribute(
     'class',
     'hashtag-class',
@@ -177,13 +146,11 @@ test('All components with className propagation', () => {
 });
 
 test('Components handle edge cases gracefully', () => {
-  const domain = 'https://company.atlassian.net';
   render(
     <div>
       <LinkItUrl>No URLs here</LinkItUrl>
       <LinkItEmail>No emails here</LinkItEmail>
       <LinkItTwitter>No mentions here</LinkItTwitter>
-      <LinkItJira domain={domain}>No tickets here</LinkItJira>
       <LinkItHashtag urlTemplate="https://example.com/tags/{hashtag}">
         No hashtags here
       </LinkItHashtag>
@@ -197,33 +164,29 @@ test('Components handle edge cases gracefully', () => {
   // Text may be split across elements, so check with regex
   expect(screen.getByText(/No URLs here/)).toBeInTheDocument();
   expect(screen.getByText(/No emails here/)).toBeInTheDocument();
-  expect(screen.getByText(/No tickets here/)).toBeInTheDocument();
+  expect(screen.getByText(/No mentions here/)).toBeInTheDocument();
   expect(screen.getByText(/No hashtags here/)).toBeInTheDocument();
 });
 
 test('Complex real-world example', () => {
-  const domain = 'https://mycompany.atlassian.net';
   render(
     <div>
       <LinkItUrl>
         <LinkItEmail>
-          <LinkItJira domain={domain}>
-            <LinkItHashtag urlTemplate="https://x.com/hashtag/{hashtag}">
-              <LinkItMention urlTemplate="https://github.com/{mention}">
-                Hey @octocat, check out the new feature at
-                https://example.com/feature! Contact support@company.com for
-                issues. Related ticket: PROJ-456 Tags: #opensource #javascript
-                #react
-              </LinkItMention>
-            </LinkItHashtag>
-          </LinkItJira>
+          <LinkItHashtag urlTemplate="https://x.com/hashtag/{hashtag}">
+            <LinkItMention urlTemplate="https://github.com/{mention}">
+              Hey @octocat, check out the new feature at
+              https://example.com/feature! Contact support@company.com for
+              issues. Tags: #opensource #javascript #react
+            </LinkItMention>
+          </LinkItHashtag>
         </LinkItEmail>
       </LinkItUrl>
     </div>,
   );
 
   const links = screen.getAllByRole('link');
-  expect(links.length).toBeGreaterThan(5);
+  expect(links.length).toBeGreaterThan(4);
 
   // Verify each type of link is present and correctly formatted
   expect(screen.getByRole('link', { name: '@octocat' })).toHaveAttribute(
@@ -236,10 +199,6 @@ test('Complex real-world example', () => {
   expect(
     screen.getByRole('link', { name: 'support@company.com' }),
   ).toHaveAttribute('href', 'mailto:support@company.com');
-  expect(screen.getByRole('link', { name: 'PROJ-456' })).toHaveAttribute(
-    'href',
-    `${domain}/jira/software/projects/PROJ/boards/456`,
-  );
   expect(screen.getByRole('link', { name: '#opensource' })).toHaveAttribute(
     'href',
     'https://x.com/hashtag/opensource',

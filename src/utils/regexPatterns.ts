@@ -25,14 +25,6 @@ export const emailRegex =
 export const twitterRegex = /\B@([\p{L}\p{N}_]+)/u;
 
 /**
- * Regex to match Jira ticket keys (e.g., ABC-123).
- * @type {RegExp}
- * @example
- *   jiraRegex.test('PROJ-42') // true
- */
-export const jiraRegex = /[\p{Lu}]+-\d+/u;
-
-/**
  * Regex to match hashtags (e.g., #hashtag, #javascript).
  * Supports Unicode characters for international hashtags.
  * @type {RegExp}
