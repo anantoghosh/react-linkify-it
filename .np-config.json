@@ -1,6 +1,4 @@
 {
-  "yarn": false,
-  "contents": "dist",
   "publish": false,
   "branch": "main",
   "cleanup": false,

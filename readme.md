@@ -1,56 +1,44 @@
 # react-linkify-it 🔗
 
+**A super tiny <1KB, dependency-free, highly customizable React utility to turn any pattern in your text into clickable links or custom components. Instantly linkify URLs, emails, twitter handles, hashtags, mentions or anything else out of the box or with your own rules.**
+
 [![Npm version](https://badgen.net/npm/v/react-linkify-it)](https://www.npmjs.com/package/react-linkify-it)
 [![Build](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml)
 [![NPM bundle size](https://img.shields.io/bundlephobia/minzip/react-linkify-it)](https://bundlephobia.com/package/react-linkify-it)
 ![Tree shaking supported](https://img.shields.io/badge/Tree%20Shaking-Supported-blue)
 [![Maintainability](https://api.codeclimate.com/v1/badges/fcb46fb37e7c25990c53/maintainability)](https://codeclimate.com/github/anantoghosh/react-linkify-it/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/fcb46fb37e7c25990c53/test_coverage)](https://codeclimate.com/github/anantoghosh/react-linkify-it/test_coverage)
+[![codecov](https://codecov.io/github/anantoghosh/react-linkify-it/graph/badge.svg?token=1W6XJAO4JY)](https://codecov.io/github/anantoghosh/react-linkify-it)
 [![Known Vulnerabilities](https://snyk.io/test/github/anantoghosh/react-linkify-it/badge.svg)](https://snyk.io/test/github/anantoghosh/react-linkify-it)
-[![Security Score](https://snyk-widget.herokuapp.com/badge/npm/react-linkify-it/badge.svg)](https://snyk.io/advisor/npm-package/react-linkify-it)
 
-<a href="https://github.com/sponsors/anantoghosh" target="_blank"><img alt="Support me on Github" src="https://anantoghosh.github.io/assets/support_github.svg" style="height: 50px !important;width: auto !important;" /></a>
-<a href="https://www.buymeacoffee.com/ananto" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: auto !important;" ></a>
+<a href="https://github.com/sponsors/anantoghosh" target="_blank"><img alt="Support me on Github" src="https://anantoghosh.github.io/assets/support_github.svg" height="40" /></a>
+<a href="https://www.buymeacoffee.com/ananto" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40" /></a>
 
-A tiny and dependency free universal linking solution that turns **any pattern** in your text into clickable links (aka linkify). Supports i18n and emojis.
+---
 
-`react-linkify-it` comes with a set of prebuilt components for specific linking needs and a generic component to wrap any pattern with a component.
+## Why You'll Love react-linkify-it ✨
 
-Prebuilt components for linking:
+- ⚡ **Super tiny**: Less than 1KB gzipped after tree shaking!
+- 🪶 **Zero dependencies**: No bloat, No extra dependencies. Just a single file.
+- 🛠️ **Ultra customizable**: Linkify any pattern, use your own regex, wrap with any component. Adjust to your specific case as required.
+- 🔗 **Prebuilt for you**: URLs, emails, twitter handles, hashtags, mentions - ready out of the box.
+- 💧 **Generic**: Not just links, wrap any pattern with _any_ component.
+- 🧩 **Composable**: Nest, combine, and mix patterns as you like.
+- 🚀 **Blazing fast**: Single-pass processing.
+- 🦺 **Safe**: Sanitizes URLs to prevent XSS.
+- 🌍 **i18n & emoji friendly**: Works with URLs that contain international characters and emojis.
+- 🧹 **Tree-shakable**: Only what you use gets bundled.
+- 🧪 **Production ready**: Thoroughly tested and used in real apps.
+- ⚛️ **React support**: Works with React v16.2+
 
-- URLs
-- Jira Tickets
-- Twitter usernames
-- Emails
+Make your text interactive, your way. Fun, fast, and flexible! 🎉
 
-You can also use the generic component which lets you support your own use case as desired:
-
-- Link GitHub Issues
-- Link tags to any social media
-- Link email addresses
-- Link phone numbers
-- **Link any pattern you want!**
-- **Wrap any pattern with a component!**
-
-### Features
-
-- 📦 **Tiny** - Less than 800 bytes gzipped after tree shaking.
-- 🔹 **Dependency free** - No extra dependencies. Just a single file.
-- 📝 **Customizable** - Adjust to your specific case as required.
-- 💧 **Generic** - Not just links, wrap any pattern with _any_ component.
-- 🏎 **Fast** - Single pass processing.
-- 🦺 **Safe** - Sanitized urls to prevent any XSS attacks.
-- 🌐 **i18n** - Works with urls that contain international characters.
-- ⚔ **Tested** - Thoroughly.
-- 🕸 **React support** - Works with react v16.2+
-
-### Notes
-
-- `react-linkify-it` provides a modern bundle for actively maintained browsers and a larger legacy bundle for older browsers.  
-  [Read about how to utilize them](#using-modern-and-legacy-bundle).
+---
 
 ## Demo
-[Code Sandbox](https://codesandbox.io/s/react-linkify-it-c5n82g)
+
+[Code Sandbox](https://codesandbox.io/p/sandbox/react-linkify-it-drynzv)
+
+---
 
 ## Installation
 
@@ -58,163 +46,257 @@ You can also use the generic component which lets you support your own use case 
 npm i react-linkify-it
 ```
 
+---
+
+## Usage
+
 ### Usage - Prebuilt Components
 
-_Every prebuilt component also optionally accepts a `className` to attach to the link wrapper_
+These components make it super easy to linkify common patterns. All accept the following props:
 
-#### 1. Urls
+- `children` (string | ReactNode, required): The content to scan and linkify.
+- `className` (string, optional): CSS class for the anchor tag(s) created.
+
+#### 1. `<LinkItUrl>`
+
+**What it does:**
+Scans its children for URLs (http, https, www) and wraps them in `<a href="...">` tags.
+
+**Props:**
+
+- `children` (required): Content to linkify.
+- `className` (optional): CSS class for the anchor tag.
 
 ```jsx
 import { LinkItUrl } from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
-    <LinkItUrl>
-      <p>"add some link https://www.google.com here"</p>
+    <LinkItUrl className="my-link">
+      <p>add some link https://www.google.com here</p>
     </LinkItUrl>
   </div>
 );
-
 ```
 
-#### 2. Jira Tickets
+#### 2. `<LinkItTwitter>`
 
-```jsx
-import { LinkItJira } from 'react-linkify-it';
+**What it does:**
+Finds Twitter handles (e.g. `@username`) and links them to Twitter profiles.
 
-const App = () => (
-  <div className="App">
-    <LinkItJira domain="https://projectid.atlassian.net">
-      hello AMM-123 ticket
-    </LinkItJira>
-  </div>
-);
-```
+**Props:**
 
-#### 3. Twitter handles
+- `children` (required): Content to linkify.
+- `className` (optional): CSS class for the anchor tag.
 
 ```jsx
 import { LinkItTwitter } from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
-    <LinkItTwitter>
+    <LinkItTwitter className="twitter-link">
       hello @anantoghosh twitter
     </LinkItTwitter>
   </div>
 );
 ```
 
-#### 4. Emails
+#### 3. `<LinkItEmail>`
+
+**What it does:**
+Finds email addresses and wraps them in `mailto:` links.
+
+**Props:**
+
+- `children` (required): Content to linkify.
+- `className` (optional): CSS class for the anchor tag.
+
 ```jsx
 import { LinkItEmail } from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
-    <LinkItEmail>
+    <LinkItEmail className="email-link">
       hello example@gmail.com email
     </LinkItEmail>
   </div>
 );
 ```
 
-### Usage - Generic Component
+#### 4. `<LinkIt>` (Generic Component)
+
+**What it does:**
+Lets you linkify any pattern using your own regex and custom component. Perfect for advanced use cases or custom patterns.
+
+**Props:**
+
+- `component` (required): Function `(match, key) => ReactNode` to render each match.
+- `regex` (required): RegExp to match your pattern.
+- `children` (required): Content to linkify (string or ReactNode).
 
 ```jsx
+// Example: Linkify all '@mentions' and link internally
 import { LinkIt } from 'react-linkify-it';
+// If using Next.js:
+import Link from 'next/link';
 
-const regexToMatch = /@([\w_]+)/;
-
+const mentionRegex = /@([\p{L}\p{N}_]+)/u;
 const App = () => (
   <div className="App">
     <LinkIt
-      {/* Component to wrap each match with */}
-      component={(match, key) => <a href={match} key={key}>{match}</a>}
-      regex={regexToMatch}
+      regex={mentionRegex}
+      component={(match, key) => (
+        <Link href={`/user/${encodeURIComponent(match.slice(1))}`} key={key}>
+          {match}
+        </Link>
+      )}
     >
-      www.google.com<div>hi @anantoghosh</div>
+      Welcome '@anantoghosh' and '@ユーザー' to our app!
     </LinkIt>
   </div>
 );
-
 ```
 
-- **match** - regex match text
-- **key** - unique key for the match
+#### 5. `<LinkItHashtag>`
+
+**What it does:**
+Finds hashtags (e.g. `#OpenSource`, `#日本語`) and links them to your chosen platform using a URL template.
+
+**Props:**
+
+- `children` (required): Content to linkify.
+- `urlTemplate` (required): URL template with `{hashtag}` placeholder (without the `#`).
+- `className` (optional): CSS class for the anchor tag.
+
+```jsx
+import { LinkItHashtag } from 'react-linkify-it';
+
+const App = () => (
+  <div className="App">
+    {/* Instagram example with Unicode */}
+    <LinkItHashtag urlTemplate="https://instagram.com/explore/tags/{hashtag}">
+      Love #sunset and #日本語 hashtags!
+    </LinkItHashtag>
+
+    {/* Custom website example */}
+    <LinkItHashtag urlTemplate="https://example.com/tags/{hashtag}">
+      Discussing #AI and #MachineLearning trends
+    </LinkItHashtag>
+  </div>
+);
+```
+
+#### 6. `<LinkItMention>`
+
+**What it does:**
+Finds mentions (e.g. `@username`, `@ユーザー`) and links them to your chosen platform using a URL template.
+
+**Props:**
+
+- `children` (required): Content to linkify.
+- `urlTemplate` (required): URL template with `{mention}` placeholder (without the `@`).
+- `className` (optional): CSS class for the anchor tag.
+
+```jsx
+import { LinkItMention } from 'react-linkify-it';
+
+const App = () => (
+  <div className="App">
+    {/* Instagram example with Unicode */}
+    <LinkItMention urlTemplate="https://instagram.com/{mention}">
+      Welcome @newuser and @ユーザー to our platform!
+    </LinkItMention>
+
+    {/* Custom website example */}
+    <LinkItMention urlTemplate="https://example.com/users/{mention}">
+      Shoutout to @octocat and @defunkt for joining!
+    </LinkItMention>
+  </div>
+);
+```
 
 ### Usage - Generic Function
+
+The `linkIt` function is a utility for linkifying any string using your own regex and component, outside of React tree rendering.
 
 ```jsx
 import { linkIt, UrlComponent } from 'react-linkify-it';
 
-const regexToMatch = /@([\w_]+)/;
+const regexToMatch = /@([\w_]+)/g;
 
 const App = () => {
-
+  // 'linkIt' returns an array of React nodes or the original string
   const output = linkIt(
-    // Text to be linkified
-    text,
-    // Component to wrap each match with, can be any React component
-    (match, key) => <UrlComponent match={match} key={key} />,
-    regexToMatch
+    text, // string to linkify
+    (match, key) => <UrlComponent match={match} key={key} />, // your component
+    regexToMatch, // your regex
   );
 
-  return <div className="App">{output}</div>
+  return <div className="App">{output}</div>;
 };
-
 ```
 
-- **match** - regex match text
-- **key** - unique key for the match
+### Using Multiple Matches
 
-### Using multiple matches
+You can nest prebuilt components to linkify multiple patterns at once:
 
-Just use more than one component to match multiple patterns.
 ```jsx
-import { LinkItEmail, LinkItUrl } from 'react-linkify-it';
+import {
+  LinkItEmail,
+  LinkItUrl,
+  LinkItHashtag,
+  LinkItMention,
+} from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
+    {/* Linkify URLs and emails together */}
     <LinkItUrl>
-      <LinkItEmail>
-        hello example@gmail.com https://google.com
-      </LinkItEmail>
+      <LinkItEmail>hello example@gmail.com https://google.com</LinkItEmail>
     </LinkItUrl>
+
+    {/* Linkify hashtags and mentions together */}
+    <LinkItHashtag urlTemplate="https://instagram.com/explore/tags/{hashtag}">
+      <LinkItMention urlTemplate="https://instagram.com/{mention}">
+        Welcome @newuser to #日本語!
+      </LinkItMention>
+    </LinkItHashtag>
   </div>
 );
-
 ```
 
-## Using modern and legacy bundle
+---
 
-By default, when you import `react-linkify-it`, it will use a modern bundle
-meant for browsers which
-support [RegExp Unicode property escapes](https://caniuse.com/mdn-javascript_regular_expressions_property_escapes).
+## Customization
 
-If you are using `babel-preset-env`, or any bundler configuration which uses it (e.g. `create-react-app`, `vite`) with a
-browser which does not support RegExp Unicode property escapes, babel will
-transform the code to support the browsers resulting in a larger bundle.
+All prebuilt components accept the following props:
 
-If your setup does not use `babel-preset-env` and you would still like to support
-older browsers, you can use the legacy bundle by importing:
+- `className` (string, optional): CSS class for the anchor tag.
+- `children` (string | ReactNode): Content to linkify.
 
-### For javascript projects
+The generic `LinkIt` component accepts:
+
+- `component`: Function `(match, key) => ReactNode` to render each match.
+- `regex`: RegExp to match your pattern.
+- `children`: Content to linkify.
+
+The `linkIt` function accepts:
+
+- `text`: String to process.
+- `component`: Function `(match, key) => ReactNode`.
+- `regex`: RegExp.
+
+You can also import and use the regex patterns directly:
 
 ```js
-import { linkIt, LinkIt } from "react-linkify-it/legacy";
+import {
+  urlRegex,
+  emailRegex,
+  twitterRegex,
+} from 'react-linkify-it';
 ```
 
-### For typescript < v5.0.0 projects ([why?](https://github.com/microsoft/TypeScript/issues/33079))
-
-```js
-import { linkIt, LinkIt } from "react-linkify-it/dist/react-linkify-it.legacy.esm.min";
-```
-
-_Note_: Legacy bundle has a larger file size (~3.4Kb minziped).
-
-## Using a browser bundle
-
-An umd build with legacy browser support can be used from [Unpkg](https://unpkg.com/react-linkify-it).
+---
 
 ## Acknowledgment
 
@@ -223,14 +305,17 @@ This project was made possible due to the incredible work done on the following 
 - [sanitize-url](https://github.com/braintree/sanitize-url)
 - [react-linkify](https://github.com/tasti/react-linkify)
 
+---
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+---
+
 ## Support
 
-Hey 👋 If my packages has helped you in any way, consider making a small donation to encourage me to keep contributing. Maintaining good software takes time and effort and for open source developers there is very less incentives to do so.
-Your contribution is greatly appreciated and will motivate me to continue to support developing my packages which you may have used. 
+Hey 👋 If my packages have helped you in any way, consider making a small donation to encourage me to keep contributing. Maintaining good software takes time and effort, and for open-source developers, there are very few incentives to do so. Your contribution is greatly appreciated and will motivate me to continue supporting and developing my packages.
 
-<a href="https://github.com/sponsors/anantoghosh" target="_blank"><img alt="Support me on Github" src="https://anantoghosh.github.io/assets/support_github.svg" style="height: 50px !important;width: auto !important;" /></a>
-<a href="https://www.buymeacoffee.com/ananto" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: auto !important;" ></a>
+<a href="https://github.com/sponsors/anantoghosh" target="_blank"><img alt="Support me on Github" src="https://anantoghosh.github.io/assets/support_github.svg" height="40" /></a>
+<a href="https://www.buymeacoffee.com/ananto" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40" /></a>
