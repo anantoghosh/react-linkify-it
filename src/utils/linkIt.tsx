@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import type { ReactNode } from 'react';
 import type { Component } from '../types';
 import { ctrlCharactersRegex } from './ctrlCharactersRegex';
@@ -30,11 +29,13 @@ export function linkIt(
 ): string | ReactNode[] {
   const elements: ReactNode[] = [];
   let rest = text;
+  let hasMatches = false;
 
   while (true) {
     const match = linkRegex.exec(rest);
     if (!match || match[0] === undefined) break;
 
+    hasMatches = true;
     const urlStartIndex = match.index;
     const urlEndIndex = match.index + match[0].length;
 
@@ -49,11 +50,11 @@ export function linkIt(
     elements.push(linkComponent(url, getKey()));
   }
 
-  if (rest) {
-    elements.push(<Fragment key={getKey()}>{rest}</Fragment>);
+  if (hasMatches && rest) {
+    elements.push(rest);
   }
 
-  if (elements.length === 0) {
+  if (!hasMatches) {
     return text;
   }
 

@@ -29,9 +29,9 @@ interface MentionLinkProps extends LinkProps {
  * import { MentionComponent } from 'react-linkify-it';
  * <MentionComponent
  *   match="@username"
- *   urlTemplate="https://twitter.com/{mention}"
+ *   urlTemplate="https://x.com/{mention}"
  * />
- * // Renders: <a href="https://twitter.com/username">@username</a>
+ * // Renders: <a href="https://x.com/username">@username</a>
  * ```
  *
  * @example
@@ -54,24 +54,20 @@ interface MentionLinkProps extends LinkProps {
  * // Renders: <a href="https://example.com/users/johndoe">@johndoe</a>
  * ```
  */
-export const MentionComponent: React.FC<React.PropsWithChildren<MentionLinkProps>> = ({
-  match: mention,
-  urlTemplate,
-  className,
-}) => {
+export const MentionComponent: React.FC<
+  React.PropsWithChildren<MentionLinkProps>
+> = ({ match: mention, urlTemplate, className }) => {
   // Extract mention without the @ symbol
   const mentionWithoutSymbol = mention.slice(1);
 
   // Replace {mention} placeholder in the URL template
-  const href = urlTemplate.replace('{mention}', encodeURIComponent(mentionWithoutSymbol));
+  const href = urlTemplate.replace(
+    '{mention}',
+    encodeURIComponent(mentionWithoutSymbol),
+  );
 
   return (
-    <a
-      className={className}
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-    >
+    <a className={className} href={href} target="_blank" rel="noreferrer">
       {mention}
     </a>
   );

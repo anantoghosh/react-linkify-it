@@ -28,12 +28,7 @@ export const JiraComponent: ReactJiraLinkProps = ({
   const id = idRaw ?? '';
   const href = `${domain}/jira/software/projects/${encodeURIComponent(project)}/boards/${encodeURIComponent(id)}`;
   return (
-    <a
-      className={className}
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-    >
+    <a className={className} href={href} target="_blank" rel="noreferrer">
       {match}
     </a>
   );

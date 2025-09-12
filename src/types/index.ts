@@ -167,5 +167,5 @@ export type {
   HashTagLinkProps,
   HashTagHOCLinkProps,
   MentionLinkProps,
-  MentionHOCLinkProps
+  MentionHOCLinkProps,
 };

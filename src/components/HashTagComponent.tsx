@@ -29,9 +29,9 @@ interface HashTagLinkProps extends LinkProps {
  * import { HashTagComponent } from 'react-linkify-it';
  * <HashTagComponent
  *   match="#javascript"
- *   urlTemplate="https://twitter.com/hashtag/{hashtag}"
+ *   urlTemplate="https://x.com/hashtag/{hashtag}"
  * />
- * // Renders: <a href="https://twitter.com/hashtag/javascript">#javascript</a>
+ * // Renders: <a href="https://x.com/hashtag/javascript">#javascript</a>
  * ```
  *
  * @example
@@ -44,24 +44,20 @@ interface HashTagLinkProps extends LinkProps {
  * // Renders: <a href="https://example.com/tags/react">#react</a>
  * ```
  */
-export const HashTagComponent: React.FC<React.PropsWithChildren<HashTagLinkProps>> = ({
-  match: hashtag,
-  urlTemplate,
-  className,
-}) => {
+export const HashTagComponent: React.FC<
+  React.PropsWithChildren<HashTagLinkProps>
+> = ({ match: hashtag, urlTemplate, className }) => {
   // Extract hashtag without the # symbol
   const hashtagWithoutSymbol = hashtag.slice(1);
 
   // Replace {hashtag} placeholder in the URL template
-  const href = urlTemplate.replace('{hashtag}', encodeURIComponent(hashtagWithoutSymbol));
+  const href = urlTemplate.replace(
+    '{hashtag}',
+    encodeURIComponent(hashtagWithoutSymbol),
+  );
 
   return (
-    <a
-      className={className}
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-    >
+    <a className={className} href={href} target="_blank" rel="noreferrer">
       {hashtag}
     </a>
   );
