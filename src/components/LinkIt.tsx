@@ -15,14 +15,27 @@ import { findText } from '../utils';
  *
  * @example
  * ```jsx
+ * // Example: Linkify all '@mentions' and link internally
  * import { LinkIt } from 'react-linkify-it';
+ * // If using Next.js:
+ * import Link from 'next/link';
  *
- * <LinkIt
- *   component={(match, key) => <a href={match} key={key}>{match}</a>}
- *   regex={/www\.[a-z]+\.com/g}
- * >
- *   www.google.com<div>hi match_me</div>
- * </LinkIt>
+ * const mentionRegex = /@([\p{L}\p{N}_]+)/u;
+ *
+ * const App = () => (
+ *   <div className="App">
+ *     <LinkIt
+ *       regex={mentionRegex}
+ *       component={(match, key) => (
+ *         <Link href={`/user/${encodeURIComponent(match.slice(1))}`} key={key}>
+ *           {match}
+ *         </Link>
+ *       )}
+ *     >
+ *       Welcome '@anantoghosh' and '@ユーザー' to our app!
+ *     </LinkIt>
+ *   </div>
+ * );
  * ```
  */
 export const LinkIt: ReactLinkItProps = (props) => {

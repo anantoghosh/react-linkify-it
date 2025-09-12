@@ -19,36 +19,11 @@ import { HashTagComponent } from './HashTagComponent';
  * ```jsx
  * import { LinkItHashtag } from 'react-linkify-it';
  *
- * // Link to Twitter hashtags
- * <LinkItHashtag urlTemplate="https://twitter.com/hashtag/{hashtag}">
- *   Check out #javascript and #react for web development!
- * </LinkItHashtag>
- * ```
- *
  * @example
  * ```jsx
  * // Link to Instagram hashtags
  * <LinkItHashtag urlTemplate="https://instagram.com/explore/tags/{hashtag}">
  *   Love this #sunset #photography 📸
- * </LinkItHashtag>
- * ```
- *
- * @example
- * ```jsx
- * // Link to custom platform
- * <LinkItHashtag urlTemplate="https://example.com/tags/{hashtag}">
- *   Discussing #AI and #MachineLearning trends
- * </LinkItHashtag>
- * ```
- *
- * @example
- * ```jsx
- * // With custom styling
- * <LinkItHashtag
- *   urlTemplate="https://twitter.com/hashtag/{hashtag}"
- *   className="hashtag-link"
- * >
- *   Join the #OpenSource community! #coding #developers
  * </LinkItHashtag>
  * ```
  */

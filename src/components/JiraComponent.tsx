@@ -23,11 +23,14 @@ export const JiraComponent: ReactJiraLinkProps = ({
   domain,
   className,
 }) => {
-  const [project, id] = match.split('-');
+  const [projectRaw, idRaw] = match.split('-');
+  const project = projectRaw ?? '';
+  const id = idRaw ?? '';
+  const href = `${domain}/jira/software/projects/${encodeURIComponent(project)}/boards/${encodeURIComponent(id)}`;
   return (
     <a
       className={className}
-      href={`${domain}/jira/software/projects/${project}/boards/${id}`}
+      href={href}
       target="_blank"
       rel="noreferrer"
     >

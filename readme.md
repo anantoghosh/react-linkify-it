@@ -1,5 +1,3 @@
-
-
 # react-linkify-it 🔗
 
 **A super tiny <1KB, dependency-free, highly customizable React utility to turn any pattern in your text into clickable links or custom components. Instantly linkify URLs, emails, Jira tickets, Twitter handles, hashtags, or anything else—out of the box or with your own rules.**
@@ -16,8 +14,6 @@
 <a href="https://www.buymeacoffee.com/ananto" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: auto !important;" ></a>
 
 ---
-
-
 
 ## Why You'll Love react-linkify-it ✨
 
@@ -54,8 +50,6 @@ npm i react-linkify-it
 
 ## Usage
 
-
-
 ### Usage - Prebuilt Components
 
 These components make it super easy to linkify common patterns. All accept the following props:
@@ -69,6 +63,7 @@ These components make it super easy to linkify common patterns. All accept the f
 Scans its children for URLs (http, https, www) and wraps them in `<a href="...">` tags.
 
 **Props:**
+
 - `children` (required): Content to linkify.
 - `className` (optional): CSS class for the anchor tag.
 
@@ -90,6 +85,7 @@ const App = () => (
 Finds Jira ticket keys (e.g. `PROJ-123`) and links them to your Jira instance.
 
 **Props:**
+
 - `children` (required): Content to linkify.
 - `domain` (required): Base URL of your Jira instance (e.g. `https://projectid.atlassian.net`).
 - `className` (optional): CSS class for the anchor tag.
@@ -112,6 +108,7 @@ const App = () => (
 Finds Twitter handles (e.g. `@username`) and links them to Twitter profiles.
 
 **Props:**
+
 - `children` (required): Content to linkify.
 - `className` (optional): CSS class for the anchor tag.
 
@@ -133,6 +130,7 @@ const App = () => (
 Finds email addresses and wraps them in `mailto:` links.
 
 **Props:**
+
 - `children` (required): Content to linkify.
 - `className` (optional): CSS class for the anchor tag.
 
@@ -148,75 +146,97 @@ const App = () => (
 );
 ```
 
-
-
 #### 5. `<LinkIt>` (Generic Component)
 
 **What it does:**
 Lets you linkify any pattern using your own regex and custom component. Perfect for advanced use cases or custom patterns.
 
 **Props:**
+
 - `component` (required): Function `(match, key) => ReactNode` to render each match.
 - `regex` (required): RegExp to match your pattern.
 - `children` (required): Content to linkify (string or ReactNode).
 
 ```jsx
+// Example: Linkify all '@mentions' and link internally
 import { LinkIt } from 'react-linkify-it';
+// If using Next.js:
+import Link from 'next/link';
 
-// Example: Linkify all @usernames
-const regexToMatch = /@([\w_]+)/g;
-
+const mentionRegex = /@([\p{L}\p{N}_]+)/u;
 const App = () => (
   <div className="App">
     <LinkIt
+      regex={mentionRegex}
       component={(match, key) => (
-        <a href={`https://twitter.com/${match.slice(1)}`} key={key} style={{ color: 'purple' }}>
+        <Link href={`/user/${encodeURIComponent(match.slice(1))}`} key={key}>
           {match}
-        </a>
+        </Link>
       )}
-      regex={regexToMatch}
     >
-      www.google.com<div>hi @anantoghosh</div>
+      Welcome '@anantoghosh' and '@ユーザー' to our app!
     </LinkIt>
   </div>
 );
 ```
 
-#### Example: Custom Hashtag Linkifier for Your Social Media
+#### 6. `<LinkItHashtag>`
 
-You can easily linkify hashtags and point them to any social media you want (e.g. Instagram, Mastodon, TikTok, etc):
+**What it does:**
+Finds hashtags (e.g. `#OpenSource`, `#日本語`) and links them to your chosen platform using a URL template.
+
+**Props:**
+
+- `children` (required): Content to linkify.
+- `urlTemplate` (required): URL template with `{hashtag}` placeholder (without the `#`).
+- `className` (optional): CSS class for the anchor tag.
 
 ```jsx
-import { LinkIt } from 'react-linkify-it';
-
-// Regex to match hashtags (e.g. #OpenSource)
-const hashtagRegex = /#(\w+)/g;
-
-// Change the base URL to your favorite social media
-const socialBase = 'https://www.instagram.com/explore/tags/';
+import { LinkItHashtag } from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
-    <LinkIt
-      component={(match, key) => (
-        <a
-          href={`${socialBase}${match.slice(1)}`}
-          key={key}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: '#e1306c' }} // Instagram pink
-        >
-          {match}
-        </a>
-      )}
-      regex={hashtagRegex}
-    >
-      Check out #OpenSource and #React!
-    </LinkIt>
+    {/* Instagram example with Unicode */}
+    <LinkItHashtag urlTemplate="https://instagram.com/explore/tags/{hashtag}">
+      Love #sunset and #日本語 hashtags!
+    </LinkItHashtag>
+
+    {/* Custom website example */}
+    <LinkItHashtag urlTemplate="https://example.com/tags/{hashtag}">
+      Discussing #AI and #MachineLearning trends
+    </LinkItHashtag>
   </div>
 );
 ```
 
+#### 7. `<LinkItMention>`
+
+**What it does:**
+Finds mentions (e.g. `@username`, `@ユーザー`) and links them to your chosen platform using a URL template.
+
+**Props:**
+
+- `children` (required): Content to linkify.
+- `urlTemplate` (required): URL template with `{mention}` placeholder (without the `@`).
+- `className` (optional): CSS class for the anchor tag.
+
+```jsx
+import { LinkItMention } from 'react-linkify-it';
+
+const App = () => (
+  <div className="App">
+    {/* Instagram example with Unicode */}
+    <LinkItMention urlTemplate="https://instagram.com/{mention}">
+      Welcome @newuser and @ユーザー to our platform!
+    </LinkItMention>
+
+    {/* Custom website example */}
+    <LinkItMention urlTemplate="https://example.com/users/{mention}">
+      Shoutout to @octocat and @defunkt for joining!
+    </LinkItMention>
+  </div>
+);
+```
 
 ### Usage - Generic Function
 
@@ -232,30 +252,38 @@ const App = () => {
   const output = linkIt(
     text, // string to linkify
     (match, key) => <UrlComponent match={match} key={key} />, // your component
-    regexToMatch // your regex
+    regexToMatch, // your regex
   );
 
   return <div className="App">{output}</div>;
 };
-
 ```
-
 
 ### Using Multiple Matches
 
 You can nest prebuilt components to linkify multiple patterns at once:
 
 ```jsx
-import { LinkItEmail, LinkItUrl } from 'react-linkify-it';
+import {
+  LinkItEmail,
+  LinkItUrl,
+  LinkItHashtag,
+  LinkItMention,
+} from 'react-linkify-it';
 
 const App = () => (
   <div className="App">
     {/* Linkify URLs and emails together */}
     <LinkItUrl>
-      <LinkItEmail>
-        hello example@gmail.com https://google.com
-      </LinkItEmail>
+      <LinkItEmail>hello example@gmail.com https://google.com</LinkItEmail>
     </LinkItUrl>
+
+    {/* Linkify hashtags and mentions together */}
+    <LinkItHashtag urlTemplate="https://instagram.com/explore/tags/{hashtag}">
+      <LinkItMention urlTemplate="https://instagram.com/{mention}">
+        Welcome @newuser to #日本語!
+      </LinkItMention>
+    </LinkItHashtag>
   </div>
 );
 ```
@@ -270,14 +298,17 @@ All prebuilt components accept the following props:
 - `children` (string | ReactNode): Content to linkify.
 
 `LinkItJira` additionally requires:
+
 - `domain` (string, required): Base URL of your Jira instance (e.g. `https://projectid.atlassian.net`).
 
 The generic `LinkIt` component accepts:
+
 - `component`: Function `(match, key) => ReactNode` to render each match.
 - `regex`: RegExp to match your pattern.
 - `children`: Content to linkify.
 
 The `linkIt` function accepts:
+
 - `text`: String to process.
 - `component`: Function `(match, key) => ReactNode`.
 - `regex`: RegExp.
@@ -285,11 +316,15 @@ The `linkIt` function accepts:
 You can also import and use the regex patterns directly:
 
 ```js
-import { urlRegex, emailRegex, twitterRegex, jiraRegex } from 'react-linkify-it';
+import {
+  urlRegex,
+  emailRegex,
+  twitterRegex,
+  jiraRegex,
+} from 'react-linkify-it';
 ```
 
 ---
-
 
 ## Using Modern and Legacy Bundle
 
@@ -300,13 +335,16 @@ If your setup does not use `babel-preset-env` and you would still like to suppor
 ### For JavaScript and modern Typescript Projects
 
 ```js
-import { linkIt, LinkIt } from "react-linkify-it/legacy";
+import { linkIt, LinkIt } from 'react-linkify-it/legacy';
 ```
 
 ### For TypeScript < v5.0.0 Projects ([why?](https://github.com/microsoft/TypeScript/issues/33079))
 
 ```js
-import { linkIt, LinkIt } from "react-linkify-it/dist/react-linkify-it.legacy.esm.min";
+import {
+  linkIt,
+  LinkIt,
+} from 'react-linkify-it/dist/react-linkify-it.legacy.esm.min';
 ```
 
 _Note_: Legacy bundle has a slightly larger file size.
