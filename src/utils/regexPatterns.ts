@@ -14,7 +14,7 @@ export const urlRegex =
  *   emailRegex.test('user@example.com') // true
  */
 export const emailRegex =
-  /(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
+  /([\p{L}\p{N}!#$%&'*+/=?^_`{|}~-]+(\.[\p{L}\p{N}!#$%&'*+/=?^_`{|}~-]+)*)@([\p{L}\p{N}-]+(\.[\p{L}\p{N}-]+)*\.[\p{L}]{2,})/u;
 
 /**
  * Regex to match Twitter handles (e.g., @username).
@@ -22,7 +22,7 @@ export const emailRegex =
  * @example
  *   twitterRegex.test('@anantoghosh') // true
  */
-export const twitterRegex = /\B@([\w_]+)/;
+export const twitterRegex = /\B@([\p{L}\p{N}_]+)/u;
 
 /**
  * Regex to match Jira ticket keys (e.g., ABC-123).
@@ -30,7 +30,7 @@ export const twitterRegex = /\B@([\w_]+)/;
  * @example
  *   jiraRegex.test('PROJ-42') // true
  */
-export const jiraRegex = /[A-Z]+-\d+/i;
+export const jiraRegex = /[\p{Lu}]+-\d+/u;
 
 /**
  * Regex to match hashtags (e.g., #hashtag, #javascript).
@@ -41,7 +41,7 @@ export const jiraRegex = /[A-Z]+-\d+/i;
  *   hashtagRegex.test('#café') // true
  *   hashtagRegex.test('#日本語') // true
  */
-export const hashtagRegex = /\B#([\w\u00C0-\u017F\u0400-\u04FF\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]+)/u;
+export const hashtagRegex = /\B#([\p{L}\p{N}_]+)/u;
 
 /**
  * Regex to match mentions (e.g., @username, @user_name).
@@ -52,4 +52,4 @@ export const hashtagRegex = /\B#([\w\u00C0-\u017F\u0400-\u04FF\u4E00-\u9FFF\u304
  *   mentionRegex.test('@user_name') // true
  *   mentionRegex.test('@utilisateur') // true
  */
-export const mentionRegex = /\B@([\w\u00C0-\u017F\u0400-\u04FF\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]+)/u;
+export const mentionRegex = /\B@([\p{L}\p{N}_]+)/u;
