@@ -53,9 +53,10 @@ jobs:
           else
             echo "tag=latest" >> $GITHUB_OUTPUT
           fi
-      - run: npm publish --provenance --access public --tag ${{ steps.npm_tag.outputs.tag }}
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+      - name: Update npm
+        run: npm install -g npm@latest
+      - run: npm publish
 
   publish-gpr:
     needs: build
