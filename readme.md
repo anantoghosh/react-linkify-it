@@ -2,7 +2,7 @@
 
 **A super tiny <1KB, dependency-free, highly customizable React utility to turn any pattern in your text into clickable links or custom components. Instantly linkify URLs, emails, twitter handles, hashtags, mentions or anything else out of the box or with your own rules.**
 
-![NPM Version](https://img.shields.io/npm/v/react-linkify-it)
+[![NPM Version](https://img.shields.io/npm/v/react-linkify-it)](https://www.npmjs.com/package/react-linkify-it)
 [![Build](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml/badge.svg)](https://github.com/anantoghosh/react-linkify-it/actions/workflows/node.js.yml)
 [![NPM bundle size](https://img.shields.io/bundlephobia/minzip/react-linkify-it)](https://bundlephobia.com/package/react-linkify-it)
 ![Tree shaking supported](https://img.shields.io/badge/Tree%20Shaking-Supported-blue)
