@@ -1,7 +1,6 @@
 import { isValidElement, cloneElement } from 'react';
 import type { ReactNode } from 'react';
 import type { Component } from '../types';
-import { getKey } from './getKey';
 import { linkIt } from './linkIt';
 
 /**
@@ -35,7 +34,7 @@ export function findText(
   ) {
     return cloneElement(
       children,
-      { ...children.props, key: getKey() },
+      { ...children.props },
       findText(
         (children.props as { children: ReactNode }).children,
         component,
