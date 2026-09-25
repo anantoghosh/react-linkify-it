@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "source": "src/index.tsx",
-  "packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67",
+  "packageManager": "pnpm@10.34.5",
   "main": "./dist/index.cjs",
   "exports": {
     ".": {
@@ -68,7 +68,7 @@
     "@testing-library/react": "^16.3.0",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
-    "@vitest/coverage-v8": "3.2.4",
+    "@vitest/coverage-v8": "3.2.7",
     "@vitest/ui": "^3.2.4",
     "eslint": "^9.35.0",
     "jsdom": "^26.1.0",
@@ -77,7 +77,7 @@
     "publint": "^0.3.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tsdown": "^0.15.0",
+    "tsdown": "^0.23.0",
     "tslib": "^2.8.1",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.43.0",
